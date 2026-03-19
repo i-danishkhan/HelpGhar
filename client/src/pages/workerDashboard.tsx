@@ -26,6 +26,7 @@ import {
   Cell,
 } from "recharts";
 import { PieChart, Pie } from "recharts";
+import path from "path";
 
 const performanceData = [
   { month: "January", value: 2.8 },
@@ -54,7 +55,7 @@ const attendanceData = [
 const navItems = [
   { label: "Dashboard", icon: LayoutDashboard, active: true },
   { label: "Profile", icon: User, active: false },
-  { label: "Complain", icon: MessageSquareWarning, active: false },
+  { label: "Complain", icon: MessageSquareWarning, path: "/workerComplain" },
   { label: "Status", icon: Activity, active: false },
 ];
 
@@ -77,10 +78,10 @@ export default function WorkerDashboard() {
 
           {/* Nav */}
           <nav className="flex flex-col gap-1">
-            {navItems.map(({ label, icon: Icon }) => (
+            {navItems.map(({ label, icon: Icon, path}) => (
               <button
                 key={label}
-                onClick={() => setActiveNav(label)}
+                onClick={() => {setActiveNav(label); navigate(path || "/workerDashboard")}}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
                   activeNav === label
                     ? "bg-green-500 text-white"

@@ -3,6 +3,7 @@ import Applayout from "./components/layouts/AppLayout";
 import NoMatch from "./pages/NoMatch";
 import Error500 from "./pages/Error500";
 import WorkerDashboard from "./pages/workerDashboard";
+import WorkerComplain from "./pages/workerComplain";
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ export const router = createBrowserRouter([
     element: <NoMatch />,
   },
     {
-    path: "/workerDasboard",
+    path: "/workerDashboard",
     element: <WorkerDashboard/>,
+  },
+    {
+    path: "/workerComplain",
+    element: <WorkerComplain/>,
   },
 ], {
   basename: global.basename

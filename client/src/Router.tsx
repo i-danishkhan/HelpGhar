@@ -4,11 +4,25 @@ import NoMatch from "./pages/NoMatch";
 import Error500 from "./pages/Error500";
 import WorkerDashboard from "./pages/workerDashboard";
 import WorkerComplain from "./pages/workerComplain";
+import WorkerProfile from "./pages/workerProfile";
+import WorkerStatus from "./pages/workerStatus";
+
+import HouseOwnerDashboard from "./pages/customerDashboard";
+import OwnerProfilePage from "./pages/customerProfilePage";
+import CustomerComplain from "./pages/customerComplain";
+import CustomerStatus from "./pages/customerStatus";
+
+import AdminDashboard from "./pages/adminDashboard";
+import AdminProfile from "./pages/adminProfile";
+import AdminUserManagementPage from "./pages/adminUserManagementPage";
+import AdminResolveDisputePage from "./pages/adminResolveDisputePage";
+import AdminIncentivesPage from "./pages/adminIncentivesPage";
+import LandingPage from "./pages/landingPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Applayout/>,
+    element: <LandingPage />,
   },
   {
     path: "/error", // ✅ NEW
@@ -18,13 +32,61 @@ export const router = createBrowserRouter([
     path: "*",
     element: <NoMatch />,
   },
-    {
+  {
     path: "/workerDashboard",
-    element: <WorkerDashboard/>,
+    element: <WorkerDashboard />,
   },
-    {
+  {
+    path: "/workerProfile",
+    element: <WorkerProfile />,
+  },
+  {
     path: "/workerComplain",
-    element: <WorkerComplain/>,
+    element: <WorkerComplain />,
+  },
+  {
+    path: "/workerStatus",
+    element: <WorkerStatus />,
+  },
+
+
+  {
+    path: "/customerDashboard",
+    element: <HouseOwnerDashboard />,
+  },
+  {
+    path: "/customerProfilePage",
+    element: <OwnerProfilePage />,
+  },
+  {
+    path: "/customerComplain",
+    element: <CustomerComplain />,
+  },
+  {
+    path: "/customerStatus",
+    element: <CustomerStatus />,
+  },
+
+
+  {
+    path: "/adminDashboard",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/adminProfile",
+    element: <AdminProfile />,
+  },
+  {
+    path: "/adminUserManagementPage",
+    element: <AdminUserManagementPage />,
+  },
+  {
+    path: "/adminResolveDisputePage",
+    element: <AdminResolveDisputePage />,
+  },
+  {
+    path: "/adminIncentivesPage",
+    element: <AdminIncentivesPage />,
   },
 ], {
   basename: global.basename

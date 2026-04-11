@@ -53,10 +53,10 @@ const attendanceData = [
 ];
 
 const navItems = [
-  { label: "Dashboard", icon: LayoutDashboard, active: true },
-  { label: "Profile", icon: User, active: false },
+  { label: "Dashboard", icon: LayoutDashboard, path: "/workerDashboard" },
+  { label: "Profile", icon: User, path: "/workerProfile" },
   { label: "Complain", icon: MessageSquareWarning, path: "/workerComplain" },
-  { label: "Status", icon: Activity, active: false },
+  { label: "Status", icon: Activity, path: "/workerStatus" },
 ];
 
 export default function WorkerDashboard() {

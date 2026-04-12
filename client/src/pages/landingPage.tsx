@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-// ── Inline global styles ────────────────────────────────────────────────────
+// ── Smooth scroll helper ─────────────────────────────────────────────────────
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+};
+
+// ── Navbar height constant (used for section offset) ────────────────────────
+const NAV_H = 62; // px — keep in sync with nav height below
+
+// ── Global Styles ────────────────────────────────────────────────────────────
 const GlobalStyle = () => (
   <style>{`
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; font-family: inherit; }
+
+    /* ── Every section fills the viewport minus the sticky nav ── */
+    .full-section {
+      min-height: calc(100vh - ${NAV_H}px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* scroll-margin so the sticky nav doesn't cover the heading */
+      scroll-margin-top: ${NAV_H}px;
+    }
 
     .nav-link {
       color: white;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 600;
       opacity: 0.92;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
       transition: opacity 0.2s;
     }
     .nav-link:hover { opacity: 1; text-decoration: underline; }
@@ -111,17 +136,14 @@ const GlobalStyle = () => (
   `}</style>
 );
 
-// ── SVG Icons ───────────────────────────────────────────────────────────────
+// ── SVG Icons ────────────────────────────────────────────────────────────────
 
 const HeroIllustration = () => (
   <svg viewBox="0 0 380 290" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-    {/* House window */}
     <rect x="195" y="15" width="155" height="115" rx="8" fill="#e6f9f4" stroke="#1abc9c" strokeWidth="2.2" />
     <line x1="272" y1="15" x2="272" y2="130" stroke="#1abc9c" strokeWidth="1.8" />
     <line x1="195" y1="72" x2="350" y2="72" stroke="#1abc9c" strokeWidth="1.8" />
     <path d="M185 22 L272 -2 L362 22" stroke="#1abc9c" strokeWidth="2" fill="none" />
-
-    {/* Cook figure (right) */}
     <circle cx="305" cy="170" r="18" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="2" />
     <rect x="294" y="153" width="22" height="13" rx="3" fill="white" stroke="#1abc9c" strokeWidth="1.5" />
     <ellipse cx="305" cy="153" rx="13" ry="6" fill="white" stroke="#1abc9c" strokeWidth="1.5" />
@@ -130,20 +152,14 @@ const HeroIllustration = () => (
     <line x1="319" y1="200" x2="338" y2="214" stroke="#1abc9c" strokeWidth="2.8" strokeLinecap="round" />
     <ellipse cx="258" cy="220" rx="12" ry="5" fill="#17a589" opacity="0.6" />
     <line x1="248" y1="220" x2="235" y2="218" stroke="#17a589" strokeWidth="2" strokeLinecap="round" />
-
-    {/* Cleaner figure (left) */}
     <circle cx="155" cy="168" r="18" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="2" />
     <rect x="141" y="186" width="28" height="48" rx="6" fill="#0e9e79" />
     <line x1="141" y1="198" x2="112" y2="182" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
     <line x1="112" y1="182" x2="107" y2="238" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
     <ellipse cx="107" cy="241" rx="13" ry="5" fill="#1abc9c" opacity="0.35" />
     <line x1="169" y1="200" x2="185" y2="210" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
-
-    {/* Child figure */}
     <circle cx="228" cy="240" r="14" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="1.8" />
     <rect x="218" y="254" width="20" height="32" rx="5" fill="#a8edd8" />
-
-    {/* Floating dots */}
     <circle cx="75" cy="75" r="4" fill="#1abc9c" opacity="0.4" />
     <circle cx="365" cy="255" r="5" fill="#1abc9c" opacity="0.3" />
     <circle cx="48" cy="195" r="3" fill="#0e9e79" opacity="0.35" />
@@ -218,187 +234,221 @@ const PayRateIcon = () => (
   </svg>
 );
 
-// ── Landing Page ────────────────────────────────────────────────────────────
+// ── Landing Page ─────────────────────────────────────────────────────────────
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
+
+  const handleScrollTo = useCallback((id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollTo(id);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
 
-      {/* ── NAVBAR — teal green background ── */}
+      {/* ── STICKY NAVBAR ── */}
       <nav style={{
         background: "#1abc9c",
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "13px 6%", position: "sticky", top: 0, zIndex: 100,
+        padding: "0 6%", height: `${NAV_H}px`,
+        position: "sticky", top: 0, zIndex: 100,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
       }}>
-        <div style={{ fontWeight: 800, fontSize: "1.3rem", color: "white", letterSpacing: "-0.3px" }}>
-          HelpGhar<span style={{ opacity: 0.75 }}>.</span>
-        </div>
+        {/* Logo — clicking scrolls to top/home */}
+        <button
+          onClick={handleScrollTo("section-home")}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+        >
+          <span style={{ fontWeight: 800, fontSize: "1.3rem", color: "white", letterSpacing: "-0.3px" }}>
+            HelpGhar<span style={{ opacity: 0.75 }}>.</span>
+          </span>
+        </button>
 
+        {/* Nav links */}
         <div className="nav-links" style={{ display: "flex", gap: "28px" }}>
-          <a href="#" className="nav-link">Home</a>
-          <a href="#testimonials" className="nav-link">Testimonials</a>
+          <button className="nav-link" onClick={handleScrollTo("section-home")}>Home</button>
+          <button className="nav-link" onClick={handleScrollTo("section-testimonials")}>Testimonials</button>
         </div>
 
+        {/* Auth buttons */}
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <button
             onClick={() => navigate("/login")}
             style={{
-              background: "none",
-              border: "none",
-              color: "white",
-              fontWeight: 600,
-              fontSize: "0.88rem",
-              letterSpacing: "0.5px",
-              cursor: "pointer"
+              background: "none", border: "none", color: "white",
+              fontWeight: 600, fontSize: "0.88rem", letterSpacing: "0.5px", cursor: "pointer"
             }}
-          >
-            LOGIN
-          </button>
+          >LOGIN</button>
           <button
             onClick={() => navigate("/signup")}
             style={{
-              background: "white",
-              color: "#1abc9c",
-              border: "none",
-              borderRadius: "5px",
-              padding: "7px 16px",
-              fontWeight: 700,
-              fontSize: "0.88rem",
-              letterSpacing: "0.4px",
-              cursor: "pointer",
-              transition: "opacity 0.2s"
+              background: "white", color: "#1abc9c", border: "none", borderRadius: "5px",
+              padding: "7px 16px", fontWeight: 700, fontSize: "0.88rem",
+              letterSpacing: "0.4px", cursor: "pointer", transition: "opacity 0.2s"
             }}
             onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
             onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-          >
-            SIGN UP
-          </button>
+          >SIGN UP</button>
         </div>
       </nav>
 
-      {/* ── HERO — white background ── */}
-      <section style={{ background: "white", padding: "56px 6% 64px" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 1 — HERO
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="section-home"
+        className="full-section"
+        style={{ background: "white", padding: "0 6%" }}
+      >
         <div className="hero-grid" style={{
           display: "flex", alignItems: "center",
-          justifyContent: "space-between", gap: "32px", flexWrap: "wrap"
+          justifyContent: "space-between", gap: "32px", flexWrap: "wrap",
+          width: "100%", maxWidth: "1200px", margin: "0 auto"
         }}>
-          <div style={{ flex: "1 1 320px", maxWidth: "480px" }}>
-            <h1 style={{ fontSize: "clamp(1.9rem, 3.8vw, 2.9rem)", lineHeight: 1.18, fontWeight: 800 }}>
+          <div style={{ flex: "1 1 320px", maxWidth: "520px" }}>
+            <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.18, fontWeight: 800 }}>
               <span style={{ color: "#1abc9c" }}>Your Home,</span><br />
               <span style={{ color: "#1abc9c" }}>Their Work</span><br />
               <span style={{ color: "#222" }}>A Perfect Match</span>
             </h1>
-            <div className="hero-btns" style={{ display: "flex", gap: "14px", marginTop: "28px", flexWrap: "wrap" }}>
+            <div className="hero-btns" style={{ display: "flex", gap: "14px", marginTop: "32px", flexWrap: "wrap" }}>
               <button className="btn-primary">Hire Workers</button>
               <button className="btn-outline">Find Jobs</button>
             </div>
           </div>
-
-          <div className="hero-illustration" style={{ flex: "1 1 280px", maxWidth: "400px" }}>
+          <div className="hero-illustration" style={{ flex: "1 1 280px", maxWidth: "440px" }}>
             <HeroIllustration />
           </div>
         </div>
       </section>
 
-      {/* ── WHY CHOOSE — light gray-green background ── */}
-      <section style={{ background: "#f4faf8", padding: "64px 6%", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(1.45rem, 2.8vw, 2.1rem)", fontWeight: 800, color: "#111", marginBottom: "8px" }}>
-          Why Choose HelpGhar?
-        </h2>
-        <p style={{ color: "#666", fontSize: "0.97rem", marginBottom: "44px" }}>
-          Because trust, security and success matter the most.
-        </p>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(185px, 1fr))",
-          gap: "20px", maxWidth: "860px", margin: "0 auto"
-        }}>
-          {[
-            { icon: <VerifiedIcon />, title: "Verified Workers", desc: "Every worker passes CNIC, Selfie and address verification before joining." },
-            { icon: <HiringIcon />, title: "99% Hiring Success", desc: "Most homeowners hire successfully within few days." },
-            { icon: <PaymentIcon />, title: "Safe and Transparent Payments", desc: "Pay through our wallet system with receipts and dispute protection." },
-            { icon: <CommunityIcon />, title: "Trusted Community", desc: "Trusted by hundreds of families and workers across Pakistan." },
-          ].map((item, i) => (
-            <div key={i} className="feature-card">
-              {item.icon}
-              <h3 style={{ fontWeight: 700, fontSize: "0.97rem", color: "#111" }}>{item.title}</h3>
-              <p style={{ color: "#666", fontSize: "0.82rem", lineHeight: 1.55 }}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS — white background ── */}
-      <section style={{ background: "white", padding: "64px 6%", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(1.45rem, 2.8vw, 2.1rem)", fontWeight: 800, color: "#111", marginBottom: "8px" }}>
-          How it Works
-        </h2>
-        <p style={{ color: "#666", fontSize: "0.97rem", marginBottom: "50px" }}>
-          Simple and secure hiring thru these three steps
-        </p>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))",
-          gap: "36px", maxWidth: "760px", margin: "0 auto"
-        }}>
-          {[
-            { icon: <SearchPostIcon />, title: "Search and Post", desc: "Search for worker and post a job in seconds" },
-            { icon: <VerifyHireIcon />, title: "Verify and Hire", desc: "Verify the worker and hire with confidence" },
-            { icon: <PayRateIcon />, title: "Pay and Rate", desc: "Pay through our secure wallet and rate the worker" },
-          ].map((step, i) => (
-            <div key={i} className="step-card">
-              {step.icon}
-              <h3 style={{ fontWeight: 700, fontSize: "1rem", color: "#111" }}>{step.title}</h3>
-              <p style={{ color: "#666", fontSize: "0.85rem", lineHeight: 1.55, maxWidth: "190px" }}>{step.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS — light gray-green background ── */}
-      <section id="testimonials" style={{ background: "#f4faf8", padding: "64px 6%", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(1.45rem, 2.8vw, 2.1rem)", fontWeight: 800, color: "#111", marginBottom: "36px" }}>
-          Testimonials
-        </h2>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-          gap: "22px", maxWidth: "860px", margin: "0 auto"
-        }}>
-          {[
-            { text: "Good but not very careful with things. Broke a vase once.", name: "Anonymous", role: "Homeowner" },
-            { text: "Our driver has been with us for over 3 years. Always punctual and keeps the car neat. Very trustworthy.", name: "Muhammad Aslam", role: "Owner of Qureshi Traders" },
-            { text: "She explains concepts very clearly. My grades have improved a lot.", name: "Shahid Mehmood", role: "Bank Manager, HBL" },
-          ].map((t, i) => (
-            <div key={i} className="testimonial-card">
-              <div style={{ marginBottom: "12px" }}>
-                <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
-                  <path d="M0 20 C0 13 3.5 6.5 11 0 L13 3 C8.5 6.5 6.5 11 7.5 15 L11 15 L11 20 Z" fill="#1abc9c" />
-                  <path d="M15 20 C15 13 18.5 6.5 26 0 L28 3 C23.5 6.5 21.5 11 22.5 15 L26 15 L26 20 Z" fill="#1abc9c" />
-                </svg>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 2 — WHY CHOOSE HELPGHAR
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="section-why"
+        className="full-section"
+        style={{ background: "#f4faf8", padding: "0 6%", textAlign: "center" }}
+      >
+        <div style={{ width: "100%", maxWidth: "1000px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", fontWeight: 800, color: "#111", marginBottom: "10px" }}>
+            Why Choose HelpGhar?
+          </h2>
+          <p style={{ color: "#666", fontSize: "0.97rem", marginBottom: "48px" }}>
+            Because trust, security and success matter the most.
+          </p>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "22px"
+          }}>
+            {[
+              { icon: <VerifiedIcon />, title: "Verified Workers",              desc: "Every worker passes CNIC, Selfie and address verification before joining." },
+              { icon: <HiringIcon />,   title: "99% Hiring Success",            desc: "Most homeowners hire successfully within few days." },
+              { icon: <PaymentIcon />,  title: "Safe and Transparent Payments", desc: "Pay through our wallet system with receipts and dispute protection." },
+              { icon: <CommunityIcon />,title: "Trusted Community",             desc: "Trusted by hundreds of families and workers across Pakistan." },
+            ].map((item, i) => (
+              <div key={i} className="feature-card">
+                {item.icon}
+                <h3 style={{ fontWeight: 700, fontSize: "0.97rem", color: "#111" }}>{item.title}</h3>
+                <p style={{ color: "#666", fontSize: "0.82rem", lineHeight: 1.55 }}>{item.desc}</p>
               </div>
-              <p style={{ color: "#444", fontSize: "0.88rem", lineHeight: 1.65, marginBottom: "18px" }}>{t.text}</p>
-              <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#111" }}>{t.name}</div>
-              <div style={{ color: "#888", fontSize: "0.8rem", marginTop: "2px" }}>{t.role}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER — dark background ── */}
-      <section style={{ background: "#1a1a1a", padding: "64px 6%", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(1.45rem, 3vw, 2.2rem)", fontWeight: 800, color: "white", marginBottom: "28px" }}>
-          Ready To Hire Your First Worker?
-        </h2>
-        <button className="btn-cta">Get Started</button>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 3 — HOW IT WORKS
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="section-how"
+        className="full-section"
+        style={{ background: "white", padding: "0 6%", textAlign: "center" }}
+      >
+        <div style={{ width: "100%", maxWidth: "860px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", fontWeight: 800, color: "#111", marginBottom: "10px" }}>
+            How it Works
+          </h2>
+          <p style={{ color: "#666", fontSize: "0.97rem", marginBottom: "56px" }}>
+            Simple and secure hiring thru these three steps
+          </p>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "40px"
+          }}>
+            {[
+              { icon: <SearchPostIcon />, title: "Search and Post", desc: "Search for worker and post a job in seconds" },
+              { icon: <VerifyHireIcon />, title: "Verify and Hire", desc: "Verify the worker and hire with confidence" },
+              { icon: <PayRateIcon />,    title: "Pay and Rate",    desc: "Pay through our secure wallet and rate the worker" },
+            ].map((step, i) => (
+              <div key={i} className="step-card">
+                {step.icon}
+                <h3 style={{ fontWeight: 700, fontSize: "1rem", color: "#111" }}>{step.title}</h3>
+                <p style={{ color: "#666", fontSize: "0.85rem", lineHeight: 1.55, maxWidth: "200px", margin: "0 auto" }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* ── FOOTER — teal green background ── */}
+      {/* ══════════════════════════════════════════════════════
+          SECTION 4 — TESTIMONIALS
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="section-testimonials"
+        className="full-section"
+        style={{ background: "#f4faf8", padding: "0 6%", textAlign: "center" }}
+      >
+        <div style={{ width: "100%", maxWidth: "1000px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", fontWeight: 800, color: "#111", marginBottom: "40px" }}>
+            Testimonials
+          </h2>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "22px"
+          }}>
+            {[
+              { text: "Good but not very careful with things. Broke a vase once.",                                            name: "Anonymous",      role: "Homeowner" },
+              { text: "Our driver has been with us for over 3 years. Always punctual and keeps the car neat. Very trustworthy.", name: "Muhammad Aslam", role: "Owner of Qureshi Traders" },
+              { text: "She explains concepts very clearly. My grades have improved a lot.",                                    name: "Shahid Mehmood", role: "Bank Manager, HBL" },
+            ].map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <div style={{ marginBottom: "12px" }}>
+                  <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
+                    <path d="M0 20 C0 13 3.5 6.5 11 0 L13 3 C8.5 6.5 6.5 11 7.5 15 L11 15 L11 20 Z" fill="#1abc9c" />
+                    <path d="M15 20 C15 13 18.5 6.5 26 0 L28 3 C23.5 6.5 21.5 11 22.5 15 L26 15 L26 20 Z" fill="#1abc9c" />
+                  </svg>
+                </div>
+                <p style={{ color: "#444", fontSize: "0.88rem", lineHeight: 1.65, marginBottom: "18px" }}>{t.text}</p>
+                <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#111" }}>{t.name}</div>
+                <div style={{ color: "#888", fontSize: "0.8rem", marginTop: "2px" }}>{t.role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          SECTION 5 — CTA
+      ══════════════════════════════════════════════════════ */}
+      <section
+        id="section-cta"
+        className="full-section"
+        style={{ background: "#1a1a1a", padding: "0 6%", textAlign: "center" }}
+      >
+        <div>
+          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontWeight: 800, color: "white", marginBottom: "32px" }}>
+            Ready To Hire Your First Worker?
+          </h2>
+          <button className="btn-cta">Get Started</button>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
       <footer style={{
         background: "#1abc9c",
         padding: "16px 6%",

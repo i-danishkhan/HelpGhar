@@ -19,10 +19,27 @@ import AdminResolveDisputePage from "./pages/adminResolveDisputePage";
 import AdminIncentivesPage from "./pages/adminIncentivesPage";
 import LandingPage from "./pages/landingPage";
 
+
+import LogIn from "./pages/login";
+import SignUp from "./pages/signup";
+import UserScreen from "./pages/userScreen";
+
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/userScreen",
+    element: <UserScreen />,
   },
   {
     path: "/error", // ✅ NEW

@@ -23,6 +23,8 @@ import LandingPage from "./pages/landingPage";
 import LogIn from "./pages/login";
 import SignUp from "./pages/signup";
 import UserScreen from "./pages/userScreen";
+import WorkerRegistration from "./pages/workerRegistration";
+import HouseOwnerRegistration from "./pages/houseOwnerRegistration";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
   {
     path: "/userScreen",
     element: <UserScreen />,
+  },
+  {
+    path: "/workerRegistration",
+    element: <WorkerRegistration />,
+  },
+  {
+    path: "/houseOwnerRegistration",
+    element: <HouseOwnerRegistration />,
   },
   {
     path: "/error", // ✅ NEW

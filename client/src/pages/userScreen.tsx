@@ -171,8 +171,8 @@ export default function UserScreen() {
                   key={item}
                   onClick={() => {
                     setShowDropdown(false);
-                    if (item === "As a Worker") navigate("/workerDashboard");
-                    if (item === "As a Customer") navigate("/houseOwnerDashboard");
+                    if (item === "As a Worker") navigate("/workerRegistration");
+                    if (item === "As a Customer") navigate("/houseOwnerRegistration");
                     if (item === "Log Out") navigate("/");
                   }}
                   style={{

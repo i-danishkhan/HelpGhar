@@ -2,17 +2,24 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const connectDB = require("./config/db"); // adjust path if needed
+const workerRoutes = require('./routes/Worker.route.js') // 👈 add this
 
-const app = express(); // ✅ MUST COME BEFORE app.get()
+const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173"
+}));
 app.use(express.json());
+app.use("/uploads", express.static("uploads")); // 👈 for images
 
-// Test Route
+// Routes
+app.use("/api/workers", workerRoutes);
+
+// Test DB Route
 app.get("/test-db", async (req, res) => {
   try {
+    const connectDB = require("./config/db");
     const conn = await connectDB();
 
     const result = await conn.execute(`SELECT 'CONNECTED' FROM dual`);
@@ -26,13 +33,17 @@ app.get("/test-db", async (req, res) => {
   }
 });
 
+// Check tables
 app.get("/check-tables", async (req, res) => {
   let conn;
   try {
+    const connectDB = require("./config/db");
     conn = await connectDB();
+
     const result = await conn.execute(
       `SELECT table_name FROM user_tables ORDER BY table_name`
     );
+
     res.json({
       status: "✅ Connected",
       tables: result.rows
@@ -44,12 +55,12 @@ app.get("/check-tables", async (req, res) => {
   }
 });
 
-// Basic Route
+// Home route
 app.get("/", (req, res) => {
   res.send("Server running 🚀");
 });
 
-// Start Server
+// Start server
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {

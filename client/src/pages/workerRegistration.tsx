@@ -88,10 +88,47 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("fullName", form.fullName);
+  formData.append("experience", form.experience);
+  formData.append("phoneNo", form.phoneNo);
+  formData.append("emailId", form.emailId);
+  formData.append("cnic", form.cnic);
+  formData.append("dobDay", form.dobDay);
+  formData.append("dobMonth", form.dobMonth);
+  formData.append("dobYear", form.dobYear);
+  formData.append("city", form.city);
+  formData.append("address", form.address);
+  formData.append("salary", form.salary);
+  formData.append("workType", form.workType);
+
+  if (pictureFile) {
+    formData.append("image", pictureFile);
+  }
+
+  try {
+    const res = await fetch("http://localhost:8000/api/workers/register", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+    console.log("Backend Response:", data);
+
+    // only move if success
+    if (data.success || data.message) {
+      onSubmit();
+    }
+
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Server error ❌");
+  }
+};
 
   return (
     <main style={{ flex: 1, background: "#f0faf6", overflowY: "auto", padding: "16px 5%" }}>
@@ -202,24 +239,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
 
           {/* Row 6 — Upload */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 24px", marginBottom: "16px" }}>
-            {/* CNIC Upload */}
-            <div>
-              <label style={labelStyle}>Upload Your CNIC</label>
-              <div
-                onClick={() => cnicRef.current?.click()}
-                style={{
-                  border: "1.5px solid #ccc", borderRadius: "6px",
-                  height: "80px", display: "flex", flexDirection: "column",
-                  alignItems: "center", justifyContent: "center",
-                  cursor: "pointer", background: "white", gap: "4px"
-                }}
-              >
-                <Camera size={22} color="#888" />
-                {cnicFile && <span style={{ fontSize: "0.72rem", color: "#555", textAlign: "center", padding: "0 8px" }}>{cnicFile.name}</span>}
-              </div>
-              <input ref={cnicRef} type="file" accept="image/*,.pdf" style={{ display: "none" }}
-                onChange={e => e.target.files?.[0] && setCnicFile(e.target.files[0])} />
-            </div>
+           
 
             {/* Picture Upload */}
             <div>

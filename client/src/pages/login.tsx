@@ -112,6 +112,115 @@ const LoginIllustration = () => (
   </svg>
 );
 
+/* ── Inline Error Banner ── */
+const ErrorBanner: React.FC<{ message: string; onClose: () => void }> = ({ message, onClose }) => (
+  <div style={{
+    background: "#fff5f5",
+    border: "1px solid #fca5a5",
+    borderRadius: "8px",
+    padding: "10px 14px",
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "10px",
+    animation: "shakeIn 0.4s ease",
+  }}>
+    <div style={{
+      width: 18, height: 18, borderRadius: "50%",
+      background: "#ef4444",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      flexShrink: 0, marginTop: 1,
+    }}>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </div>
+    <div style={{ flex: 1 }}>
+      <p style={{ fontSize: "0.83rem", fontWeight: 600, color: "#991b1b", margin: "0 0 2px" }}>
+        Invalid credentials
+      </p>
+      <p style={{ fontSize: "0.78rem", color: "#b91c1c", margin: 0 }}>
+        {message}
+      </p>
+    </div>
+    <button
+      onClick={onClose}
+      style={{
+        background: "none", border: "none", cursor: "pointer",
+        color: "#f87171", padding: "1px", display: "flex",
+        alignItems: "center", flexShrink: 0,
+      }}
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <style>{`
+      @keyframes shakeIn {
+        0%   { transform: translateX(-6px); opacity: 0; }
+        30%  { transform: translateX(5px);  opacity: 1; }
+        60%  { transform: translateX(-3px); }
+        100% { transform: translateX(0);    opacity: 1; }
+      }
+    `}</style>
+  </div>
+);
+
+/* ── Toast Notification (bottom-right) ── */
+const ErrorToast: React.FC<{ message: string; onClose: () => void }> = ({ message, onClose }) => (
+  <div style={{
+    position: "fixed",
+    bottom: "24px",
+    right: "24px",
+    zIndex: 999,
+    background: "#1a1a1a",
+    borderRadius: "10px",
+    padding: "12px 16px",
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    minWidth: "280px",
+    maxWidth: "360px",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+    animation: "toastSlideUp 0.35s cubic-bezier(0.34,1.3,0.64,1) forwards",
+  }}>
+    <div style={{
+      width: 20, height: 20, borderRadius: "50%",
+      background: "#ef4444",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      flexShrink: 0,
+    }}>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </div>
+    <div style={{ flex: 1 }}>
+      <p style={{ fontSize: "0.83rem", fontWeight: 600, color: "white", margin: "0 0 2px" }}>Login failed</p>
+      <p style={{ fontSize: "0.77rem", color: "#aaa", margin: 0 }}>{message}</p>
+    </div>
+    <button
+      onClick={onClose}
+      style={{
+        background: "none", border: "none", cursor: "pointer",
+        color: "#666", padding: "2px", display: "flex", alignItems: "center",
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <style>{`
+      @keyframes toastSlideUp {
+        from { transform: translateY(16px); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+      }
+    `}</style>
+  </div>
+);
+
 /* ── Login Success Modal ── */
 const LoginSuccessModal: React.FC<{ email: string; onContinue: () => void }> = ({ email, onContinue }) => (
   <div style={{
@@ -131,61 +240,40 @@ const LoginSuccessModal: React.FC<{ email: string; onContinue: () => void }> = (
       boxShadow: "0 20px 60px rgba(0,0,0,0.18)",
       animation: "popIn 0.38s cubic-bezier(0.34,1.3,0.64,1) forwards",
     }}>
-
-      {/* Animated checkmark */}
       <div style={{ width: 88, height: 88, margin: "0 auto 1.5rem" }}>
         <svg viewBox="0 0 88 88" width="88" height="88">
           <circle cx="44" cy="44" r="42" fill="#e1f5ee" stroke="#1abc9c" strokeWidth="2.5"/>
           <path
             d="M25 45 L39 59 L63 31"
-            fill="none"
-            stroke="#1abc9c"
-            strokeWidth="4.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{
-              strokeDasharray: 58,
-              strokeDashoffset: 0,
-              animation: "checkDraw 0.55s ease 0.2s both",
-            }}
+            fill="none" stroke="#1abc9c" strokeWidth="4.5"
+            strokeLinecap="round" strokeLinejoin="round"
+            style={{ strokeDasharray: 58, strokeDashoffset: 0, animation: "checkDraw 0.55s ease 0.2s both" }}
           />
         </svg>
       </div>
-
-      {/* Text */}
-      <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "#111", margin: "0 0 8px" }}>
-        Welcome Back!
-      </h2>
+      <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "#111", margin: "0 0 8px" }}>Welcome Back!</h2>
       <p style={{ fontSize: "0.875rem", color: "#666", margin: "0 0 6px", lineHeight: 1.6 }}>
         You've successfully logged in to <strong style={{ color: "#1abc9c" }}>HelpGhar</strong>.
       </p>
-      <p style={{ fontSize: "0.8rem", color: "#999", margin: "0 0 1.75rem" }}>
-        {email}
-      </p>
-
-      {/* Info pill */}
+      <p style={{ fontSize: "0.8rem", color: "#999", margin: "0 0 1.75rem" }}>{email}</p>
       <div style={{
         display: "inline-flex", alignItems: "center", gap: "6px",
         background: "#f0fdf8", border: "1px solid #b2ead8",
         borderRadius: "20px", padding: "5px 14px",
-        fontSize: "0.77rem", color: "#0e9e79",
-        marginBottom: "1.5rem",
+        fontSize: "0.77rem", color: "#0e9e79", marginBottom: "1.5rem",
       }}>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
         </svg>
         Session secured
       </div>
-
-      {/* Button */}
       <button
         onClick={onContinue}
         style={{
           width: "100%", padding: "11px",
           background: "#1abc9c", color: "white",
           border: "none", borderRadius: "8px",
-          fontSize: "0.93rem", fontWeight: 600,
-          cursor: "pointer",
+          fontSize: "0.93rem", fontWeight: 600, cursor: "pointer",
           transition: "background 0.15s",
         }}
         onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
@@ -194,21 +282,10 @@ const LoginSuccessModal: React.FC<{ email: string; onContinue: () => void }> = (
         Continue to Dashboard
       </button>
     </div>
-
     <style>{`
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to   { opacity: 1; }
-      }
-      @keyframes popIn {
-        0%   { transform: scale(0.82); opacity: 0; }
-        70%  { transform: scale(1.04); opacity: 1; }
-        100% { transform: scale(1);    opacity: 1; }
-      }
-      @keyframes checkDraw {
-        from { stroke-dashoffset: 58; }
-        to   { stroke-dashoffset: 0;  }
-      }
+      @keyframes fadeIn    { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes popIn     { 0% { transform: scale(0.82); opacity: 0; } 70% { transform: scale(1.04); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+      @keyframes checkDraw { from { stroke-dashoffset: 58; } to { stroke-dashoffset: 0; } }
     `}</style>
   </div>
 );
@@ -221,9 +298,12 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");  // drives inline banner
+  const [showToast, setShowToast] = useState(false);     // drives toast
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
 
     try {
       const res = await fetch("http://localhost:8000/api/auth/login", {
@@ -233,14 +313,40 @@ const LoginPage: React.FC = () => {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
 
-      setShowSuccess(true); // ← show beautiful modal instead of alert
+      if (!res.ok) {
+        const msg = data.message || "The email or password you entered is incorrect.";
+        setErrorMessage(msg);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 4000); // auto-dismiss toast
+        return;
+      }
+
+      setShowSuccess(true);
 
     } catch (err: any) {
-      alert(err.message);
+      const msg = err.message || "Something went wrong. Please try again.";
+      setErrorMessage(msg);
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 4000);
     }
   };
+
+  // Inputs turn red-tinted when there's an active error
+  const inputStyle = (hasError: boolean): React.CSSProperties => ({
+    width: "100%",
+    border: `1.5px solid ${hasError ? "#fca5a5" : "#ccc"}`,
+    borderRadius: "6px",
+    padding: "9px 13px",
+    fontSize: "0.89rem",
+    outline: "none",
+    background: hasError ? "#fff5f5" : "white",
+    color: "#222",
+    boxSizing: "border-box",
+    transition: "border-color 0.2s, background 0.2s",
+  });
+
+  const clearError = () => setErrorMessage("");
 
   return (
     <div style={{ height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", fontFamily: "'Segoe UI', Arial, sans-serif" }}>
@@ -250,6 +356,14 @@ const LoginPage: React.FC = () => {
         <LoginSuccessModal
           email={email}
           onContinue={() => navigate("/userscreen")}
+        />
+      )}
+
+      {/* Toast (bottom-right, auto-dismisses after 4s) */}
+      {showToast && (
+        <ErrorToast
+          message={errorMessage}
+          onClose={() => setShowToast(false)}
         />
       )}
 
@@ -323,6 +437,13 @@ const LoginPage: React.FC = () => {
               Enter your credentials to login to your account
             </p>
 
+            {/* ── Inline Error Banner (appears on failed login) ── */}
+            {errorMessage && (
+              <div style={{ marginBottom: "14px" }}>
+                <ErrorBanner message={errorMessage} onClose={clearError} />
+              </div>
+            )}
+
             {/* Form */}
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
 
@@ -334,13 +455,9 @@ const LoginPage: React.FC = () => {
                 <input
                   type="email"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => { setEmail(e.target.value); clearError(); }}
                   required
-                  style={{
-                    width: "100%", border: "1.5px solid #ccc", borderRadius: "6px",
-                    padding: "9px 13px", fontSize: "0.89rem", outline: "none",
-                    background: "white", color: "#222", boxSizing: "border-box"
-                  }}
+                  style={inputStyle(!!errorMessage)}
                 />
               </div>
 
@@ -353,13 +470,9 @@ const LoginPage: React.FC = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={e => { setPassword(e.target.value); clearError(); }}
                     required
-                    style={{
-                      width: "100%", border: "1.5px solid #ccc", borderRadius: "6px",
-                      padding: "9px 40px 9px 13px", fontSize: "0.89rem", outline: "none",
-                      background: "white", color: "#222", boxSizing: "border-box"
-                    }}
+                    style={{ ...inputStyle(!!errorMessage), padding: "9px 40px 9px 13px" }}
                   />
                   <button
                     type="button"

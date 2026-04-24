@@ -112,39 +112,146 @@ const LoginIllustration = () => (
   </svg>
 );
 
+/* ── Login Success Modal ── */
+const LoginSuccessModal: React.FC<{ email: string; onContinue: () => void }> = ({ email, onContinue }) => (
+  <div style={{
+    position: "fixed", inset: 0,
+    background: "rgba(0,0,0,0.45)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    zIndex: 1000,
+    animation: "fadeIn 0.2s ease forwards",
+  }}>
+    <div style={{
+      background: "white",
+      borderRadius: "20px",
+      padding: "2.5rem 2rem 2rem",
+      maxWidth: "380px",
+      width: "90%",
+      textAlign: "center",
+      boxShadow: "0 20px 60px rgba(0,0,0,0.18)",
+      animation: "popIn 0.38s cubic-bezier(0.34,1.3,0.64,1) forwards",
+    }}>
+
+      {/* Animated checkmark */}
+      <div style={{ width: 88, height: 88, margin: "0 auto 1.5rem" }}>
+        <svg viewBox="0 0 88 88" width="88" height="88">
+          <circle cx="44" cy="44" r="42" fill="#e1f5ee" stroke="#1abc9c" strokeWidth="2.5"/>
+          <path
+            d="M25 45 L39 59 L63 31"
+            fill="none"
+            stroke="#1abc9c"
+            strokeWidth="4.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{
+              strokeDasharray: 58,
+              strokeDashoffset: 0,
+              animation: "checkDraw 0.55s ease 0.2s both",
+            }}
+          />
+        </svg>
+      </div>
+
+      {/* Text */}
+      <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "#111", margin: "0 0 8px" }}>
+        Welcome Back!
+      </h2>
+      <p style={{ fontSize: "0.875rem", color: "#666", margin: "0 0 6px", lineHeight: 1.6 }}>
+        You've successfully logged in to <strong style={{ color: "#1abc9c" }}>HelpGhar</strong>.
+      </p>
+      <p style={{ fontSize: "0.8rem", color: "#999", margin: "0 0 1.75rem" }}>
+        {email}
+      </p>
+
+      {/* Info pill */}
+      <div style={{
+        display: "inline-flex", alignItems: "center", gap: "6px",
+        background: "#f0fdf8", border: "1px solid #b2ead8",
+        borderRadius: "20px", padding: "5px 14px",
+        fontSize: "0.77rem", color: "#0e9e79",
+        marginBottom: "1.5rem",
+      }}>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Session secured
+      </div>
+
+      {/* Button */}
+      <button
+        onClick={onContinue}
+        style={{
+          width: "100%", padding: "11px",
+          background: "#1abc9c", color: "white",
+          border: "none", borderRadius: "8px",
+          fontSize: "0.93rem", fontWeight: 600,
+          cursor: "pointer",
+          transition: "background 0.15s",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+      >
+        Continue to Dashboard
+      </button>
+    </div>
+
+    <style>{`
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      @keyframes popIn {
+        0%   { transform: scale(0.82); opacity: 0; }
+        70%  { transform: scale(1.04); opacity: 1; }
+        100% { transform: scale(1);    opacity: 1; }
+      }
+      @keyframes checkDraw {
+        from { stroke-dashoffset: 58; }
+        to   { stroke-dashoffset: 0;  }
+      }
+    `}</style>
+  </div>
+);
+
+/* ── Main LoginPage Component ── */
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  try {
-    const res = await fetch("http://localhost:8000/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const res = await fetch("http://localhost:8000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message);
 
-    if (!res.ok) throw new Error(data.message);
+      setShowSuccess(true); // ← show beautiful modal instead of alert
 
-    alert("Login successful");
-    navigate("/userscreen");
-
-  } catch (err: any) {
-    alert(err.message);
-  }
-};
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
 
   return (
     <div style={{ height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", fontFamily: "'Segoe UI', Arial, sans-serif" }}>
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <LoginSuccessModal
+          email={email}
+          onContinue={() => navigate("/userscreen")}
+        />
+      )}
 
       {/* ── NAVBAR ── */}
       <nav style={{
@@ -218,6 +325,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
             {/* Form */}
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
+
               {/* Email */}
               <div>
                 <label style={{ display: "block", fontSize: "0.83rem", fontWeight: 500, color: "#333", marginBottom: "4px" }}>
@@ -301,7 +409,6 @@ const handleSubmit = async (e: React.FormEvent) => {
               {/* Continue */}
               <button
                 type="submit"
-                // onClick={() => navigate("/userscreen")}
                 style={{
                   width: "100%", background: "white", color: "#222",
                   border: "1.5px solid #bbb", borderRadius: "6px",
@@ -331,9 +438,9 @@ const handleSubmit = async (e: React.FormEvent) => {
               </button>
             </div>
 
-            {/* Sign up */}
+            {/* Sign up link */}
             <p style={{ textAlign: "center", fontSize: "0.81rem", color: "#555", marginBottom: "12px" }}>
-              Don't have an Account?{" "}
+              Don't have an account?{" "}
               <a
                 href="/signup"
                 style={{ color: "#1abc9c", fontWeight: 600, textDecoration: "none" }}
@@ -370,13 +477,11 @@ const handleSubmit = async (e: React.FormEvent) => {
         justifyContent: "space-between", flexShrink: 0
       }}>
         <div style={{ display: "flex", gap: "10px" }}>
-          {/* Facebook */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
-          {/* Instagram */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -384,7 +489,6 @@ const handleSubmit = async (e: React.FormEvent) => {
               <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
             </svg>
           </a>
-          {/* LinkedIn */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>

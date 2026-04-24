@@ -103,6 +103,123 @@ const SignUpIllustration = () => (
   </svg>
 );
 
+/* ── Success Modal ── */
+const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () => void }> = ({ email, onLogin, onHome }) => (
+  <div style={{
+    position: "fixed", inset: 0,
+    background: "rgba(0,0,0,0.45)",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    zIndex: 1000,
+    animation: "fadeIn 0.2s ease forwards",
+  }}>
+    <div style={{
+      background: "white",
+      borderRadius: "20px",
+      padding: "2.5rem 2rem 2rem",
+      maxWidth: "380px",
+      width: "90%",
+      textAlign: "center",
+      boxShadow: "0 20px 60px rgba(0,0,0,0.18)",
+      animation: "popIn 0.38s cubic-bezier(0.34,1.3,0.64,1) forwards",
+    }}>
+
+      {/* Animated checkmark */}
+      <div style={{ width: 88, height: 88, margin: "0 auto 1.5rem" }}>
+        <svg viewBox="0 0 88 88" width="88" height="88">
+          <circle cx="44" cy="44" r="42" fill="#e1f5ee" stroke="#1abc9c" strokeWidth="2.5"/>
+          <path
+            d="M25 45 L39 59 L63 31"
+            fill="none"
+            stroke="#1abc9c"
+            strokeWidth="4.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{
+              strokeDasharray: 58,
+              strokeDashoffset: 0,
+              animation: "checkDraw 0.55s ease 0.2s both",
+            }}
+          />
+        </svg>
+      </div>
+
+      {/* Text */}
+      <h2 style={{ fontSize: "1.35rem", fontWeight: 700, color: "#111", margin: "0 0 8px" }}>
+        Account Created!
+      </h2>
+      <p style={{ fontSize: "0.875rem", color: "#666", margin: "0 0 6px", lineHeight: 1.6 }}>
+        Welcome to <strong style={{ color: "#1abc9c" }}>HelpGhar</strong>. Your account is all set.
+      </p>
+      <p style={{ fontSize: "0.8rem", color: "#999", margin: "0 0 1.75rem" }}>
+        {email}
+      </p>
+
+      {/* Info pill */}
+      {/* <div style={{
+        display: "inline-flex", alignItems: "center", gap: "6px",
+        background: "#f0fdf8", border: "1px solid #b2ead8",
+        borderRadius: "20px", padding: "5px 14px",
+        fontSize: "0.77rem", color: "#0e9e79",
+        marginBottom: "1.5rem",
+      }}>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Confirmation email sent to your inbox
+      </div> */}
+
+      {/* Buttons */}
+      <button
+        onClick={onLogin}
+        style={{
+          width: "100%", padding: "11px",
+          background: "#1abc9c", color: "white",
+          border: "none", borderRadius: "8px",
+          fontSize: "0.93rem", fontWeight: 600,
+          cursor: "pointer", marginBottom: "10px",
+          transition: "background 0.15s",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+      >
+        Go to Login
+      </button>
+      <button
+        onClick={onHome}
+        style={{
+          width: "100%", padding: "10px",
+          background: "transparent", color: "#555",
+          border: "1.5px solid #ddd", borderRadius: "8px",
+          fontSize: "0.88rem", cursor: "pointer",
+          transition: "border-color 0.15s, color 0.15s",
+        }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = "#aaa"; e.currentTarget.style.color = "#222"; }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = "#ddd"; e.currentTarget.style.color = "#555"; }}
+      >
+        Back to Home
+      </button>
+    </div>
+
+    <style>{`
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+      }
+      @keyframes popIn {
+        0%   { transform: scale(0.82); opacity: 0; }
+        70%  { transform: scale(1.04); opacity: 1; }
+        100% { transform: scale(1);    opacity: 1; }
+      }
+      @keyframes checkDraw {
+        from { stroke-dashoffset: 58; }
+        to   { stroke-dashoffset: 0;  }
+      }
+    `}</style>
+  </div>
+);
+
+/* ── Main SignUp Component ── */
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -111,35 +228,32 @@ const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-  try {
-    const res = await fetch("http://localhost:8000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const res = await fetch("http://localhost:8000/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message);
 
-    if (!res.ok) throw new Error(data.message);
+      setShowSuccess(true); // ← show beautiful modal instead of alert
 
-    alert("Signup successful");
-    navigate("/login");
-
-  } catch (err: any) {
-    alert(err.message);
-  }
-};
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
 
   const inputStyle: React.CSSProperties = {
     width: "100%", border: "1.5px solid #ccc", borderRadius: "6px",
@@ -147,8 +261,32 @@ const handleSubmit = async (e: React.FormEvent) => {
     background: "white", color: "#222", boxSizing: "border-box",
   };
 
+  const EyeOpen = () => (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  );
+
+  const EyeOff = () => (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+      <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+      <line x1="1" y1="1" x2="23" y2="23"/>
+    </svg>
+  );
+
   return (
     <div style={{ height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", fontFamily: "'Segoe UI', Arial, sans-serif" }}>
+
+      {/* Success Modal */}
+      {showSuccess && (
+        <SuccessModal
+          email={email}
+          onLogin={() => navigate("/login")}
+          onHome={() => navigate("/")}
+        />
+      )}
 
       {/* ── NAVBAR ── */}
       <nav style={{
@@ -217,7 +355,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             {/* Heading */}
             <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#111", marginBottom: "3px" }}>Sign Up</h2>
             <p style={{ fontSize: "0.83rem", color: "#666", marginBottom: "16px" }}>
-              Enter your credentials to login to your account
+              Enter your credentials to create your account
             </p>
 
             {/* Form */}
@@ -255,18 +393,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     onClick={() => setShowPassword(p => !p)}
                     style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#888", display: "flex", alignItems: "center", padding: "2px" }}
                   >
-                    {showPassword ? (
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-                        <line x1="1" y1="1" x2="23" y2="23"/>
-                      </svg>
-                    ) : (
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                      </svg>
-                    )}
+                    {showPassword ? <EyeOff /> : <EyeOpen />}
                   </button>
                 </div>
               </div>
@@ -289,18 +416,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     onClick={() => setShowConfirm(p => !p)}
                     style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", color: "#888", display: "flex", alignItems: "center", padding: "2px" }}
                   >
-                    {showConfirm ? (
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-                        <line x1="1" y1="1" x2="23" y2="23"/>
-                      </svg>
-                    ) : (
-                      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                      </svg>
-                    )}
+                    {showConfirm ? <EyeOff /> : <EyeOpen />}
                   </button>
                 </div>
               </div>
@@ -315,11 +431,11 @@ const handleSubmit = async (e: React.FormEvent) => {
                   style={{ width: "14px", height: "14px", accentColor: "#1abc9c", cursor: "pointer" }}
                 />
                 <label htmlFor="keepLoggedIn" style={{ fontSize: "0.83rem", color: "#333", cursor: "pointer" }}>
-                  Keep me log in
+                  Keep me logged in
                 </label>
               </div>
 
-              {/* Continue */}
+              {/* Submit */}
               <button
                 type="submit"
                 style={{
@@ -347,7 +463,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 borderRadius: "6px", padding: "7px 20px", fontSize: "0.85rem",
                 fontWeight: 500, cursor: "pointer"
               }}>
-                {/* Google Icon */}
                 <svg width="18" height="18" viewBox="0 0 48 48">
                   <path fill="#EA4335" d="M24 9.5c3.14 0 5.95 1.08 8.17 2.85l6.08-6.08C34.5 3.08 29.55 1 24 1 14.82 1 7.08 6.48 3.8 14.27l7.07 5.49C12.6 13.39 17.87 9.5 24 9.5z"/>
                   <path fill="#4285F4" d="M46.1 24.5c0-1.64-.15-3.22-.42-4.75H24v9.01h12.42c-.54 2.9-2.18 5.35-4.65 7.01l7.14 5.55C43.08 37.25 46.1 31.3 46.1 24.5z"/>
@@ -360,7 +475,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
             {/* Login link */}
             <p style={{ textAlign: "center", fontSize: "0.81rem", color: "#555", marginBottom: "12px" }}>
-              Already have an Account?{" "}
+              Already have an account?{" "}
               <a
                 href="/login"
                 style={{ color: "#1abc9c", fontWeight: 600, textDecoration: "none" }}

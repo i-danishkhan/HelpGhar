@@ -26,6 +26,24 @@ app.get("/test-db", async (req, res) => {
   }
 });
 
+app.get("/check-tables", async (req, res) => {
+  let conn;
+  try {
+    conn = await connectDB();
+    const result = await conn.execute(
+      `SELECT table_name FROM user_tables ORDER BY table_name`
+    );
+    res.json({
+      status: "✅ Connected",
+      tables: result.rows
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  } finally {
+    if (conn) await conn.close();
+  }
+});
+
 // Basic Route
 app.get("/", (req, res) => {
   res.send("Server running 🚀");

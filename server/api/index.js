@@ -2,14 +2,20 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const workerRoutes = require('./routes/Worker.route.js') // 👈 add this
+const authRoutes = require("./routes/auth.routes");
+const workerRoutes = require('./routes/Worker.route.js')
+const connectDB = require("./config/db");
 
 const app = express();
 
-// Middlewares
+// ✅ FIRST: CORS
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "http://localhost:5174", // your frontend port
+  methods: ["GET", "POST"],
+  credentials: true
 }));
+
+// ✅ SECOND: body parser
 app.use(express.json());
 app.use("/uploads", express.static("uploads")); // 👈 for images
 
@@ -17,18 +23,20 @@ app.use("/uploads", express.static("uploads")); // 👈 for images
 app.use("/api/workers", workerRoutes);
 
 // Test DB Route
+// ✅ THEN routes
+app.use("/api/auth", authRoutes);
+
+
+
+// Test Route
 app.get("/test-db", async (req, res) => {
   try {
     const connectDB = require("./config/db");
     const conn = await connectDB();
-
     const result = await conn.execute(`SELECT 'CONNECTED' FROM dual`);
-
     res.json(result.rows);
-
     await conn.close();
   } catch (err) {
-    console.error(err);
     res.status(500).send(err.message);
   }
 });

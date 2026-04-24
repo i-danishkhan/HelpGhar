@@ -119,10 +119,29 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Login:", { email, password, keepLoggedIn });
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:8000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.message);
+
+    alert("Login successful");
+    navigate("/userscreen");
+
+  } catch (err: any) {
+    alert(err.message);
+  }
+};
 
   return (
     <div style={{ height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", fontFamily: "'Segoe UI', Arial, sans-serif" }}>
@@ -282,7 +301,7 @@ const LoginPage: React.FC = () => {
               {/* Continue */}
               <button
                 type="submit"
-                onClick={() => navigate("/userscreen")}
+                // onClick={() => navigate("/userscreen")}
                 style={{
                   width: "100%", background: "white", color: "#222",
                   border: "1.5px solid #bbb", borderRadius: "6px",

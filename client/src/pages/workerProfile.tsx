@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GigModal from "../components/GigModal";
 import {
   LayoutDashboard,
   User,
@@ -19,10 +20,19 @@ const navItems = [
   { label: "Status", icon: Activity, path: "/workerStatus" },
 ];
 
+
+
 export default function WorkerProfile() {
   const navigate = useNavigate();
   const [activeNav, setActiveNav] = useState("Profile");
   const [twoFactor, setTwoFactor] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+const [gigData, setGigData] = useState({
+  title: "",
+  description: "",
+  price: "",
+  category: "",
+});
 
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
@@ -42,11 +52,10 @@ export default function WorkerProfile() {
                   setActiveNav(label);
                   navigate(path);
                 }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
-                  activeNav === label
-                    ? "bg-green-500 text-white"
-                    : "text-gray-400 hover:bg-gray-700 hover:text-white"
-                }`}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${activeNav === label
+                  ? "bg-green-500 text-white"
+                  : "text-gray-400 hover:bg-gray-700 hover:text-white"
+                  }`}
               >
                 <Icon size={16} />
                 {label}
@@ -109,7 +118,10 @@ export default function WorkerProfile() {
                   </span>
                 </div>
               </div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all shrink-0">
+              <button
+                onClick={() => setShowModal(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-lg"
+              >
                 Display Gig
               </button>
             </div>
@@ -182,14 +194,12 @@ export default function WorkerProfile() {
                     {/* Toggle */}
                     <button
                       onClick={() => setTwoFactor(!twoFactor)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors shrink-0 ${
-                        twoFactor ? "bg-blue-500" : "bg-gray-300"
-                      }`}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors shrink-0 ${twoFactor ? "bg-blue-500" : "bg-gray-300"
+                        }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
-                          twoFactor ? "translate-x-6" : "translate-x-1"
-                        }`}
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${twoFactor ? "translate-x-6" : "translate-x-1"
+                          }`}
                       />
                     </button>
                   </div>
@@ -218,6 +228,10 @@ export default function WorkerProfile() {
           </div>
         </main>
       </div>
+      <GigModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </div>
   );
 }

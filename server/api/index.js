@@ -1,4 +1,5 @@
 const express = require("express");
+const gigRoutes = require("./routes/gig.routes");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -10,10 +11,12 @@ const app = express();
 
 // ✅ FIRST: CORS
 app.use(cors({
-  origin: "http://localhost:5174", // your frontend port
+  origin: "http://localhost:5173", // your frontend port
   methods: ["GET", "POST"],
   credentials: true
 }));
+
+app.use("/api/gigs", gigRoutes);
 
 // ✅ SECOND: body parser
 app.use(express.json());

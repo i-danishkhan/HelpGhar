@@ -30,7 +30,7 @@ const GlobalStyle = () => (
     }
 
     .nav-link {
-      color: white;
+      color: #E9FFF1;
       font-size: 0.9rem;
       font-weight: 600;
       opacity: 0.92;
@@ -45,7 +45,7 @@ const GlobalStyle = () => (
 
     .btn-primary {
       background: #10B981;
-      color: white;
+      color: #E9FFF1;
       border: none;
       border-radius: 6px;
       padding: 11px 26px;
@@ -56,7 +56,7 @@ const GlobalStyle = () => (
     .btn-primary:hover { background: #17a589; transform: translateY(-1px); }
 
     .btn-outline {
-      background: white;
+      background: #E9FFF1;
       color: #10B981;
       border: 2px solid #10B981;
       border-radius: 6px;
@@ -65,10 +65,10 @@ const GlobalStyle = () => (
       font-size: 0.93rem;
       transition: all 0.2s;
     }
-    .btn-outline:hover { background: #10B981; color: white; transform: translateY(-1px); }
+    .btn-outline:hover { background: #10B981; color: #E9FFF1; transform: translateY(-1px); }
 
     .feature-card {
-      background: white;
+      background: #E9FFF1;
       border: 1.5px solid #c8f0e6;
       border-radius: 14px;
       padding: 28px 18px 22px;
@@ -93,7 +93,7 @@ const GlobalStyle = () => (
     }
 
     .testimonial-card {
-      background: white;
+      background: E9FFF1;
       border: 1.5px solid #d4f0ea;
       border-radius: 12px;
       padding: 26px 22px;
@@ -102,7 +102,7 @@ const GlobalStyle = () => (
 
     .btn-cta {
       background: #10B981;
-      color: white;
+      color: #E9FFF1;
       border: none;
       border-radius: 8px;
       padding: 14px 44px;
@@ -145,8 +145,8 @@ const HeroIllustration = () => (
     <line x1="195" y1="72" x2="350" y2="72" stroke="#10B981" strokeWidth="1.8" />
     <path d="M185 22 L272 -2 L362 22" stroke="#10B981" strokeWidth="2" fill="none" />
     <circle cx="305" cy="170" r="18" fill="#d1f5ea" stroke="#10B981" strokeWidth="2" />
-    <rect x="294" y="153" width="22" height="13" rx="3" fill="white" stroke="#10B981" strokeWidth="1.5" />
-    <ellipse cx="305" cy="153" rx="13" ry="6" fill="white" stroke="#10B981" strokeWidth="1.5" />
+    <rect x="294" y="153" width="22" height="13" rx="3" fill="#E9FFF1" stroke="#10B981" strokeWidth="1.5" />
+    <ellipse cx="305" cy="153" rx="13" ry="6" fill="#E9FFF1" stroke="#10B981" strokeWidth="1.5" />
     <rect x="291" y="188" width="28" height="46" rx="6" fill="#10B981" />
     <line x1="291" y1="200" x2="268" y2="218" stroke="#10B981" strokeWidth="2.8" strokeLinecap="round" />
     <line x1="319" y1="200" x2="338" y2="214" stroke="#10B981" strokeWidth="2.8" strokeLinecap="round" />
@@ -221,7 +221,7 @@ const SearchPostIcon = () => (
 const VerifyHireIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
     <circle cx="40" cy="40" r="38" fill="#10B981" />
-    <path d="M24 40 L35 52 L56 28" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M24 40 L35 52 L56 28" stroke="#E9FFF1" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -260,7 +260,7 @@ const LandingPage: React.FC = () => {
           onClick={handleScrollTo("section-home")}
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
         >
-          <span style={{ fontWeight: 800, fontSize: "1.3rem", color: "white", letterSpacing: "-0.3px" }}>
+          <span style={{ fontWeight: 800, fontSize: "1.3rem", color: "#E9FFF1", letterSpacing: "-0.3px" }}>
             HelpGhar<span style={{ opacity: 0.75 }}>.</span>
           </span>
         </button>
@@ -278,14 +278,14 @@ const LandingPage: React.FC = () => {
           <button
             onClick={() => navigate("/login")}
             style={{
-              background: "none", border: "none", color: "white",
+              background: "none", border: "none", color: "#E9FFF1",
               fontWeight: 600, fontSize: "0.88rem", letterSpacing: "0.5px", cursor: "pointer"
             }}
           >LOGIN</button>
           <button
             onClick={() => navigate("/signup")}
             style={{
-              background: "white", color: "#10B981", border: "none", borderRadius: "5px",
+              background: "#E9FFF1", color: "#10B981", border: "none", borderRadius: "5px",
               padding: "7px 16px", fontWeight: 700, fontSize: "0.88rem",
               letterSpacing: "0.4px", cursor: "pointer", transition: "opacity 0.2s"
             }}
@@ -301,7 +301,7 @@ const LandingPage: React.FC = () => {
       <section
         id="section-home"
         className="full-section"
-        style={{ background: "white", padding: "0 6%" }}
+        style={{ background: "#E9FFF1", padding: "0 6%" }}
       >
         <div className="hero-grid" style={{
           display: "flex", alignItems: "center",
@@ -378,7 +378,7 @@ const LandingPage: React.FC = () => {
       <section
         id="section-how"
         className="full-section"
-        style={{ background: "white", padding: "0 6%", textAlign: "center" }}
+        style={{ background: "#E9FFF1", padding: "0 6%", textAlign: "center" }}
       >
         <div style={{ width: "100%", maxWidth: "860px", margin: "0 auto" }}>
           <h2 style={{ fontSize: "clamp(1.5rem, 2.8vw, 2.2rem)", fontWeight: 800, color: "#111", marginBottom: "10px" }}>
@@ -451,7 +451,7 @@ const LandingPage: React.FC = () => {
       <section
         id="section-cta"
         className="full-section"
-        style={{ background: "white", padding: "0 6%", textAlign: "center" }}
+        style={{ background: "#E9FFF1", padding: "0 6%", textAlign: "center" }}
       >
         <div>
           <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontWeight: 800, color: "black", marginBottom: "32px" }}>
@@ -475,26 +475,26 @@ const LandingPage: React.FC = () => {
       }}>
         <div style={{ display: "flex", gap: "10px" }}>
           <a href="#" className="social-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E9FFF1">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
             </svg>
           </a>
           <a href="#" className="social-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E9FFF1" strokeWidth="2" strokeLinecap="round">
               <rect x="2" y="2" width="20" height="20" rx="5" />
               <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none" />
+              <circle cx="17.5" cy="6.5" r="1" fill="#E9FFF1" stroke="none" />
             </svg>
           </a>
           <a href="#" className="social-btn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="white">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E9FFF1">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
               <rect x="2" y="9" width="4" height="12" />
               <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
         </div>
-        <p style={{ color: "white", fontSize: "0.76rem", opacity: 0.88 }}>
+        <p style={{ color: "#E9FFF1", fontSize: "0.76rem", opacity: 0.88 }}>
           ©2025 All Copyrights are Reserved
         </p>
       </footer>

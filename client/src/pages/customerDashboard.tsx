@@ -308,7 +308,7 @@ export default function HouseOwnerDashboard() {
                         border: "none",
                         boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
                       }}
-                      formatter={(value: number) => [value, "Hires"]}
+                      formatter={(value: any) => [value, "Hires"]}
                     />
                     <Area
                       type="monotone"

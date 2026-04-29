@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const SignUpIllustration = () => (
   <svg viewBox="0 0 500 560" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", maxHeight: "calc(100vh - 110px)" }}>
-    <rect x="40" y="30" width="130" height="120" rx="5" fill="white" stroke="#1a1a1a" strokeWidth="3"/>
+    <rect x="40" y="30" width="130" height="120" rx="5" fill="##E9FFF1" stroke="#1a1a1a" strokeWidth="3"/>
     <line x1="105" y1="30" x2="105" y2="150" stroke="#1a1a1a" strokeWidth="2.5"/>
     <line x1="40" y1="90" x2="170" y2="90" stroke="#1a1a1a" strokeWidth="2.5"/>
     <rect x="28" y="148" width="154" height="10" rx="3" fill="#1a1a1a"/>
@@ -14,15 +14,15 @@ const SignUpIllustration = () => (
     <rect x="357" y="126" width="5" height="9" rx="2" fill="#888"/>
     <rect x="374" y="140" width="12" height="29" rx="4" fill="#aaa" stroke="#777" strokeWidth="1.2"/>
     <rect x="378" y="134" width="5" height="9" rx="2" fill="#777"/>
-    <ellipse cx="340" cy="52" rx="26" ry="12" fill="white" stroke="#1a1a1a" strokeWidth="2.2"/>
-    <rect x="318" y="40" width="44" height="30" rx="6" fill="white" stroke="#1a1a1a" strokeWidth="2.2"/>
+    <ellipse cx="340" cy="52" rx="26" ry="12" fill="##E9FFF1" stroke="#1a1a1a" strokeWidth="2.2"/>
+    <rect x="318" y="40" width="44" height="30" rx="6" fill="##E9FFF1" stroke="#1a1a1a" strokeWidth="2.2"/>
     <rect x="318" y="64" width="44" height="8" fill="#e8e8e8" stroke="#1a1a1a" strokeWidth="1.5"/>
     <rect x="333" y="102" width="14" height="14" rx="3" fill="#e8c8a0"/>
     <ellipse cx="340" cy="88" rx="24" ry="22" fill="#e8c8a0" stroke="#1a1a1a" strokeWidth="2"/>
     <ellipse cx="332" cy="85" rx="3" ry="3.5" fill="#1a1a1a"/>
     <ellipse cx="348" cy="85" rx="3" ry="3.5" fill="#1a1a1a"/>
-    <circle cx="333" cy="84" r="1" fill="white"/>
-    <circle cx="349" cy="84" r="1" fill="white"/>
+    <circle cx="333" cy="84" r="1" fill="##E9FFF1"/>
+    <circle cx="349" cy="84" r="1" fill="##E9FFF1"/>
     <path d="M328 79 Q332 76 336 79" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
     <path d="M344 79 Q348 76 352 79" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
     <path d="M332 97 Q340 104 348 97" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
@@ -63,7 +63,7 @@ const SignUpIllustration = () => (
     <path d="M168 372 Q188 385 200 398" stroke="#e8c8a0" strokeWidth="12" strokeLinecap="round" fill="none"/>
     <ellipse cx="203" cy="401" rx="8" ry="6" fill="#e8c8a0" stroke="#c4a080" strokeWidth="1.2"/>
     <rect x="30" y="448" width="220" height="12" rx="4" fill="#d0d0d0" stroke="#bbb" strokeWidth="1.2"/>
-    <rect x="44" y="426" width="130" height="24" rx="4" fill="white" stroke="#ddd" strokeWidth="1.5"/>
+    <rect x="44" y="426" width="130" height="24" rx="4" fill="##E9FFF1" stroke="#ddd" strokeWidth="1.5"/>
     <line x1="54" y1="434" x2="114" y2="434" stroke="#ccc" strokeWidth="1.2"/>
     <line x1="54" y1="440" x2="130" y2="440" stroke="#ccc" strokeWidth="1.2"/>
     <line x1="56" y1="435" x2="70" y2="420" stroke="#e8c8a0" strokeWidth="4" strokeLinecap="round"/>
@@ -78,8 +78,8 @@ const SignUpIllustration = () => (
     <rect x="347" y="406" width="22" height="14" rx="4" fill="#e8c8a0"/>
     <ellipse cx="348" cy="374" rx="3.5" ry="3.5" fill="#1a1a1a"/>
     <ellipse cx="368" cy="374" rx="3.5" ry="3.5" fill="#1a1a1a"/>
-    <circle cx="349" cy="373" r="1.2" fill="white"/>
-    <circle cx="369" cy="373" r="1.2" fill="white"/>
+    <circle cx="349" cy="373" r="1.2" fill="##E9FFF1"/>
+    <circle cx="369" cy="373" r="1.2" fill="##E9FFF1"/>
     <path d="M343 367 Q348 364 353 367" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
     <path d="M363 367 Q368 364 373 367" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round"/>
     <path d="M349 393 Q358 400 367 393" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
@@ -93,11 +93,11 @@ const SignUpIllustration = () => (
     <rect x="262" y="466" width="52" height="42" rx="5" fill="#10B981" stroke="#0e9e79" strokeWidth="2"/>
     <rect x="262" y="466" width="8" height="42" rx="3" fill="#0e9e79"/>
     <rect x="308" y="468" width="6" height="38" rx="2" fill="#f0f0f0" stroke="#ccc" strokeWidth="0.8"/>
-    <line x1="276" y1="478" x2="303" y2="478" stroke="white" strokeWidth="1.5" opacity="0.7"/>
-    <line x1="276" y1="485" x2="303" y2="485" stroke="white" strokeWidth="1.5" opacity="0.7"/>
-    <line x1="276" y1="492" x2="295" y2="492" stroke="white" strokeWidth="1.5" opacity="0.7"/>
+    <line x1="276" y1="478" x2="303" y2="478" stroke="##E9FFF1" strokeWidth="1.5" opacity="0.7"/>
+    <line x1="276" y1="485" x2="303" y2="485" stroke="##E9FFF1" strokeWidth="1.5" opacity="0.7"/>
+    <line x1="276" y1="492" x2="295" y2="492" stroke="##E9FFF1" strokeWidth="1.5" opacity="0.7"/>
     <rect x="322" y="500" width="100" height="10" rx="3" fill="#d0d0d0" stroke="#bbb" strokeWidth="1"/>
-    <rect x="330" y="484" width="82" height="18" rx="3" fill="white" stroke="#ddd" strokeWidth="1.2"/>
+    <rect x="330" y="484" width="82" height="18" rx="3" fill="##E9FFF1" stroke="#ddd" strokeWidth="1.2"/>
     <line x1="340" y1="490" x2="398" y2="490" stroke="#ccc" strokeWidth="1.2"/>
     <line x1="340" y1="496" x2="390" y2="496" stroke="#ccc" strokeWidth="1.2"/>
   </svg>
@@ -113,7 +113,7 @@ const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () =>
     animation: "fadeIn 0.2s ease forwards",
   }}>
     <div style={{
-      background: "white",
+      background: "##E9FFF1",
       borderRadius: "20px",
       padding: "2.5rem 2rem 2rem",
       maxWidth: "380px",
@@ -174,7 +174,7 @@ const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () =>
         onClick={onLogin}
         style={{
           width: "100%", padding: "11px",
-          background: "#10B981", color: "white",
+          background: "#10B981", color: "##E9FFF1",
           border: "none", borderRadius: "8px",
           fontSize: "0.93rem", fontWeight: 600,
           cursor: "pointer", marginBottom: "10px",
@@ -258,7 +258,7 @@ const SignUp: React.FC = () => {
   const inputStyle: React.CSSProperties = {
     width: "100%", border: "1.5px solid #ccc", borderRadius: "6px",
     padding: "9px 13px", fontSize: "0.89rem", outline: "none",
-    background: "white", color: "#222", boxSizing: "border-box",
+    background: "##E9FFF1", color: "#222", boxSizing: "border-box",
   };
 
   const EyeOpen = () => (
@@ -294,18 +294,18 @@ const SignUp: React.FC = () => {
         justifyContent: "space-between", padding: "0 5%",
         height: "52px", flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
       }}>
-        <div style={{ fontWeight: 800, fontSize: "1.3rem", color: "white", letterSpacing: "-0.3px" }}>
+        <div style={{ fontWeight: 800, fontSize: "1.3rem", color: "##E9FFF1", letterSpacing: "-0.3px" }}>
           HelpGhar<span style={{ opacity: 0.7 }}>.</span>
         </div>
         <div style={{ display: "flex", gap: "36px" }}>
-          <a href="/" style={{ color: "white", fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>Home</a>
-          <a href="#testimonials" style={{ color: "white", fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>Testimonials</a>
+          <a href="/" style={{ color: "##E9FFF1", fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>Home</a>
+          <a href="#testimonials" style={{ color: "##E9FFF1", fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>Testimonials</a>
         </div>
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <button
             onClick={() => navigate("/login")}
             style={{
-              background: "transparent", color: "white", border: "2px solid white",
+              background: "transparent", color: "##E9FFF1", border: "2px solid ##E9FFF1",
               borderRadius: "6px", padding: "6px 18px", fontWeight: 700,
               fontSize: "0.83rem", cursor: "pointer", letterSpacing: "0.3px"
             }}
@@ -315,7 +315,7 @@ const SignUp: React.FC = () => {
           <button
             onClick={() => navigate("/signup")}
             style={{
-              background: "white", color: "#10B981", border: "2px solid white",
+              background: "##E9FFF1", color: "#10B981", border: "2px solid ##E9FFF1",
               borderRadius: "6px", padding: "6px 18px", fontWeight: 700,
               fontSize: "0.83rem", cursor: "pointer"
             }}
@@ -341,7 +341,7 @@ const SignUp: React.FC = () => {
           {/* RIGHT: Sign Up Card */}
           <div style={{
             flex: "0 0 auto", width: "100%", maxWidth: "400px",
-            background: "white", borderRadius: "16px",
+            background: "##E9FFF1", borderRadius: "16px",
             padding: "28px 30px 22px",
             boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
           }}>
@@ -439,7 +439,7 @@ const SignUp: React.FC = () => {
               <button
                 type="submit"
                 style={{
-                  width: "100%", background: "white", color: "#222",
+                  width: "100%", background: "##E9FFF1", color: "#222",
                   border: "1.5px solid #bbb", borderRadius: "6px",
                   padding: "10px", fontSize: "0.93rem", fontWeight: 600, cursor: "pointer"
                 }}
@@ -459,7 +459,7 @@ const SignUp: React.FC = () => {
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "14px" }}>
               <button style={{
                 display: "flex", alignItems: "center", gap: "8px",
-                background: "white", color: "#444", border: "1.5px solid #ccc",
+                background: "##E9FFF1", color: "#444", border: "1.5px solid #ccc",
                 borderRadius: "6px", padding: "7px 20px", fontSize: "0.85rem",
                 fontWeight: 500, cursor: "pointer"
               }}>
@@ -513,21 +513,21 @@ const SignUp: React.FC = () => {
       }}>
         <div style={{ display: "flex", gap: "10px" }}>
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="##E9FFF1"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="##E9FFF1" strokeWidth="2" strokeLinecap="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="##E9FFF1" stroke="none"/>
             </svg>
           </a>
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="##E9FFF1">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
               <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
             </svg>
           </a>
         </div>
-        <p style={{ color: "white", fontSize: "0.8rem", opacity: 0.92 }}>
+        <p style={{ color: "##E9FFF1", fontSize: "0.8rem", opacity: 0.92 }}>
           @2025 All Copyrights are Reserved
         </p>
       </footer>

@@ -34,16 +34,7 @@ interface Gig {
   CREATED_AT: string;
 }
 
-const workers: Worker[] = [
-  { id: 1, name: "Zohaib Ali", age: 25, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 28, rating: 5, experience: "1.5 years", salaryMin: 25000, salaryMax: 30000, badge: "CNIC Verified", image: "", bgColor: "#f0e6d3" },
-  { id: 2, name: "Bilal Iqbal", age: 28, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 12, rating: 3, experience: "1.5 years", salaryMin: 15000, salaryMax: 20000, badge: "Top Rated Monthly", image: "", bgColor: "#d6e8f0" },
-  { id: 3, name: "Zohaib Ali", age: 35, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 230, rating: 4, experience: "1.5 years", salaryMin: 55000, salaryMax: 80000, badge: "CNIC Verified", image: "", bgColor: "#e8d0c8" },
-  { id: 4, name: "Zohaib Ali", age: 31, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 22, rating: 2, experience: "1.5 years", salaryMin: 15000, salaryMax: 25000, badge: "CNIC Verified", image: "", bgColor: "#d8e8f8" },
-  { id: 5, name: "Asjad Ali", age: 25, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 28, rating: 5, experience: "1.5 years", salaryMin: 25000, salaryMax: 30000, badge: "CNIC Verified", image: "", bgColor: "#c8c8c8" },
-  { id: 6, name: "Zohaib Ali", age: 28, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 12, rating: 3.5, experience: "1.5 years", salaryMin: 15000, salaryMax: 20000, badge: "CNIC Verified", image: "", bgColor: "#f0a060" },
-  { id: 7, name: "Zohaib Ali", age: 35, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 230, rating: 4.5, experience: "1.5 years", salaryMin: 55000, salaryMax: 80000, badge: "Top Rated Yearly", image: "", bgColor: "#d0d0c0" },
-  { id: 8, name: "Zohaib Ali", age: 31, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 22, rating: 2.5, experience: "1.5 years", salaryMin: 15000, salaryMax: 25000, badge: "CNIC Verified", image: "", bgColor: "#c8c8c8" },
-];
+const workers: Worker[] = [];
 
 const avatarColors = [
   { skin: "#d4956a", hair: "#8B4513", shirt: "#e74c3c" },
@@ -209,59 +200,9 @@ export default function UserScreen() {
       {/* MAIN */}
       <main style={{ flex: 1, padding: "24px", maxWidth: "1100px", margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
 
-        {/* Workers */}
-        <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#333", marginBottom: "16px", marginTop: 0 }}>
-          Available Workers
-        </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "20px", marginBottom: "40px" }}>
-          {filteredWorkers.map((worker, index) => {
-            const badgeStyle = getBadgeStyle(worker.badge);
-            return (
-              <div key={worker.id}
-                style={{ background: "white", borderRadius: "12px", overflow: "hidden", boxShadow: "0 2px 10px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column", transition: "box-shadow 0.2s", border: "1px solid #e5e7eb" }}
-                onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.14)")}
-                onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,0.08)")}
-              >
-                <div style={{ height: "160px", overflow: "hidden" }}>
-                  <WorkerAvatar index={index} bgColor={worker.bgColor} />
-                </div>
-                <div style={{ padding: "12px 14px 14px", flex: 1, display: "flex", flexDirection: "column", gap: "5px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
-                    <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "#111" }}>{worker.name}</span>
-                    <span style={{ background: badgeStyle.bg, color: badgeStyle.color, fontSize: "0.6rem", fontWeight: 700, padding: "2px 6px", borderRadius: "10px", display: "flex", alignItems: "center", gap: "3px", whiteSpace: "nowrap" }}>
-                      {worker.badge === "CNIC Verified" && <CheckCircle size={9} />}
-                      {worker.badge}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: "0.75rem", color: "#666", margin: 0, lineHeight: 1.4 }}>
-                    {worker.age} years , {worker.gender} , {worker.role} ,<br />Member since {worker.memberSince}.
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                    <StarRating rating={worker.rating} />
-                    <span style={{ fontSize: "0.72rem", color: "#888" }}>({worker.reviews} Reviews)</span>
-                  </div>
-                  <p style={{ fontSize: "0.75rem", color: "#555", margin: 0 }}>Experience of {worker.experience}</p>
-                  <p style={{ fontSize: "0.78rem", color: "#1abc9c", fontWeight: 700, margin: 0 }}>
-                    Rs. {worker.salaryMin.toLocaleString()} - {worker.salaryMax.toLocaleString()} /month
-                  </p>
-                  <p style={{ fontSize: "0.68rem", color: "#999", margin: 0 }}>Negotiable based on requirements</p>
-                  <button onClick={() => navigate(`/workerProfile/${worker.id}`)}
-                    style={{ marginTop: "8px", background: "#1abc9c", color: "white", border: "none", borderRadius: "20px", padding: "8px 0", fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", width: "100%", fontFamily: "inherit" }}
-                    onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
-                  >Available Now</button>
-                </div>
-              </div>
-            );
-          })}
-          {filteredWorkers.length === 0 && (
-            <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "60px 0", color: "#999" }}>No workers found.</div>
-          )}
-        </div>
-
         {/* ✅ GIGS — Worker card style */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
-          <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#333", margin: 0 }}>Posted Gigs</h2>
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#333", margin: 0 }}>Available Workers</h2>
           <span style={{ fontSize: "0.78rem", color: "#888" }}>{gigs.length} gig{gigs.length !== 1 ? "s" : ""} available</span>
         </div>
 

@@ -1,12 +1,13 @@
 const connectDB = require("../config/db");
+const oracledb = require("oracledb");
 
 async function createGig(gigData) {
   const conn = await connectDB();
 
   try {
     const query = `
-      INSERT INTO GIGS (WORKER_ID, TITLE, DESCRIPTION, PRICE, CATEGORY)
-      VALUES (:workerId, :title, :description, :price, :category)
+      INSERT INTO GIGS (WORKER_ID, TITLE, DESCRIPTION, PRICE, CATEGORY, IMAGE)
+      VALUES (:workerId, :title, :description, :price, :category, :image)
     `;
 
     const result = await conn.execute(
@@ -17,6 +18,7 @@ async function createGig(gigData) {
         description: gigData.description,
         price: Number(gigData.price),
         category: gigData.category,
+        image: gigData.image || null,
       },
       { autoCommit: true }
     );
@@ -31,17 +33,16 @@ async function createGig(gigData) {
   }
 }
 
-// ✅ NEW: Fetch all gigs
 async function getAllGigs() {
   const conn = await connectDB();
 
   try {
     const result = await conn.execute(
-      `SELECT GIG_ID, WORKER_ID, TITLE, DESCRIPTION, PRICE, CATEGORY, CREATED_AT
+      `SELECT GIG_ID, WORKER_ID, TITLE, DESCRIPTION, PRICE, CATEGORY, IMAGE, CREATED_AT
        FROM GIGS
        ORDER BY CREATED_AT DESC`,
       [],
-      { outFormat: require("oracledb").OUT_FORMAT_OBJECT }
+      { outFormat: oracledb.OUT_FORMAT_OBJECT }
     );
 
     return result.rows;

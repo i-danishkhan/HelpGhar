@@ -102,8 +102,8 @@ export default function WorkerComplain() {
 
         {/* Content Area */}
         <main className="flex-1 overflow-y-auto p-6 flex items-start justify-center">
-          {/* ##E9FFF1 Card */}
-          <div className="bg-##E9FFF1 rounded-2xl shadow-xl w-full max-w-2xl p-8 mt-4">
+          {/* #E9FFF1 Card */}
+          <div className="bg-#E9FFF1 rounded-2xl shadow-xl w-full max-w-2xl p-8 mt-4">
             <h1 className="text-2xl font-bold text-gray-900 text-center mb-8">
               Add Complain/Feedback
             </h1>

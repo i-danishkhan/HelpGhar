@@ -1,4 +1,5 @@
 const express = require("express");
+const gigRoutes = require("./routes/gig.routes");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -15,8 +16,12 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ SECOND: body parser
 app.use(express.json());
+
+app.use("/api/gigs", gigRoutes);
+
+// ✅ SECOND: body parser
+
 app.use("/uploads", express.static("uploads")); // 👈 for images
 
 // Routes

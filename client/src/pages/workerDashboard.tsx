@@ -106,7 +106,7 @@ export default function WorkerDashboard() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-##E9FFF1 border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-#E9FFF1 border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-gray-800">Zohaib Ali</p>
@@ -151,7 +151,7 @@ export default function WorkerDashboard() {
           {/* Top Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             {/* Available Job Postings */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Available job posting
               </p>
@@ -162,7 +162,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Recommended Jobs */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Recomended Jobs
               </p>
@@ -181,7 +181,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Wallet Balance */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Wallet Balance
               </p>
@@ -193,7 +193,7 @@ export default function WorkerDashboard() {
           {/* Middle Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             {/* Number of Requests */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Number of requests
               </p>
@@ -207,7 +207,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Number of Jobs */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Number of Jobs
               </p>
@@ -224,7 +224,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Incentives & Discounts */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Incentives &amp; Discounts
               </p>
@@ -248,7 +248,7 @@ export default function WorkerDashboard() {
           {/* Bottom Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Attendance Overview */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-sm font-semibold text-gray-700 mb-4">
                 Attendance Overview
               </p>
@@ -288,7 +288,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Performance */}
-            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-#E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-sm font-semibold text-gray-700 mb-1">
                 Performance
               </p>

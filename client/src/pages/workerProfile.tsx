@@ -96,7 +96,7 @@ const [gigData, setGigData] = useState({
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto p-6">
-          <div className="bg-##E9FFF1 rounded-2xl shadow-sm border border-gray-100 p-6 max-w-5xl mx-auto">
+          <div className="bg-#E9FFF1 rounded-2xl shadow-sm border border-gray-100 p-6 max-w-5xl mx-auto">
 
             {/* Profile Header */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-100">

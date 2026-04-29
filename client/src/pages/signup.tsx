@@ -28,7 +28,7 @@ const SignUpIllustration = () => (
     <path d="M332 97 Q340 104 348 97" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
     <ellipse cx="316" cy="88" rx="5" ry="7" fill="#e8c8a0" stroke="#1a1a1a" strokeWidth="1.5"/>
     <ellipse cx="364" cy="88" rx="5" ry="7" fill="#e8c8a0" stroke="#1a1a1a" strokeWidth="1.5"/>
-    <rect x="312" y="116" width="56" height="70" rx="10" fill="#1abc9c" stroke="#0e9e79" strokeWidth="1.8"/>
+    <rect x="312" y="116" width="56" height="70" rx="10" fill="#10B981" stroke="#0e9e79" strokeWidth="1.8"/>
     <rect x="322" y="116" width="36" height="42" rx="6" fill="#0e9e79"/>
     <path d="M312 130 Q290 148 278 168 Q272 182 274 200" stroke="#e8c8a0" strokeWidth="13" strokeLinecap="round" fill="none"/>
     <ellipse cx="275" cy="204" rx="9" ry="7" fill="#e8c8a0" stroke="#c4a080" strokeWidth="1.2"/>
@@ -57,7 +57,7 @@ const SignUpIllustration = () => (
     <path d="M128 335 Q138 342 148 335" stroke="#1a1a1a" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
     <ellipse cx="112" cy="318" rx="5" ry="7" fill="#e8c8a0" stroke="#1a1a1a" strokeWidth="1.5"/>
     <ellipse cx="164" cy="318" rx="5" ry="7" fill="#e8c8a0" stroke="#1a1a1a" strokeWidth="1.5"/>
-    <rect x="108" y="358" width="60" height="72" rx="12" fill="#1abc9c" stroke="#0e9e79" strokeWidth="1.8"/>
+    <rect x="108" y="358" width="60" height="72" rx="12" fill="#10B981" stroke="#0e9e79" strokeWidth="1.8"/>
     <path d="M108 372 Q85 385 68 400 Q58 412 56 428" stroke="#e8c8a0" strokeWidth="12" strokeLinecap="round" fill="none"/>
     <ellipse cx="55" cy="432" rx="8" ry="6" fill="#e8c8a0" stroke="#c4a080" strokeWidth="1.2"/>
     <path d="M168 372 Q188 385 200 398" stroke="#e8c8a0" strokeWidth="12" strokeLinecap="round" fill="none"/>
@@ -69,7 +69,7 @@ const SignUpIllustration = () => (
     <line x1="56" y1="435" x2="70" y2="420" stroke="#e8c8a0" strokeWidth="4" strokeLinecap="round"/>
     <line x1="70" y1="420" x2="74" y2="415" stroke="#f4d03f" strokeWidth="4" strokeLinecap="round"/>
     <path d="M74 415 L78 411 L76 415 Z" fill="#1a1a1a"/>
-    <rect x="144" y="428" width="52" height="32" rx="5" fill="#1abc9c" stroke="#0e9e79" strokeWidth="1.5"/>
+    <rect x="144" y="428" width="52" height="32" rx="5" fill="#10B981" stroke="#0e9e79" strokeWidth="1.5"/>
     <rect x="150" y="433" width="40" height="20" rx="3" fill="#0e9e79" opacity="0.6"/>
     <ellipse cx="358" cy="370" rx="34" ry="30" fill="#1a1a1a"/>
     <path d="M324 375 Q318 400 322 425" stroke="#1a1a1a" strokeWidth="14" strokeLinecap="round" fill="none"/>
@@ -90,7 +90,7 @@ const SignUpIllustration = () => (
     <ellipse cx="286" cy="496" rx="8" ry="6" fill="#e8c8a0" stroke="#c4a080" strokeWidth="1.2"/>
     <path d="M390 435 Q408 448 415 462" stroke="#e8c8a0" strokeWidth="12" strokeLinecap="round" fill="none"/>
     <ellipse cx="418" cy="465" rx="8" ry="6" fill="#e8c8a0" stroke="#c4a080" strokeWidth="1.2"/>
-    <rect x="262" y="466" width="52" height="42" rx="5" fill="#1abc9c" stroke="#0e9e79" strokeWidth="2"/>
+    <rect x="262" y="466" width="52" height="42" rx="5" fill="#10B981" stroke="#0e9e79" strokeWidth="2"/>
     <rect x="262" y="466" width="8" height="42" rx="3" fill="#0e9e79"/>
     <rect x="308" y="468" width="6" height="38" rx="2" fill="#f0f0f0" stroke="#ccc" strokeWidth="0.8"/>
     <line x1="276" y1="478" x2="303" y2="478" stroke="white" strokeWidth="1.5" opacity="0.7"/>
@@ -126,11 +126,11 @@ const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () =>
       {/* Animated checkmark */}
       <div style={{ width: 88, height: 88, margin: "0 auto 1.5rem" }}>
         <svg viewBox="0 0 88 88" width="88" height="88">
-          <circle cx="44" cy="44" r="42" fill="#e1f5ee" stroke="#1abc9c" strokeWidth="2.5"/>
+          <circle cx="44" cy="44" r="42" fill="#e1f5ee" stroke="#10B981" strokeWidth="2.5"/>
           <path
             d="M25 45 L39 59 L63 31"
             fill="none"
-            stroke="#1abc9c"
+            stroke="#10B981"
             strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -148,7 +148,7 @@ const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () =>
         Account Created!
       </h2>
       <p style={{ fontSize: "0.875rem", color: "#666", margin: "0 0 6px", lineHeight: 1.6 }}>
-        Welcome to <strong style={{ color: "#1abc9c" }}>HelpGhar</strong>. Your account is all set.
+        Welcome to <strong style={{ color: "#10B981" }}>HelpGhar</strong>. Your account is all set.
       </p>
       <p style={{ fontSize: "0.8rem", color: "#999", margin: "0 0 1.75rem" }}>
         {email}
@@ -174,14 +174,14 @@ const SuccessModal: React.FC<{ email: string; onLogin: () => void; onHome: () =>
         onClick={onLogin}
         style={{
           width: "100%", padding: "11px",
-          background: "#1abc9c", color: "white",
+          background: "#10B981", color: "white",
           border: "none", borderRadius: "8px",
           fontSize: "0.93rem", fontWeight: 600,
           cursor: "pointer", marginBottom: "10px",
           transition: "background 0.15s",
         }}
         onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-        onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#10B981")}
       >
         Go to Login
       </button>
@@ -290,7 +290,7 @@ const SignUp: React.FC = () => {
 
       {/* ── NAVBAR ── */}
       <nav style={{
-        background: "#1abc9c", display: "flex", alignItems: "center",
+        background: "#10B981", display: "flex", alignItems: "center",
         justifyContent: "space-between", padding: "0 5%",
         height: "52px", flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
       }}>
@@ -315,7 +315,7 @@ const SignUp: React.FC = () => {
           <button
             onClick={() => navigate("/signup")}
             style={{
-              background: "white", color: "#1abc9c", border: "2px solid white",
+              background: "white", color: "#10B981", border: "2px solid white",
               borderRadius: "6px", padding: "6px 18px", fontWeight: 700,
               fontSize: "0.83rem", cursor: "pointer"
             }}
@@ -428,7 +428,7 @@ const SignUp: React.FC = () => {
                   id="keepLoggedIn"
                   checked={keepLoggedIn}
                   onChange={e => setKeepLoggedIn(e.target.checked)}
-                  style={{ width: "14px", height: "14px", accentColor: "#1abc9c", cursor: "pointer" }}
+                  style={{ width: "14px", height: "14px", accentColor: "#10B981", cursor: "pointer" }}
                 />
                 <label htmlFor="keepLoggedIn" style={{ fontSize: "0.83rem", color: "#333", cursor: "pointer" }}>
                   Keep me logged in
@@ -478,7 +478,7 @@ const SignUp: React.FC = () => {
               Already have an account?{" "}
               <a
                 href="/login"
-                style={{ color: "#1abc9c", fontWeight: 600, textDecoration: "none" }}
+                style={{ color: "#10B981", fontWeight: 600, textDecoration: "none" }}
                 onClick={e => { e.preventDefault(); navigate("/login"); }}
               >
                 Log in here
@@ -507,7 +507,7 @@ const SignUp: React.FC = () => {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        background: "#1abc9c", padding: "0 5%", height: "44px",
+        background: "#10B981", padding: "0 5%", height: "44px",
         display: "flex", alignItems: "center",
         justifyContent: "space-between", flexShrink: 0
       }}>

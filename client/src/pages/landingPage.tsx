@@ -44,7 +44,7 @@ const GlobalStyle = () => (
     .nav-link:hover { opacity: 1; text-decoration: underline; }
 
     .btn-primary {
-      background: #1abc9c;
+      background: #10B981;
       color: white;
       border: none;
       border-radius: 6px;
@@ -57,15 +57,15 @@ const GlobalStyle = () => (
 
     .btn-outline {
       background: white;
-      color: #1abc9c;
-      border: 2px solid #1abc9c;
+      color: #10B981;
+      border: 2px solid #10B981;
       border-radius: 6px;
       padding: 11px 26px;
       font-weight: 700;
       font-size: 0.93rem;
       transition: all 0.2s;
     }
-    .btn-outline:hover { background: #1abc9c; color: white; transform: translateY(-1px); }
+    .btn-outline:hover { background: #10B981; color: white; transform: translateY(-1px); }
 
     .feature-card {
       background: white;
@@ -101,7 +101,7 @@ const GlobalStyle = () => (
     }
 
     .btn-cta {
-      background: #1abc9c;
+      background: #10B981;
       color: white;
       border: none;
       border-radius: 8px;
@@ -140,31 +140,31 @@ const GlobalStyle = () => (
 
 const HeroIllustration = () => (
   <svg viewBox="0 0 380 290" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }}>
-    <rect x="195" y="15" width="155" height="115" rx="8" fill="#e6f9f4" stroke="#1abc9c" strokeWidth="2.2" />
-    <line x1="272" y1="15" x2="272" y2="130" stroke="#1abc9c" strokeWidth="1.8" />
-    <line x1="195" y1="72" x2="350" y2="72" stroke="#1abc9c" strokeWidth="1.8" />
-    <path d="M185 22 L272 -2 L362 22" stroke="#1abc9c" strokeWidth="2" fill="none" />
-    <circle cx="305" cy="170" r="18" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="2" />
-    <rect x="294" y="153" width="22" height="13" rx="3" fill="white" stroke="#1abc9c" strokeWidth="1.5" />
-    <ellipse cx="305" cy="153" rx="13" ry="6" fill="white" stroke="#1abc9c" strokeWidth="1.5" />
-    <rect x="291" y="188" width="28" height="46" rx="6" fill="#1abc9c" />
-    <line x1="291" y1="200" x2="268" y2="218" stroke="#1abc9c" strokeWidth="2.8" strokeLinecap="round" />
-    <line x1="319" y1="200" x2="338" y2="214" stroke="#1abc9c" strokeWidth="2.8" strokeLinecap="round" />
+    <rect x="195" y="15" width="155" height="115" rx="8" fill="#e6f9f4" stroke="#10B981" strokeWidth="2.2" />
+    <line x1="272" y1="15" x2="272" y2="130" stroke="#10B981" strokeWidth="1.8" />
+    <line x1="195" y1="72" x2="350" y2="72" stroke="#10B981" strokeWidth="1.8" />
+    <path d="M185 22 L272 -2 L362 22" stroke="#10B981" strokeWidth="2" fill="none" />
+    <circle cx="305" cy="170" r="18" fill="#d1f5ea" stroke="#10B981" strokeWidth="2" />
+    <rect x="294" y="153" width="22" height="13" rx="3" fill="white" stroke="#10B981" strokeWidth="1.5" />
+    <ellipse cx="305" cy="153" rx="13" ry="6" fill="white" stroke="#10B981" strokeWidth="1.5" />
+    <rect x="291" y="188" width="28" height="46" rx="6" fill="#10B981" />
+    <line x1="291" y1="200" x2="268" y2="218" stroke="#10B981" strokeWidth="2.8" strokeLinecap="round" />
+    <line x1="319" y1="200" x2="338" y2="214" stroke="#10B981" strokeWidth="2.8" strokeLinecap="round" />
     <ellipse cx="258" cy="220" rx="12" ry="5" fill="#17a589" opacity="0.6" />
     <line x1="248" y1="220" x2="235" y2="218" stroke="#17a589" strokeWidth="2" strokeLinecap="round" />
-    <circle cx="155" cy="168" r="18" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="2" />
+    <circle cx="155" cy="168" r="18" fill="#d1f5ea" stroke="#10B981" strokeWidth="2" />
     <rect x="141" y="186" width="28" height="48" rx="6" fill="#0e9e79" />
     <line x1="141" y1="198" x2="112" y2="182" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
     <line x1="112" y1="182" x2="107" y2="238" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
-    <ellipse cx="107" cy="241" rx="13" ry="5" fill="#1abc9c" opacity="0.35" />
+    <ellipse cx="107" cy="241" rx="13" ry="5" fill="#10B981" opacity="0.35" />
     <line x1="169" y1="200" x2="185" y2="210" stroke="#0e9e79" strokeWidth="2.8" strokeLinecap="round" />
-    <circle cx="228" cy="240" r="14" fill="#d1f5ea" stroke="#1abc9c" strokeWidth="1.8" />
+    <circle cx="228" cy="240" r="14" fill="#d1f5ea" stroke="#10B981" strokeWidth="1.8" />
     <rect x="218" y="254" width="20" height="32" rx="5" fill="#a8edd8" />
-    <circle cx="75" cy="75" r="4" fill="#1abc9c" opacity="0.4" />
-    <circle cx="365" cy="255" r="5" fill="#1abc9c" opacity="0.3" />
+    <circle cx="75" cy="75" r="4" fill="#10B981" opacity="0.4" />
+    <circle cx="365" cy="255" r="5" fill="#10B981" opacity="0.3" />
     <circle cx="48" cy="195" r="3" fill="#0e9e79" opacity="0.35" />
-    <circle cx="380" cy="140" r="4" fill="#1abc9c" opacity="0.25" />
-    <circle cx="175" cy="30" r="3" fill="#1abc9c" opacity="0.3" />
+    <circle cx="380" cy="140" r="4" fill="#10B981" opacity="0.25" />
+    <circle cx="175" cy="30" r="3" fill="#10B981" opacity="0.3" />
   </svg>
 );
 
@@ -172,8 +172,8 @@ const VerifiedIcon = () => (
   <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
     <rect width="58" height="58" rx="11" fill="#e6f9f4" />
     <path d="M29 8 L35 17 L46 17 L39 24 L42 35 L29 28 L16 35 L19 24 L12 17 L23 17 Z"
-      fill="#1abc9c" opacity="0.25" stroke="#1abc9c" strokeWidth="1.8" strokeLinejoin="round" />
-    <path d="M20 29 L26 35 L38 23" stroke="#1abc9c" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+      fill="#10B981" opacity="0.25" stroke="#10B981" strokeWidth="1.8" strokeLinejoin="round" />
+    <path d="M20 29 L26 35 L38 23" stroke="#10B981" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -181,56 +181,56 @@ const HiringIcon = () => (
   <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
     <rect width="58" height="58" rx="11" fill="#e6f9f4" />
     <polygon points="29,10 33.5,21 46,21 36.5,27.5 40,39 29,32.5 18,39 21.5,27.5 12,21 24.5,21"
-      fill="#1abc9c" stroke="#1abc9c" strokeWidth="1.5" strokeLinejoin="round" />
+      fill="#10B981" stroke="#10B981" strokeWidth="1.5" strokeLinejoin="round" />
   </svg>
 );
 
 const PaymentIcon = () => (
   <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
     <rect width="58" height="58" rx="11" fill="#e6f9f4" />
-    <rect x="10" y="18" width="38" height="24" rx="5" fill="none" stroke="#1abc9c" strokeWidth="2.2" />
-    <line x1="10" y1="27" x2="48" y2="27" stroke="#1abc9c" strokeWidth="2.2" />
-    <rect x="16" y="32" width="11" height="5" rx="2.5" fill="#1abc9c" />
-    <rect x="30" y="32" width="6" height="5" rx="2.5" fill="#1abc9c" opacity="0.4" />
+    <rect x="10" y="18" width="38" height="24" rx="5" fill="none" stroke="#10B981" strokeWidth="2.2" />
+    <line x1="10" y1="27" x2="48" y2="27" stroke="#10B981" strokeWidth="2.2" />
+    <rect x="16" y="32" width="11" height="5" rx="2.5" fill="#10B981" />
+    <rect x="30" y="32" width="6" height="5" rx="2.5" fill="#10B981" opacity="0.4" />
   </svg>
 );
 
 const CommunityIcon = () => (
   <svg width="58" height="58" viewBox="0 0 58 58" fill="none">
     <rect width="58" height="58" rx="11" fill="#e6f9f4" />
-    <circle cx="20" cy="24" r="7" fill="none" stroke="#1abc9c" strokeWidth="2" />
-    <circle cx="38" cy="24" r="7" fill="none" stroke="#1abc9c" strokeWidth="2" />
-    <circle cx="29" cy="22" r="6" fill="#1abc9c" opacity="0.18" stroke="#1abc9c" strokeWidth="1.5" />
-    <path d="M7 46 Q20 36 33 44" stroke="#1abc9c" strokeWidth="2" fill="none" strokeLinecap="round" />
-    <path d="M25 46 Q38 36 51 44" stroke="#1abc9c" strokeWidth="2" fill="none" strokeLinecap="round" />
+    <circle cx="20" cy="24" r="7" fill="none" stroke="#10B981" strokeWidth="2" />
+    <circle cx="38" cy="24" r="7" fill="none" stroke="#10B981" strokeWidth="2" />
+    <circle cx="29" cy="22" r="6" fill="#10B981" opacity="0.18" stroke="#10B981" strokeWidth="1.5" />
+    <path d="M7 46 Q20 36 33 44" stroke="#10B981" strokeWidth="2" fill="none" strokeLinecap="round" />
+    <path d="M25 46 Q38 36 51 44" stroke="#10B981" strokeWidth="2" fill="none" strokeLinecap="round" />
   </svg>
 );
 
 const SearchPostIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-    <circle cx="40" cy="40" r="38" fill="#e6f9f4" stroke="#1abc9c" strokeWidth="2" />
-    <rect x="20" y="18" width="28" height="36" rx="4" fill="none" stroke="#1abc9c" strokeWidth="2" />
-    <line x1="26" y1="27" x2="42" y2="27" stroke="#1abc9c" strokeWidth="1.8" strokeLinecap="round" />
-    <line x1="26" y1="32" x2="42" y2="32" stroke="#1abc9c" strokeWidth="1.8" strokeLinecap="round" />
-    <line x1="26" y1="37" x2="36" y2="37" stroke="#1abc9c" strokeWidth="1.8" strokeLinecap="round" />
-    <circle cx="50" cy="52" r="9" fill="none" stroke="#1abc9c" strokeWidth="2" />
-    <line x1="57" y1="59" x2="63" y2="65" stroke="#1abc9c" strokeWidth="2.5" strokeLinecap="round" />
+    <circle cx="40" cy="40" r="38" fill="#e6f9f4" stroke="#10B981" strokeWidth="2" />
+    <rect x="20" y="18" width="28" height="36" rx="4" fill="none" stroke="#10B981" strokeWidth="2" />
+    <line x1="26" y1="27" x2="42" y2="27" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" />
+    <line x1="26" y1="32" x2="42" y2="32" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" />
+    <line x1="26" y1="37" x2="36" y2="37" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" />
+    <circle cx="50" cy="52" r="9" fill="none" stroke="#10B981" strokeWidth="2" />
+    <line x1="57" y1="59" x2="63" y2="65" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" />
   </svg>
 );
 
 const VerifyHireIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-    <circle cx="40" cy="40" r="38" fill="#1abc9c" />
+    <circle cx="40" cy="40" r="38" fill="#10B981" />
     <path d="M24 40 L35 52 L56 28" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const PayRateIcon = () => (
   <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-    <circle cx="40" cy="40" r="38" fill="#e6f9f4" stroke="#1abc9c" strokeWidth="2" />
-    <circle cx="40" cy="36" r="13" fill="none" stroke="#1abc9c" strokeWidth="2" />
-    <text x="36" y="42" fill="#1abc9c" fontSize="15" fontWeight="bold" fontFamily="Arial">$</text>
-    <path d="M18 60 Q28 50 40 55 Q52 60 62 50" stroke="#1abc9c" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+    <circle cx="40" cy="40" r="38" fill="#e6f9f4" stroke="#10B981" strokeWidth="2" />
+    <circle cx="40" cy="36" r="13" fill="none" stroke="#10B981" strokeWidth="2" />
+    <text x="36" y="42" fill="#10B981" fontSize="15" fontWeight="bold" fontFamily="Arial">$</text>
+    <path d="M18 60 Q28 50 40 55 Q52 60 62 50" stroke="#10B981" strokeWidth="2.2" fill="none" strokeLinecap="round" />
   </svg>
 );
 
@@ -249,7 +249,7 @@ const LandingPage: React.FC = () => {
 
       {/* ── STICKY NAVBAR ── */}
       <nav style={{
-        background: "#1abc9c",
+        background: "#10B981",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 6%", height: `${NAV_H}px`,
         position: "sticky", top: 0, zIndex: 100,
@@ -269,6 +269,8 @@ const LandingPage: React.FC = () => {
         <div className="nav-links" style={{ display: "flex", gap: "28px" }}>
           <button className="nav-link" onClick={handleScrollTo("section-home")}>Home</button>
           <button className="nav-link" onClick={handleScrollTo("section-testimonials")}>Testimonials</button>
+          <button className="nav-link" onClick={handleScrollTo("section-why")}>Why Us</button>
+          <button className="nav-link" onClick={handleScrollTo("section-how")}>How It Works</button>
         </div>
 
         {/* Auth buttons */}
@@ -283,7 +285,7 @@ const LandingPage: React.FC = () => {
           <button
             onClick={() => navigate("/signup")}
             style={{
-              background: "white", color: "#1abc9c", border: "none", borderRadius: "5px",
+              background: "white", color: "#10B981", border: "none", borderRadius: "5px",
               padding: "7px 16px", fontWeight: 700, fontSize: "0.88rem",
               letterSpacing: "0.4px", cursor: "pointer", transition: "opacity 0.2s"
             }}
@@ -308,13 +310,24 @@ const LandingPage: React.FC = () => {
         }}>
           <div style={{ flex: "1 1 320px", maxWidth: "520px" }}>
             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.18, fontWeight: 800 }}>
-              <span style={{ color: "#1abc9c" }}>Your Home,</span><br />
-              <span style={{ color: "#1abc9c" }}>Their Work</span><br />
+              <span style={{ color: "#10B981" }}>Your Home,</span><br />
+              <span style={{ color: "#10B981" }}>Their Work</span><br />
               <span style={{ color: "#222" }}>A Perfect Match</span>
             </h1>
             <div className="hero-btns" style={{ display: "flex", gap: "14px", marginTop: "32px", flexWrap: "wrap" }}>
-              <button className="btn-primary">Hire Workers</button>
-              <button className="btn-outline">Find Jobs</button>
+              <button
+                className="btn-primary"
+                onClick={() => navigate("/login")}
+              >
+                Hire Workers
+              </button>
+
+              <button
+                className="btn-outline"
+                onClick={() => navigate("/login")}
+              >
+                Find Jobs
+              </button>
             </div>
           </div>
           <div className="hero-illustration" style={{ flex: "1 1 280px", maxWidth: "440px" }}>
@@ -344,10 +357,10 @@ const LandingPage: React.FC = () => {
             gap: "22px"
           }}>
             {[
-              { icon: <VerifiedIcon />, title: "Verified Workers",              desc: "Every worker passes CNIC, Selfie and address verification before joining." },
-              { icon: <HiringIcon />,   title: "99% Hiring Success",            desc: "Most homeowners hire successfully within few days." },
-              { icon: <PaymentIcon />,  title: "Safe and Transparent Payments", desc: "Pay through our wallet system with receipts and dispute protection." },
-              { icon: <CommunityIcon />,title: "Trusted Community",             desc: "Trusted by hundreds of families and workers across Pakistan." },
+              { icon: <VerifiedIcon />, title: "Verified Workers", desc: "Every worker passes CNIC, Selfie and address verification before joining." },
+              { icon: <HiringIcon />, title: "99% Hiring Success", desc: "Most homeowners hire successfully within few days." },
+              { icon: <PaymentIcon />, title: "Safe and Transparent Payments", desc: "Pay through our wallet system with receipts and dispute protection." },
+              { icon: <CommunityIcon />, title: "Trusted Community", desc: "Trusted by hundreds of families and workers across Pakistan." },
             ].map((item, i) => (
               <div key={i} className="feature-card">
                 {item.icon}
@@ -382,7 +395,7 @@ const LandingPage: React.FC = () => {
             {[
               { icon: <SearchPostIcon />, title: "Search and Post", desc: "Search for worker and post a job in seconds" },
               { icon: <VerifyHireIcon />, title: "Verify and Hire", desc: "Verify the worker and hire with confidence" },
-              { icon: <PayRateIcon />,    title: "Pay and Rate",    desc: "Pay through our secure wallet and rate the worker" },
+              { icon: <PayRateIcon />, title: "Pay and Rate", desc: "Pay through our secure wallet and rate the worker" },
             ].map((step, i) => (
               <div key={i} className="step-card">
                 {step.icon}
@@ -412,15 +425,15 @@ const LandingPage: React.FC = () => {
             gap: "22px"
           }}>
             {[
-              { text: "Good but not very careful with things. Broke a vase once.",                                            name: "Anonymous",      role: "Homeowner" },
+              { text: "Good but not very careful with things. Broke a vase once.", name: "Anonymous", role: "Homeowner" },
               { text: "Our driver has been with us for over 3 years. Always punctual and keeps the car neat. Very trustworthy.", name: "Muhammad Aslam", role: "Owner of Qureshi Traders" },
-              { text: "She explains concepts very clearly. My grades have improved a lot.",                                    name: "Shahid Mehmood", role: "Bank Manager, HBL" },
+              { text: "She explains concepts very clearly. My grades have improved a lot.", name: "Shahid Mehmood", role: "Bank Manager, HBL" },
             ].map((t, i) => (
               <div key={i} className="testimonial-card">
                 <div style={{ marginBottom: "12px" }}>
                   <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
-                    <path d="M0 20 C0 13 3.5 6.5 11 0 L13 3 C8.5 6.5 6.5 11 7.5 15 L11 15 L11 20 Z" fill="#1abc9c" />
-                    <path d="M15 20 C15 13 18.5 6.5 26 0 L28 3 C23.5 6.5 21.5 11 22.5 15 L26 15 L26 20 Z" fill="#1abc9c" />
+                    <path d="M0 20 C0 13 3.5 6.5 11 0 L13 3 C8.5 6.5 6.5 11 7.5 15 L11 15 L11 20 Z" fill="#10B981" />
+                    <path d="M15 20 C15 13 18.5 6.5 26 0 L28 3 C23.5 6.5 21.5 11 22.5 15 L26 15 L26 20 Z" fill="#10B981" />
                   </svg>
                 </div>
                 <p style={{ color: "#444", fontSize: "0.88rem", lineHeight: 1.65, marginBottom: "18px" }}>{t.text}</p>
@@ -438,19 +451,24 @@ const LandingPage: React.FC = () => {
       <section
         id="section-cta"
         className="full-section"
-        style={{ background: "#1a1a1a", padding: "0 6%", textAlign: "center" }}
+        style={{ background: "white", padding: "0 6%", textAlign: "center" }}
       >
         <div>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontWeight: 800, color: "white", marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)", fontWeight: 800, color: "black", marginBottom: "32px" }}>
             Ready To Hire Your First Worker?
           </h2>
-          <button className="btn-cta">Get Started</button>
+          <button
+            className="btn-cta"
+            onClick={() => navigate("/login")}
+          >
+            Get Started
+          </button>
         </div>
       </section>
 
       {/* ── FOOTER ── */}
       <footer style={{
-        background: "#1abc9c",
+        background: "#10B981",
         padding: "16px 6%",
         display: "flex", alignItems: "center",
         justifyContent: "space-between", flexWrap: "wrap", gap: "10px"

@@ -153,7 +153,7 @@ export default function UserScreen() {
 
       {/* NAVBAR */}
       <nav style={{
-        background: "#1abc9c", display: "flex", alignItems: "center",
+        background: "#10B981", display: "flex", alignItems: "center",
         justifyContent: "space-between", padding: "0 24px", height: "58px",
         flexShrink: 0, position: "sticky", top: 0, zIndex: 50,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
@@ -333,7 +333,7 @@ export default function UserScreen() {
                     onClick={() => navigate(`/workerProfile/${gig.WORKER_ID}`)}
                     style={{ marginTop: "8px", background: "#1abc9c", color: "white", border: "none", borderRadius: "20px", padding: "8px 0", fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", width: "100%", fontFamily: "inherit" }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+                    onMouseLeave={e => (e.currentTarget.style.background = "#10B981")}
                   >
                     Available Now
                   </button>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Star, Facebook, Instagram, Linkedin, ChevronDown, CheckCircle } from "lucide-react";
+import { Search, Star, CheckCircle, Briefcase, Tag, DollarSign } from "lucide-react";
 
 const categories = ["Servants", "Drivers", "Baby Sitters", "Cooks", "Home Teachers", "Watchman", "Baby Sitters"];
 
@@ -23,6 +23,17 @@ interface Worker {
   bgColor: string;
 }
 
+// ✅ NEW: Gig type
+interface Gig {
+  GIG_ID: number;
+  WORKER_ID: number;
+  TITLE: string;
+  DESCRIPTION: string;
+  PRICE: number;
+  CATEGORY: string;
+  CREATED_AT: string;
+}
+
 const workers: Worker[] = [
   { id: 1, name: "Zohaib Ali", age: 25, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 28, rating: 5, experience: "1.5 years", salaryMin: 25000, salaryMax: 30000, badge: "CNIC Verified", image: "", bgColor: "#f0e6d3" },
   { id: 2, name: "Bilal Iqbal", age: 28, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 12, rating: 3, experience: "1.5 years", salaryMin: 15000, salaryMax: 20000, badge: "Top Rated Monthly", image: "", bgColor: "#d6e8f0" },
@@ -34,7 +45,6 @@ const workers: Worker[] = [
   { id: 8, name: "Zohaib Ali", age: 31, gender: "Male", role: "House Servant", memberSince: "2023", reviews: 22, rating: 2.5, experience: "1.5 years", salaryMin: 15000, salaryMax: 25000, badge: "CNIC Verified", image: "", bgColor: "#c8c8c8" },
 ];
 
-// Avatar illustrations for each card
 const avatarColors = [
   { skin: "#d4956a", hair: "#8B4513", shirt: "#e74c3c" },
   { skin: "#c8a882", hair: "#2c1810", shirt: "#2980b9" },
@@ -51,51 +61,39 @@ const WorkerAvatar = ({ index, bgColor }: { index: number; bgColor: string }) =>
   return (
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <rect width="200" height="200" fill={bgColor} />
-      {/* Hair back */}
       <ellipse cx="100" cy="72" rx="48" ry="52" fill={c.hair} />
-      {/* Neck */}
       <rect x="84" y="128" width="32" height="28" rx="4" fill={c.skin} />
-      {/* Shoulders / shirt */}
       <ellipse cx="100" cy="185" rx="65" ry="35" fill={c.shirt} />
       <rect x="35" y="155" width="130" height="50" fill={c.shirt} />
-      {/* Head */}
       <ellipse cx="100" cy="95" rx="42" ry="46" fill={c.skin} />
-      {/* Hair top */}
       <ellipse cx="100" cy="58" rx="42" ry="28" fill={c.hair} />
-      {/* Eyes */}
       <ellipse cx="85" cy="90" rx="5" ry="6" fill="#1a1a1a" />
       <ellipse cx="115" cy="90" rx="5" ry="6" fill="#1a1a1a" />
       <circle cx="87" cy="88" r="1.5" fill="white" />
       <circle cx="117" cy="88" r="1.5" fill="white" />
-      {/* Eyebrows */}
       <path d="M78 80 Q85 76 92 80" stroke={c.hair} strokeWidth="2.5" fill="none" strokeLinecap="round" />
       <path d="M108 80 Q115 76 122 80" stroke={c.hair} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-      {/* Nose */}
       <path d="M97 96 Q100 103 103 96" stroke="#b8865a" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      {/* Smile */}
       <path d="M86 112 Q100 122 114 112" stroke="#1a1a1a" strokeWidth="2" fill="none" strokeLinecap="round" />
-      {/* Ears */}
       <ellipse cx="58" cy="95" rx="7" ry="9" fill={c.skin} />
       <ellipse cx="142" cy="95" rx="7" ry="9" fill={c.skin} />
     </svg>
   );
 };
 
-const StarRating = ({ rating }: { rating: number }) => {
-  return (
-    <div style={{ display: "flex", gap: "2px" }}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          size={14}
-          fill={star <= Math.floor(rating) ? "#f59e0b" : star - 0.5 <= rating ? "#f59e0b" : "none"}
-          stroke="#f59e0b"
-          strokeWidth={1.5}
-        />
-      ))}
-    </div>
-  );
-};
+const StarRating = ({ rating }: { rating: number }) => (
+  <div style={{ display: "flex", gap: "2px" }}>
+    {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        size={14}
+        fill={star <= Math.floor(rating) ? "#f59e0b" : star - 0.5 <= rating ? "#f59e0b" : "none"}
+        stroke="#f59e0b"
+        strokeWidth={1.5}
+      />
+    ))}
+  </div>
+);
 
 const getBadgeStyle = (badge: BadgeType): { bg: string; color: string } => {
   if (badge === "Top Rated Monthly") return { bg: "#3b82f6", color: "white" };
@@ -103,11 +101,45 @@ const getBadgeStyle = (badge: BadgeType): { bg: string; color: string } => {
   return { bg: "#22c55e", color: "white" };
 };
 
+// ✅ Category colors for gig cards
+const categoryColors: Record<string, { bg: string; accent: string }> = {
+  Servants:      { bg: "#f0faf7", accent: "#1abc9c" },
+  Drivers:       { bg: "#eff6ff", accent: "#3b82f6" },
+  "Baby Sitters":{ bg: "#fff7ed", accent: "#f97316" },
+  Cooks:         { bg: "#fdf4ff", accent: "#a855f7" },
+  "Home Teachers":{ bg: "#fefce8", accent: "#eab308" },
+  Watchman:      { bg: "#f0f9ff", accent: "#0ea5e9" },
+  default:       { bg: "#f9fafb", accent: "#6b7280" },
+};
+
 export default function UserScreen() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("Servants");
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+
+  // ✅ NEW: Gigs state
+  const [gigs, setGigs] = useState<Gig[]>([]);
+  const [gigsLoading, setGigsLoading] = useState(true);
+
+  // ✅ NEW: Fetch gigs on mount
+  useEffect(() => {
+    const fetchGigs = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/api/gigs/all");
+        const data = await res.json();
+        if (res.ok) {
+          setGigs(data.gigs || []);
+        }
+      } catch (err) {
+        console.error("Failed to fetch gigs:", err);
+      } finally {
+        setGigsLoading(false);
+      }
+    };
+
+    fetchGigs();
+  }, []);
 
   const filteredWorkers = workers.filter(
     (w) =>
@@ -125,13 +157,11 @@ export default function UserScreen() {
         flexShrink: 0, position: "sticky", top: 0, zIndex: 50,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
       }}>
-        {/* Logo */}
         <span style={{ fontWeight: 800, fontSize: "1.4rem", color: "white", letterSpacing: "-0.3px", cursor: "pointer" }}
           onClick={() => navigate("/")}>
           HelpGhar.
         </span>
 
-        {/* Search */}
         <div style={{ flex: 1, maxWidth: "320px", margin: "0 24px", position: "relative" }}>
           <Search size={16} style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }} />
           <input
@@ -147,7 +177,6 @@ export default function UserScreen() {
           />
         </div>
 
-        {/* Register Yourself dropdown */}
         <div style={{ position: "relative" }}>
           <button
             onClick={() => setShowDropdown(!showDropdown)}
@@ -219,11 +248,17 @@ export default function UserScreen() {
       </div>
 
       {/* ── MAIN CONTENT ── */}
-      <main style={{ flex: 1, padding: "24px", maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
+      <main style={{ flex: 1, padding: "24px", maxWidth: "1100px", margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+
+        {/* ── WORKERS SECTION ── */}
+        <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#333", marginBottom: "16px", marginTop: 0 }}>
+          Available Workers
+        </h2>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gap: "20px"
+          gap: "20px",
+          marginBottom: "40px"
         }}>
           {filteredWorkers.map((worker, index) => {
             const badgeStyle = getBadgeStyle(worker.badge);
@@ -240,14 +275,10 @@ export default function UserScreen() {
                 onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.14)")}
                 onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 2px 10px rgba(0,0,0,0.08)")}
               >
-                {/* Photo */}
                 <div style={{ height: "160px", overflow: "hidden" }}>
                   <WorkerAvatar index={index} bgColor={worker.bgColor} />
                 </div>
-
-                {/* Info */}
                 <div style={{ padding: "12px 14px 14px", flex: 1, display: "flex", flexDirection: "column", gap: "5px" }}>
-                  {/* Name + Badge */}
                   <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
                     <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "#111" }}>{worker.name}</span>
                     <span style={{
@@ -260,33 +291,23 @@ export default function UserScreen() {
                       {worker.badge}
                     </span>
                   </div>
-
-                  {/* Meta */}
                   <p style={{ fontSize: "0.75rem", color: "#666", margin: 0, lineHeight: 1.4 }}>
                     {worker.age} years , {worker.gender} , {worker.role} ,<br />
                     Member since {worker.memberSince}.
                   </p>
-
-                  {/* Stars */}
                   <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                     <StarRating rating={worker.rating} />
                     <span style={{ fontSize: "0.72rem", color: "#888" }}>({worker.reviews} Reviews)</span>
                   </div>
-
-                  {/* Experience */}
                   <p style={{ fontSize: "0.75rem", color: "#555", margin: 0 }}>
                     Experience of {worker.experience}
                   </p>
-
-                  {/* Salary */}
                   <p style={{ fontSize: "0.78rem", color: "#1abc9c", fontWeight: 700, margin: 0 }}>
                     Rs. {worker.salaryMin.toLocaleString()} - {worker.salaryMax.toLocaleString()} /month
                   </p>
                   <p style={{ fontSize: "0.68rem", color: "#999", margin: 0 }}>
                     Negotiable based on requirements
                   </p>
-
-                  {/* Button */}
                   <button
                     onClick={() => navigate(`/workerProfile/${worker.id}`)}
                     style={{
@@ -311,6 +332,133 @@ export default function UserScreen() {
             </div>
           )}
         </div>
+
+        {/* ✅ ── GIGS SECTION ── */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#333", margin: 0 }}>
+            Posted Gigs
+          </h2>
+          <span style={{ fontSize: "0.78rem", color: "#888" }}>
+            {gigs.length} gig{gigs.length !== 1 ? "s" : ""} available
+          </span>
+        </div>
+
+        {gigsLoading ? (
+          <div style={{ textAlign: "center", padding: "40px 0", color: "#aaa", fontSize: "0.9rem" }}>
+            Loading gigs...
+          </div>
+        ) : gigs.length === 0 ? (
+          <div style={{
+            textAlign: "center", padding: "40px 0", color: "#bbb",
+            fontSize: "0.9rem", background: "white", borderRadius: "12px",
+            border: "1px dashed #e5e7eb"
+          }}>
+            No gigs posted yet.
+          </div>
+        ) : (
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+            gap: "16px"
+          }}>
+            {gigs.map((gig) => {
+              const colors = categoryColors[gig.CATEGORY] || categoryColors["default"];
+              return (
+                <div
+                  key={gig.GIG_ID}
+                  style={{
+                    background: "white",
+                    borderRadius: "12px",
+                    border: `1px solid #e5e7eb`,
+                    borderTop: `3px solid ${colors.accent}`,
+                    padding: "16px",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    transition: "box-shadow 0.2s, transform 0.2s",
+                    cursor: "pointer"
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.12)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  {/* Title + Category */}
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "8px" }}>
+                    <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#111", margin: 0, lineHeight: 1.3 }}>
+                      {gig.TITLE}
+                    </h3>
+                    <span style={{
+                      background: colors.bg, color: colors.accent,
+                      fontSize: "0.65rem", fontWeight: 700,
+                      padding: "3px 8px", borderRadius: "10px",
+                      whiteSpace: "nowrap", flexShrink: 0,
+                      border: `1px solid ${colors.accent}22`
+                    }}>
+                      {gig.CATEGORY || "General"}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p style={{
+                    fontSize: "0.78rem", color: "#666", margin: 0,
+                    lineHeight: 1.5,
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden"
+                  }}>
+                    {gig.DESCRIPTION}
+                  </p>
+
+                  {/* Divider */}
+                  <div style={{ borderTop: "1px solid #f0f0f0" }} />
+
+                  {/* Price + Worker ID row */}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                      <DollarSign size={13} color={colors.accent} />
+                      <span style={{ fontSize: "0.88rem", fontWeight: 700, color: colors.accent }}>
+                        Rs. {Number(gig.PRICE).toLocaleString()}
+                      </span>
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                      <Briefcase size={11} color="#aaa" />
+                      <span style={{ fontSize: "0.7rem", color: "#aaa" }}>Worker #{gig.WORKER_ID}</span>
+                    </div>
+                  </div>
+
+                  {/* Contact Button */}
+                  <button
+                    style={{
+                      background: colors.accent,
+                      color: "white",
+                      border: "none",
+                      borderRadius: "20px",
+                      padding: "7px 0",
+                      fontSize: "0.8rem",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      width: "100%",
+                      fontFamily: "inherit",
+                      transition: "opacity 0.2s"
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
+                    onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+                    onClick={() => navigate(`/workerProfile/${gig.WORKER_ID}`)}
+                  >
+                    View Worker
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </main>
 
       {/* ── FOOTER ── */}
@@ -320,13 +468,11 @@ export default function UserScreen() {
         flexWrap: "wrap", gap: "10px", flexShrink: 0
       }}>
         <div style={{ display: "flex", gap: "10px" }}>
-          {/* Facebook */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
-          {/* Instagram */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -334,7 +480,6 @@ export default function UserScreen() {
               <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
             </svg>
           </a>
-          {/* LinkedIn */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>

@@ -18,12 +18,24 @@ exports.createGig = async (req, res) => {
 
     res.status(201).json({ message: "Gig created successfully ✅" });
   } catch (err) {
-    console.error(err);
     console.error("🔥 FULL ERROR:", err);
+    res.status(500).json({
+      message: "Server error",
+      error: err.message,
+    });
+  }
+};
 
-res.status(500).json({
-  message: "Server error",
-  error: err.message,
-});
+// ✅ NEW: Get all gigs
+exports.getAllGigs = async (req, res) => {
+  try {
+    const gigs = await gigModel.getAllGigs();
+    res.status(200).json({ gigs });
+  } catch (err) {
+    console.error("🔥 ERROR (getAllGigs):", err);
+    res.status(500).json({
+      message: "Server error",
+      error: err.message,
+    });
   }
 };

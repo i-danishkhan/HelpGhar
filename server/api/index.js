@@ -16,10 +16,12 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
+
 app.use("/api/gigs", gigRoutes);
 
 // ✅ SECOND: body parser
-app.use(express.json());
+
 app.use("/uploads", express.static("uploads")); // 👈 for images
 
 // Routes

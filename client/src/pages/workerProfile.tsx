@@ -30,7 +30,7 @@ export default function WorkerProfile() {
       <aside className="w-52 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
-            <span className="text-white text-xl font-bold tracking-tight">
+            <span className="text-[#E9FFF1] text-xl font-bold tracking-tight">
               Help<span className="text-green-400">Ghar.</span>
             </span>
           </div>
@@ -44,8 +44,8 @@ export default function WorkerProfile() {
                 }}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
                   activeNav === label
-                    ? "bg-green-500 text-white"
-                    : "text-gray-400 hover:bg-gray-700 hover:text-white"
+                    ? "bg-green-500 text-[#E9FFF1]"
+                    : "text-gray-400 hover:bg-gray-700 hover:text-[#E9FFF1]"
                 }`}
               >
                 <Icon size={16} />
@@ -54,7 +54,7 @@ export default function WorkerProfile() {
             ))}
           </nav>
         </div>
-        <button className="flex items-center gap-2 text-gray-400 hover:text-white text-sm px-3 py-2 rounded-lg hover:bg-gray-700 transition-all w-full">
+        <button className="flex items-center gap-2 text-gray-400 hover:text-[#E9FFF1] text-sm px-3 py-2 rounded-lg hover:bg-gray-700 transition-all w-full">
           <LogOut size={16} />
           Logout
         </button>
@@ -66,28 +66,28 @@ export default function WorkerProfile() {
         <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
-            <p className="text-sm font-semibold text-white">Zohaib Ali</p>
+            <p className="text-sm font-semibold text-[#E9FFF1]">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-gray-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-500 transition-all">
+            <button className="bg-gray-600 text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-500 transition-all">
               Switch to Hiring
             </button>
-            <button className="relative text-gray-400 hover:text-white">
+            <button className="relative text-gray-400 hover:text-[#E9FFF1]">
               <Bell size={18} />
               <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full" />
             </button>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">
+              <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-[#E9FFF1] text-xs font-bold">
                 ZA
               </div>
-              <span className="text-sm font-medium text-white">Zohaib Ali</span>
+              <span className="text-sm font-medium text-[#E9FFF1]">Zohaib Ali</span>
             </div>
           </div>
         </header>
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto p-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 max-w-5xl mx-auto">
+          <div className="bg-##E9FFF1 rounded-2xl shadow-sm border border-gray-100 p-6 max-w-5xl mx-auto">
 
             {/* Profile Header */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-100">
@@ -104,12 +104,12 @@ export default function WorkerProfile() {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Zohaib Ali</h2>
                   <p className="text-sm text-gray-500 mb-2">Worker</p>
-                  <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="bg-green-500 text-[#E9FFF1] text-xs font-semibold px-3 py-1 rounded-full">
                     Active
                   </span>
                 </div>
               </div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all shrink-0">
+              <button className="bg-blue-600 hover:bg-blue-700 text-[#E9FFF1] text-sm font-semibold px-5 py-2 rounded-lg transition-all shrink-0">
                 Display Gig
               </button>
             </div>
@@ -152,7 +152,7 @@ export default function WorkerProfile() {
                   ))}
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-500">Account Status:</span>
-                    <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="bg-green-500 text-[#E9FFF1] text-xs font-semibold px-3 py-1 rounded-full">
                       Active
                     </span>
                   </div>
@@ -187,7 +187,7 @@ export default function WorkerProfile() {
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${
+                        className={`inline-block h-4 w-4 transform rounded-full bg-##E9FFF1 shadow transition-transform ${
                           twoFactor ? "translate-x-6" : "translate-x-1"
                         }`}
                       />
@@ -201,14 +201,14 @@ export default function WorkerProfile() {
                 <h3 className="text-base font-bold text-gray-900 mb-4">Account Section</h3>
                 <div className="flex flex-col gap-3">
                   <div className="flex gap-3">
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all">
+                    <button className="bg-blue-600 hover:bg-blue-700 text-[#E9FFF1] text-sm font-semibold px-5 py-2 rounded-lg transition-all">
                       Edit
                     </button>
-                    <button className="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all">
+                    <button className="bg-red-500 hover:bg-red-600 text-[#E9FFF1] text-sm font-semibold px-5 py-2 rounded-lg transition-all">
                       Suspend Account
                     </button>
                   </div>
-                  <button className="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-all w-fit">
+                  <button className="bg-red-500 hover:bg-red-600 text-[#E9FFF1] text-sm font-semibold px-5 py-2 rounded-lg transition-all w-fit">
                     Delete Account
                   </button>
                 </div>

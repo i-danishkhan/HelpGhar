@@ -26,7 +26,6 @@ import {
   Cell,
 } from "recharts";
 import { PieChart, Pie } from "recharts";
-import path from "path";
 
 const performanceData = [
   { month: "January", value: 2.8 },
@@ -71,7 +70,7 @@ export default function WorkerDashboard() {
         {/* Logo */}
         <div>
           <div className="mb-8 px-2">
-            <span className="text-white text-xl font-bold tracking-tight">
+            <span className="text-[#E9FFF1] text-xl font-bold tracking-tight">
               Help<span className="text-green-400">Ghar.</span>
             </span>
           </div>
@@ -84,8 +83,8 @@ export default function WorkerDashboard() {
                 onClick={() => {setActiveNav(label); navigate(path || "/workerDashboard")}}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
                   activeNav === label
-                    ? "bg-green-500 text-white"
-                    : "text-gray-400 hover:bg-gray-800 hover:text-white"
+                    ? "bg-green-500 text-[#E9FFF1]"
+                    : "text-gray-400 hover:bg-gray-800 hover:text-[#E9FFF1]"
                 }`}
               >
                 <Icon size={16} />
@@ -97,7 +96,7 @@ export default function WorkerDashboard() {
 
         <button
   onClick={() => navigate("/NoMatch")}
-  className="flex items-center gap-2 text-gray-400 hover:text-white text-sm px-3 py-2 rounded-lg hover:bg-gray-800 transition-all w-full"
+  className="flex items-center gap-2 text-gray-400 hover:text-[#E9FFF1] text-sm px-3 py-2 rounded-lg hover:bg-gray-800 transition-all w-full"
 >
   <LogOut size={16} />
   Logout
@@ -107,13 +106,13 @@ export default function WorkerDashboard() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-##E9FFF1 border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-gray-800">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-gray-900 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
+            <button className="bg-gray-900 text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
               Switch to Hiring
             </button>
             <button className="relative text-gray-500 hover:text-gray-700">
@@ -121,7 +120,7 @@ export default function WorkerDashboard() {
               <span className="absolute -top-1 -right-1 bg-green-500 w-2 h-2 rounded-full" />
             </button>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">
+              <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-[#E9FFF1] text-xs font-bold">
                 ZA
               </div>
               <span className="text-sm font-medium text-gray-700">
@@ -139,7 +138,7 @@ export default function WorkerDashboard() {
               Worker Dashboard
             </h1>
             <div className="flex gap-2">
-              <button className="bg-green-500 text-white text-xs px-3 py-1.5 rounded-md font-medium hover:bg-green-600 transition-all">
+              <button className="bg-green-500 text-[#E9FFF1] text-xs px-3 py-1.5 rounded-md font-medium hover:bg-green-600 transition-all">
                 This Year
               </button>
               <button className="border border-gray-300 text-gray-600 text-xs px-3 py-1.5 rounded-md font-medium flex items-center gap-1 hover:bg-gray-50 transition-all">
@@ -152,7 +151,7 @@ export default function WorkerDashboard() {
           {/* Top Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             {/* Available Job Postings */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Available job posting
               </p>
@@ -163,7 +162,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Recommended Jobs */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Recomended Jobs
               </p>
@@ -182,7 +181,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Wallet Balance */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Wallet Balance
               </p>
@@ -194,7 +193,7 @@ export default function WorkerDashboard() {
           {/* Middle Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             {/* Number of Requests */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Number of requests
               </p>
@@ -208,7 +207,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Number of Jobs */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Number of Jobs
               </p>
@@ -225,7 +224,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Incentives & Discounts */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-xs text-gray-500 font-medium mb-3">
                 Incentives &amp; Discounts
               </p>
@@ -249,7 +248,7 @@ export default function WorkerDashboard() {
           {/* Bottom Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Attendance Overview */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-sm font-semibold text-gray-700 mb-4">
                 Attendance Overview
               </p>
@@ -289,7 +288,7 @@ export default function WorkerDashboard() {
             </div>
 
             {/* Performance */}
-            <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div className="bg-##E9FFF1 rounded-xl p-5 shadow-sm border border-gray-100">
               <p className="text-sm font-semibold text-gray-700 mb-1">
                 Performance
               </p>
@@ -322,7 +321,7 @@ export default function WorkerDashboard() {
                       border: "none",
                       boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
                     }}
-                    formatter={(value: number) => [value, "Score"]}
+                    formatter={(value) => [Number(value ?? 0), "Score"]}
                   />
                   <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                     {performanceData.map((entry, index) => (

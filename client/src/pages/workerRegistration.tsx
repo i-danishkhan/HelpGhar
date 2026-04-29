@@ -11,13 +11,13 @@ const Navbar = () => {
       justifyContent: "space-between", padding: "0 5%",
       height: "52px", flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
     }}>
-      <span style={{ fontWeight: 800, fontSize: "1.3rem", color: "white", letterSpacing: "-0.3px", cursor: "pointer" }}
+      <span style={{ fontWeight: 800, fontSize: "1.3rem", color: "#E9FFF1", letterSpacing: "-0.3px", cursor: "pointer" }}
         onClick={() => navigate("/")}>
         HelpGhar.
       </span>
       <button
         onClick={() => navigate("/userScreen")}
-        style={{ background: "none", border: "none", color: "white", fontWeight: 700, fontSize: "0.95rem", cursor: "pointer" }}
+        style={{ background: "none", border: "none", color: "#E9FFF1", fontWeight: 700, fontSize: "0.95rem", cursor: "pointer" }}
       >
         Register Yourself
       </button>
@@ -33,23 +33,23 @@ const Footer = () => (
     <div style={{ display: "flex", gap: "10px" }}>
       {/* Facebook */}
       <a href="#" style={{ width: "28px", height: "28px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#E9FFF1"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
       </a>
       {/* Instagram */}
       <a href="#" style={{ width: "28px", height: "28px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
-          <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E9FFF1" strokeWidth="2" strokeLinecap="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#E9FFF1" stroke="none"/>
         </svg>
       </a>
       {/* LinkedIn */}
       <a href="#" style={{ width: "28px", height: "28px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#E9FFF1">
           <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
           <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
         </svg>
       </a>
     </div>
-    <p style={{ color: "white", fontSize: "0.8rem", opacity: 0.92 }}>@2025 All Copyrights are Reserved</p>
+    <p style={{ color: "#E9FFF1", fontSize: "0.8rem", opacity: 0.92 }}>@2025 All Copyrights are Reserved</p>
   </footer>
 );
 
@@ -57,7 +57,7 @@ const Footer = () => (
 const inputStyle: React.CSSProperties = {
   width: "100%", border: "1.5px solid #ccc", borderRadius: "6px",
   padding: "7px 11px", fontSize: "0.88rem", outline: "none",
-  background: "white", color: "#222", boxSizing: "border-box",
+  background: "#E9FFF1", color: "#222", boxSizing: "border-box",
   fontFamily: "inherit"
 };
 
@@ -250,7 +250,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
                   border: "1.5px solid #ccc", borderRadius: "6px",
                   height: "80px", display: "flex", flexDirection: "column",
                   alignItems: "center", justifyContent: "center",
-                  cursor: "pointer", background: "white", gap: "4px"
+                  cursor: "pointer", background: "#E9FFF1", gap: "4px"
                 }}
               >
                 <Camera size={22} color="#888" />
@@ -266,7 +266,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
             <button
               type="submit"
               style={{
-                background: "#10B981", color: "white", border: "none",
+                background: "#10B981", color: "#E9FFF1", border: "none",
                 borderRadius: "6px", padding: "12px 36px", fontSize: "0.95rem",
                 fontWeight: 600, cursor: "pointer", fontFamily: "inherit"
               }}
@@ -318,7 +318,7 @@ const Congratulations = ({ onDisplayProfile }: { onDisplayProfile: () => void })
       <button
         onClick={onDisplayProfile}
         style={{
-          background: "#10B981", color: "white", border: "none",
+          background: "#10B981", color: "#E9FFF1", border: "none",
           borderRadius: "6px", padding: "12px 36px", fontSize: "0.95rem",
           fontWeight: 600, cursor: "pointer", fontFamily: "inherit"
         }}

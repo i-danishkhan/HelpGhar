@@ -65,8 +65,8 @@ const WorkerAvatar = ({ index, bgColor }: { index: number; bgColor: string }) =>
       {/* Eyes */}
       <ellipse cx="85" cy="90" rx="5" ry="6" fill="#1a1a1a" />
       <ellipse cx="115" cy="90" rx="5" ry="6" fill="#1a1a1a" />
-      <circle cx="87" cy="88" r="1.5" fill="white" />
-      <circle cx="117" cy="88" r="1.5" fill="white" />
+      <circle cx="87" cy="88" r="1.5" fill="##E9FFF1" />
+      <circle cx="117" cy="88" r="1.5" fill="##E9FFF1" />
       {/* Eyebrows */}
       <path d="M78 80 Q85 76 92 80" stroke={c.hair} strokeWidth="2.5" fill="none" strokeLinecap="round" />
       <path d="M108 80 Q115 76 122 80" stroke={c.hair} strokeWidth="2.5" fill="none" strokeLinecap="round" />
@@ -98,9 +98,9 @@ const StarRating = ({ rating }: { rating: number }) => {
 };
 
 const getBadgeStyle = (badge: BadgeType): { bg: string; color: string } => {
-  if (badge === "Top Rated Monthly") return { bg: "#3b82f6", color: "white" };
-  if (badge === "Top Rated Yearly") return { bg: "#3b82f6", color: "white" };
-  return { bg: "#22c55e", color: "white" };
+  if (badge === "Top Rated Monthly") return { bg: "#3b82f6", color: "##E9FFF1" };
+  if (badge === "Top Rated Yearly") return { bg: "#3b82f6", color: "##E9FFF1" };
+  return { bg: "#22c55e", color: "##E9FFF1" };
 };
 
 export default function UserScreen() {
@@ -120,13 +120,13 @@ export default function UserScreen() {
 
       {/* ── NAVBAR ── */}
       <nav style={{
-        background: "#10B981", display: "flex", alignItems: "center",
+        background: "#1abc9c", display: "flex", alignItems: "center",
         justifyContent: "space-between", padding: "0 24px", height: "58px",
         flexShrink: 0, position: "sticky", top: 0, zIndex: 50,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
       }}>
         {/* Logo */}
-        <span style={{ fontWeight: 800, fontSize: "1.4rem", color: "white", letterSpacing: "-0.3px", cursor: "pointer" }}
+        <span style={{ fontWeight: 800, fontSize: "1.4rem", color: "##E9FFF1", letterSpacing: "-0.3px", cursor: "pointer" }}
           onClick={() => navigate("/")}>
           HelpGhar.
         </span>
@@ -142,7 +142,7 @@ export default function UserScreen() {
             style={{
               width: "100%", padding: "8px 12px 8px 36px", borderRadius: "20px",
               border: "none", outline: "none", fontSize: "0.88rem",
-              background: "white", color: "#222", boxSizing: "border-box"
+              background: "##E9FFF1", color: "#222", boxSizing: "border-box"
             }}
           />
         </div>
@@ -152,7 +152,7 @@ export default function UserScreen() {
           <button
             onClick={() => setShowDropdown(!showDropdown)}
             style={{
-              background: "transparent", border: "none", color: "white",
+              background: "transparent", border: "none", color: "##E9FFF1",
               fontWeight: 700, fontSize: "0.95rem", cursor: "pointer",
               display: "flex", alignItems: "center", gap: "4px"
             }}
@@ -163,7 +163,7 @@ export default function UserScreen() {
           {showDropdown && (
             <div style={{
               position: "absolute", right: 0, top: "calc(100% + 8px)",
-              background: "white", borderRadius: "8px", minWidth: "160px",
+              background: "##E9FFF1", borderRadius: "8px", minWidth: "160px",
               boxShadow: "0 4px 20px rgba(0,0,0,0.15)", overflow: "hidden", zIndex: 100
             }}>
               {["As a Worker", "As a Customer", "Log Out"].map((item) => (
@@ -195,7 +195,7 @@ export default function UserScreen() {
 
       {/* ── CATEGORY NAV ── */}
       <div style={{
-        background: "white", borderBottom: "2px solid #e5e7eb",
+        background: "##E9FFF1", borderBottom: "2px solid #e5e7eb",
         padding: "0 24px", overflowX: "auto", whiteSpace: "nowrap"
       }}>
         <div style={{ display: "inline-flex", gap: "0" }}>
@@ -206,8 +206,8 @@ export default function UserScreen() {
               style={{
                 background: "none", border: "none", cursor: "pointer",
                 padding: "14px 20px", fontSize: "0.9rem", fontWeight: 600,
-                color: activeCategory === cat ? "#10B981" : "#555",
-                borderBottom: activeCategory === cat ? "2.5px solid #10B981" : "2.5px solid transparent",
+                color: activeCategory === cat ? "#1abc9c" : "#555",
+                borderBottom: activeCategory === cat ? "2.5px solid #1abc9c" : "2.5px solid transparent",
                 transition: "all 0.2s", fontFamily: "inherit",
                 textDecoration: activeCategory === cat ? "underline" : "none"
               }}
@@ -231,7 +231,7 @@ export default function UserScreen() {
               <div
                 key={worker.id}
                 style={{
-                  background: "white", borderRadius: "12px",
+                  background: "##E9FFF1", borderRadius: "12px",
                   overflow: "hidden", boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
                   display: "flex", flexDirection: "column",
                   transition: "box-shadow 0.2s",
@@ -279,7 +279,7 @@ export default function UserScreen() {
                   </p>
 
                   {/* Salary */}
-                  <p style={{ fontSize: "0.78rem", color: "#10B981", fontWeight: 700, margin: 0 }}>
+                  <p style={{ fontSize: "0.78rem", color: "#1abc9c", fontWeight: 700, margin: 0 }}>
                     Rs. {worker.salaryMin.toLocaleString()} - {worker.salaryMax.toLocaleString()} /month
                   </p>
                   <p style={{ fontSize: "0.68rem", color: "#999", margin: 0 }}>
@@ -290,13 +290,13 @@ export default function UserScreen() {
                   <button
                     onClick={() => navigate(`/workerProfile/${worker.id}`)}
                     style={{
-                      marginTop: "8px", background: "#10B981", color: "white",
+                      marginTop: "8px", background: "#1abc9c", color: "##E9FFF1",
                       border: "none", borderRadius: "20px", padding: "8px 0",
                       fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
                       width: "100%", transition: "background 0.2s", fontFamily: "inherit"
                     }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "#10B981")}
+                    onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
                   >
                     Available Now
                   </button>
@@ -315,35 +315,35 @@ export default function UserScreen() {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        background: "#10B981", padding: "14px 24px",
+        background: "#1abc9c", padding: "14px 24px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         flexWrap: "wrap", gap: "10px", flexShrink: 0
       }}>
         <div style={{ display: "flex", gap: "10px" }}>
           {/* Facebook */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="##E9FFF1">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
           {/* Instagram */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="##E9FFF1" strokeWidth="2" strokeLinecap="round">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
               <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="##E9FFF1" stroke="none"/>
             </svg>
           </a>
           {/* LinkedIn */}
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="##E9FFF1">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
               <rect x="2" y="9" width="4" height="12"/>
               <circle cx="4" cy="4" r="2"/>
             </svg>
           </a>
         </div>
-        <p style={{ color: "white", fontSize: "0.82rem", opacity: 0.92 }}>
+        <p style={{ color: "##E9FFF1", fontSize: "0.82rem", opacity: 0.92 }}>
           @2025 All Copyrights are Reserved
         </p>
       </footer>

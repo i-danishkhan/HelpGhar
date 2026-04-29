@@ -120,7 +120,7 @@ export default function UserScreen() {
 
       {/* ── NAVBAR ── */}
       <nav style={{
-        background: "#1abc9c", display: "flex", alignItems: "center",
+        background: "#10B981", display: "flex", alignItems: "center",
         justifyContent: "space-between", padding: "0 24px", height: "58px",
         flexShrink: 0, position: "sticky", top: 0, zIndex: 50,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
@@ -206,8 +206,8 @@ export default function UserScreen() {
               style={{
                 background: "none", border: "none", cursor: "pointer",
                 padding: "14px 20px", fontSize: "0.9rem", fontWeight: 600,
-                color: activeCategory === cat ? "#1abc9c" : "#555",
-                borderBottom: activeCategory === cat ? "2.5px solid #1abc9c" : "2.5px solid transparent",
+                color: activeCategory === cat ? "#10B981" : "#555",
+                borderBottom: activeCategory === cat ? "2.5px solid #10B981" : "2.5px solid transparent",
                 transition: "all 0.2s", fontFamily: "inherit",
                 textDecoration: activeCategory === cat ? "underline" : "none"
               }}
@@ -279,7 +279,7 @@ export default function UserScreen() {
                   </p>
 
                   {/* Salary */}
-                  <p style={{ fontSize: "0.78rem", color: "#1abc9c", fontWeight: 700, margin: 0 }}>
+                  <p style={{ fontSize: "0.78rem", color: "#10B981", fontWeight: 700, margin: 0 }}>
                     Rs. {worker.salaryMin.toLocaleString()} - {worker.salaryMax.toLocaleString()} /month
                   </p>
                   <p style={{ fontSize: "0.68rem", color: "#999", margin: 0 }}>
@@ -290,13 +290,13 @@ export default function UserScreen() {
                   <button
                     onClick={() => navigate(`/workerProfile/${worker.id}`)}
                     style={{
-                      marginTop: "8px", background: "#1abc9c", color: "white",
+                      marginTop: "8px", background: "#10B981", color: "white",
                       border: "none", borderRadius: "20px", padding: "8px 0",
                       fontSize: "0.82rem", fontWeight: 600, cursor: "pointer",
                       width: "100%", transition: "background 0.2s", fontFamily: "inherit"
                     }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+                    onMouseLeave={e => (e.currentTarget.style.background = "#10B981")}
                   >
                     Available Now
                   </button>
@@ -315,7 +315,7 @@ export default function UserScreen() {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        background: "#1abc9c", padding: "14px 24px",
+        background: "#10B981", padding: "14px 24px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         flexWrap: "wrap", gap: "10px", flexShrink: 0
       }}>

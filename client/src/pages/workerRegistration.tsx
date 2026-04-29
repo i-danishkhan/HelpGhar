@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <nav style={{
-      background: "#1abc9c", display: "flex", alignItems: "center",
+      background: "#10B981", display: "flex", alignItems: "center",
       justifyContent: "space-between", padding: "0 5%",
       height: "52px", flexShrink: 0, boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
     }}>
@@ -27,7 +27,7 @@ const Navbar = () => {
 
 const Footer = () => (
   <footer style={{
-    background: "#1abc9c", padding: "0 5%", height: "44px",
+    background: "#10B981", padding: "0 5%", height: "44px",
     display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0
   }}>
     <div style={{ display: "flex", gap: "10px" }}>
@@ -266,7 +266,7 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
             <button
               type="submit"
               style={{
-                background: "#1abc9c", color: "white", border: "none",
+                background: "#10B981", color: "white", border: "none",
                 borderRadius: "6px", padding: "12px 36px", fontSize: "0.95rem",
                 fontWeight: 600, cursor: "pointer", fontFamily: "inherit"
               }}
@@ -306,7 +306,7 @@ const Congratulations = ({ onDisplayProfile }: { onDisplayProfile: () => void })
     alignItems: "center", justifyContent: "center"
   }}>
     <div style={{ textAlign: "center", maxWidth: "480px", padding: "0 24px" }}>
-      <h2 style={{ fontSize: "1.6rem", fontWeight: 800, color: "#1abc9c", marginBottom: "14px" }}>
+      <h2 style={{ fontSize: "1.6rem", fontWeight: 800, color: "#10B981", marginBottom: "14px" }}>
         Congratulations!
       </h2>
       <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#111", marginBottom: "12px" }}>
@@ -318,7 +318,7 @@ const Congratulations = ({ onDisplayProfile }: { onDisplayProfile: () => void })
       <button
         onClick={onDisplayProfile}
         style={{
-          background: "#1abc9c", color: "white", border: "none",
+          background: "#10B981", color: "white", border: "none",
           borderRadius: "6px", padding: "12px 36px", fontSize: "0.95rem",
           fontWeight: 600, cursor: "pointer", fontFamily: "inherit"
         }}

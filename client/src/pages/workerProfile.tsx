@@ -27,17 +27,17 @@ export default function WorkerProfile() {
   const [activeNav, setActiveNav] = useState("Profile");
   const [twoFactor, setTwoFactor] = useState(true);
   const [showModal, setShowModal] = useState(false);
-const [gigData, setGigData] = useState({
-  title: "",
-  description: "",
-  price: "",
-  category: "",
-});
+  const [gigData, setGigData] = useState({
+    title: "",
+    description: "",
+    price: "",
+    category: "",
+  });
 
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-52 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
+      <aside className="w-52 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
             <span className="text-[#E9FFF1] text-xl font-bold tracking-tight">
@@ -72,7 +72,7 @@ const [gigData, setGigData] = useState({
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-[#E9FFF1]">Zohaib Ali</p>

@@ -88,7 +88,7 @@ const StarRating = ({ rating }: { rating: number }) => (
 
 const getBadgeStyle = (badge: BadgeType) => {
   if (badge === "Top Rated Monthly" || badge === "Top Rated Yearly") return { bg: "#3b82f6", color: "white" };
-  return { bg: "#22c55e", color: "white" };
+  return { bg: "#10B981", color: "white" };
 };
 
 // ✅ Placeholder when gig has no image
@@ -144,7 +144,7 @@ export default function UserScreen() {
 
       {/* NAVBAR */}
       <nav style={{
-        background: "#1abc9c", display: "flex", alignItems: "center",
+        background: "#10B981", display: "flex", alignItems: "center",
         justifyContent: "space-between", padding: "0 24px", height: "58px",
         flexShrink: 0, position: "sticky", top: 0, zIndex: 50,
         boxShadow: "0 2px 8px rgba(0,0,0,0.12)"
@@ -190,7 +190,7 @@ export default function UserScreen() {
         <div style={{ display: "inline-flex" }}>
           {categories.map((cat) => (
             <button key={cat + Math.random()} onClick={() => setActiveCategory(cat)}
-              style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 20px", fontSize: "0.9rem", fontWeight: 600, color: activeCategory === cat ? "#1abc9c" : "#555", borderBottom: activeCategory === cat ? "2.5px solid #1abc9c" : "2.5px solid transparent", transition: "all 0.2s", fontFamily: "inherit", textDecoration: activeCategory === cat ? "underline" : "none" }}>
+              style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 20px", fontSize: "0.9rem", fontWeight: 600, color: activeCategory === cat ? "#10B981" : "#555", borderBottom: activeCategory === cat ? "2.5px solid #10B981" : "2.5px solid transparent", transition: "all 0.2s", fontFamily: "inherit", textDecoration: activeCategory === cat ? "underline" : "none" }}>
               {cat}
             </button>
           ))}
@@ -240,7 +240,7 @@ export default function UserScreen() {
                   <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
                     <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "#111" }}>{gig.TITLE}</span>
                     {gig.CATEGORY && (
-                      <span style={{ background: "#22c55e", color: "white", fontSize: "0.6rem", fontWeight: 700, padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
+                      <span style={{ background: "#10B981", color: "white", fontSize: "0.6rem", fontWeight: 700, padding: "2px 7px", borderRadius: "10px", whiteSpace: "nowrap" }}>
                         {gig.CATEGORY}
                       </span>
                     )}
@@ -262,7 +262,7 @@ export default function UserScreen() {
                   </p>
 
                   {/* Price */}
-                  <p style={{ fontSize: "0.78rem", color: "#1abc9c", fontWeight: 700, margin: 0 }}>
+                  <p style={{ fontSize: "0.78rem", color: "#10B981", fontWeight: 700, margin: 0 }}>
                     Rs. {Number(gig.PRICE).toLocaleString()} /month
                   </p>
                   <p style={{ fontSize: "0.68rem", color: "#999", margin: 0 }}>
@@ -272,9 +272,9 @@ export default function UserScreen() {
                   {/* Button */}
                   <button
                     onClick={() => navigate(`/workerProfile/${gig.WORKER_ID}`)}
-                    style={{ marginTop: "8px", background: "#1abc9c", color: "white", border: "none", borderRadius: "20px", padding: "8px 0", fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", width: "100%", fontFamily: "inherit" }}
+                    style={{ marginTop: "8px", background: "#10B981", color: "white", border: "none", borderRadius: "20px", padding: "8px 0", fontSize: "0.82rem", fontWeight: 600, cursor: "pointer", width: "100%", fontFamily: "inherit" }}
                     onMouseEnter={e => (e.currentTarget.style.background = "#17a589")}
-                    onMouseLeave={e => (e.currentTarget.style.background = "#1abc9c")}
+                    onMouseLeave={e => (e.currentTarget.style.background = "#10B981")}
                   >
                     Available Now
                   </button>
@@ -286,7 +286,7 @@ export default function UserScreen() {
       </main>
 
       {/* FOOTER */}
-      <footer style={{ background: "#1abc9c", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", flexShrink: 0 }}>
+      <footer style={{ background: "#10B981", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", flexShrink: 0 }}>
         <div style={{ display: "flex", gap: "10px" }}>
           <a href="#" style={{ width: "30px", height: "30px", borderRadius: "50%", background: "rgba(255,255,255,0.25)", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>

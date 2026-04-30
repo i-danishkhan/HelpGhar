@@ -106,10 +106,10 @@ export default function WorkerDashboard() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-#E9FFF1 border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-200 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
-            <p className="text-sm font-semibold text-gray-800">Zohaib Ali</p>
+            <p className="text-sm font-semibold text-[#E9FFF1]">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
             <button className="bg-gray-900 text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
@@ -123,7 +123,7 @@ export default function WorkerDashboard() {
               <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-[#E9FFF1] text-xs font-bold">
                 ZA
               </div>
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-[#E9FFF1]">
                 Zohaib Ali
               </span>
             </div>

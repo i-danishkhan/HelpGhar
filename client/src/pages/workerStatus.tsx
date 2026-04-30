@@ -105,11 +105,10 @@ export default function WorkerStatus() {
                   setActiveNav(label);
                   navigate(path);
                 }}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
-                  activeNav === label
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${activeNav === label
                     ? "bg-green-500 text-white"
                     : "text-gray-400 hover:bg-gray-700 hover:text-white"
-                }`}
+                  }`}
               >
                 <Icon size={16} />
                 {label}
@@ -132,7 +131,7 @@ export default function WorkerStatus() {
             <p className="text-sm font-semibold text-white">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-gray-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-500 transition-all">
+            <button className="text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
               Switch to Hiring
             </button>
             <button className="relative text-gray-400 hover:text-white">

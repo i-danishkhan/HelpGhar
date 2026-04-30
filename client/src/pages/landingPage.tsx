@@ -124,15 +124,13 @@ const GlobalStyle = () => (
     }
     .social-btn:hover { background: rgba(255,255,255,0.5); }
 
-    @media (max-width: 768px) {
-      .hero-grid { flex-direction: column !important; }
-      .hero-illustration { max-width: 100% !important; }
-      .nav-links { display: none !important; }
-    }
-    @media (max-width: 480px) {
-      .hero-btns { flex-direction: column !important; }
-      .hero-btns button { width: 100%; }
-    }
+@media (max-width: 768px) {
+  .hero-grid { flex-direction: column !important; }
+  .hero-illustration { display: none !important; }
+  .nav-links { display: none !important; }
+  .hero-text { text-align: center !important; }
+  .hero-btns { justify-content: center !important; }
+}
   `}</style>
 );
 
@@ -268,9 +266,9 @@ const LandingPage: React.FC = () => {
         {/* Nav links */}
         <div className="nav-links" style={{ display: "flex", gap: "28px" }}>
           <button className="nav-link" onClick={handleScrollTo("section-home")}>Home</button>
-          <button className="nav-link" onClick={handleScrollTo("section-testimonials")}>Testimonials</button>
           <button className="nav-link" onClick={handleScrollTo("section-why")}>Why Us</button>
           <button className="nav-link" onClick={handleScrollTo("section-how")}>How It Works</button>
+          <button className="nav-link" onClick={handleScrollTo("section-testimonials")}>Testimonials</button>
         </div>
 
         {/* Auth buttons */}
@@ -305,10 +303,10 @@ const LandingPage: React.FC = () => {
       >
         <div className="hero-grid" style={{
           display: "flex", alignItems: "center",
-          justifyContent: "space-between", gap: "32px", flexWrap: "wrap",
-          width: "100%", maxWidth: "1200px", margin: "0 auto"
+          justifyContent: "space-between", gap: "16px", flexWrap: "wrap",
+          width: "100%", maxWidth: "1300px", margin: "0 auto"
         }}>
-          <div style={{ flex: "1 1 320px", maxWidth: "520px" }}>
+          <div className="hero-text" style={{ flex: "1 1 320px", maxWidth: "520px" }}>
             <h1 style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.18, fontWeight: 800 }}>
               <span style={{ color: "#10B981" }}>Your Home,</span><br />
               <span style={{ color: "#10B981" }}>Their Work</span><br />
@@ -330,8 +328,12 @@ const LandingPage: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="hero-illustration" style={{ flex: "1 1 280px", maxWidth: "440px" }}>
-            <HeroIllustration />
+          <div className="hero-illustration" style={{ flex: "1 1 400px", maxWidth: "780px" }}>
+            <img
+              src="/public/assets/hero_section.png"
+              alt="Home workers — cleaner, cook, tutor, nanny"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
           </div>
         </div>
       </section>

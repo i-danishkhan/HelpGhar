@@ -41,7 +41,7 @@ export default function CustomerComplain() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-48 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
+      <aside className="w-48 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
             <span className="text-white text-xl font-bold tracking-tight">
@@ -77,7 +77,7 @@ export default function CustomerComplain() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-white">Zohaib Ali</p>
@@ -111,7 +111,7 @@ export default function CustomerComplain() {
               {/* Row: Worker Name + ID Number */}
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="flex-1 flex flex-col gap-2">
-                  <label className="text-base text-gray-800 font-medium">
+                  <label className="text-base text-gray-900 font-medium">
                     Worker Name
                   </label>
                   <input
@@ -119,11 +119,11 @@ export default function CustomerComplain() {
                     name="workerName"
                     value={form.workerName}
                     onChange={handleChange}
-                    className="border-2 border-gray-800 rounded-md px-4 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
+                    className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
                   />
                 </div>
                 <div className="flex-1 flex flex-col gap-2">
-                  <label className="text-base text-gray-800 font-medium">
+                  <label className="text-base text-gray-900 font-medium">
                     ID Number
                   </label>
                   <input
@@ -131,14 +131,14 @@ export default function CustomerComplain() {
                     name="idNumber"
                     value={form.idNumber}
                     onChange={handleChange}
-                    className="border-2 border-gray-800 rounded-md px-4 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
+                    className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
                   />
                 </div>
               </div>
 
               {/* Reason */}
               <div className="flex flex-col gap-2">
-                <label className="text-base text-gray-800 font-medium">
+                <label className="text-base text-gray-900 font-medium">
                   Reason
                 </label>
                 <textarea
@@ -146,7 +146,7 @@ export default function CustomerComplain() {
                   value={form.reason}
                   onChange={handleChange}
                   rows={9}
-                  className="border-2 border-gray-800 rounded-md px-4 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all resize-none bg-white"
+                  className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all resize-none bg-white"
                 />
               </div>
 

@@ -9,7 +9,6 @@ import {
   Bell,
 } from "lucide-react";
 
-
 const navItems = [
   { label: "Dashboard", icon: LayoutDashboard, path: "/workerDashboard" },
   { label: "Profile", icon: User, path: "/workerProfile" },
@@ -38,7 +37,7 @@ export default function WorkerComplain() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-gray-900 font-sans overflow-hidden">
       {/* Sidebar */}
       <aside className="w-52 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         {/* Logo */}
@@ -54,7 +53,10 @@ export default function WorkerComplain() {
             {navItems.map(({ label, icon: Icon, path }) => (
               <button
                 key={label}
-                onClick={() => {setActiveNav(label); navigate(path || "/workerDashboard")}}
+                onClick={() => {
+                  setActiveNav(label);
+                  navigate(path || "/workerDashboard");
+                }}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
                   activeNav === label
                     ? "bg-green-500 text-[#E9FFF1]"
@@ -84,7 +86,7 @@ export default function WorkerComplain() {
             <p className="text-sm font-semibold text-[#E9FFF1]">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-gray-700 text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-600 transition-all">
+            <button className="text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
               Switch to Hiring
             </button>
             <button className="relative text-gray-400 hover:text-[#E9FFF1]">
@@ -101,18 +103,21 @@ export default function WorkerComplain() {
         </header>
 
         {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-6 flex items-start justify-center">
-          {/* #E9FFF1 Card */}
-          <div className="bg-#E9FFF1 rounded-2xl shadow-xl w-full max-w-2xl p-8 mt-4">
-            <h1 className="text-2xl font-bold text-gray-900 text-center mb-8">
+        <main className="flex-1 overflow-y-auto">
+          <div className="bg-white min-h-full p-10">
+            {/* Page Title */}
+            <h1 className="text-3xl font-bold text-gray-900 text-center mb-10">
               Add Complain/Feedback
             </h1>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="max-w-4xl mx-auto flex flex-col gap-7"
+            >
               {/* Row: Customer Name + ID Number */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 flex flex-col gap-1">
-                  <label className="text-sm text-gray-600 font-medium">
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-base text-gray-900 font-medium">
                     Customer Name
                   </label>
                   <input
@@ -120,11 +125,11 @@ export default function WorkerComplain() {
                     name="customerName"
                     value={form.customerName}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all"
+                    className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
                   />
                 </div>
-                <div className="flex-1 flex flex-col gap-1">
-                  <label className="text-sm text-gray-600 font-medium">
+                <div className="flex-1 flex flex-col gap-2">
+                  <label className="text-base text-gray-900 font-medium">
                     ID Number
                   </label>
                   <input
@@ -132,22 +137,22 @@ export default function WorkerComplain() {
                     name="idNumber"
                     value={form.idNumber}
                     onChange={handleChange}
-                    className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all"
+                    className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all bg-white"
                   />
                 </div>
               </div>
 
               {/* Reason */}
-              <div className="flex flex-col gap-1">
-                <label className="text-sm text-gray-600 font-medium">
+              <div className="flex flex-col gap-2">
+                <label className="text-base text-gray-900 font-medium">
                   Reason
                 </label>
                 <textarea
                   name="reason"
                   value={form.reason}
                   onChange={handleChange}
-                  rows={6}
-                  className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all resize-none"
+                  rows={9}
+                  className="border-2 border-gray-900 rounded-md px-4 py-3 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all resize-none bg-white"
                 />
               </div>
 
@@ -155,7 +160,7 @@ export default function WorkerComplain() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-green-500 hover:bg-green-600 text-[#E9FFF1] text-sm font-semibold px-8 py-2.5 rounded-lg transition-all"
+                  className="bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-8 py-2.5 rounded-lg transition-all"
                 >
                   Submit
                 </button>

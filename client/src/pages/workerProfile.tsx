@@ -78,7 +78,7 @@ export default function WorkerProfile() {
             <p className="text-sm font-semibold text-[#E9FFF1]">Zohaib Ali</p>
           </div>
           <div className="flex items-center gap-4">
-            <button className="bg-gray-600 text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-500 transition-all">
+            <button className="text-[#E9FFF1] text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition-all">
               Switch to Hiring
             </button>
             <button className="relative text-gray-400 hover:text-[#E9FFF1]">

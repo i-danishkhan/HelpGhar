@@ -95,7 +95,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
       }}>
         {/* Header */}
         <div style={{
-          background: "#1abc9c", padding: "16px 20px",
+          background: "#10B981", padding: "16px 20px",
           display: "flex", alignItems: "center", justifyContent: "space-between"
         }}>
           <h2 style={{ color: "white", fontWeight: 700, fontSize: "1.05rem", margin: 0 }}>
@@ -150,7 +150,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
                   gap: "8px", cursor: "pointer", background: "#f9fafb",
                   transition: "border-color 0.2s"
                 }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = "#1abc9c")}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = "#10B981")}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = "#d1d5db")}
               >
                 <ImageIcon size={28} color="#9ca3af" />
@@ -187,7 +187,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
                 border: "1.5px solid #e5e7eb", fontSize: "0.85rem",
                 outline: "none", boxSizing: "border-box", fontFamily: "inherit"
               }}
-              onFocus={e => (e.target.style.borderColor = "#1abc9c")}
+              onFocus={e => (e.target.style.borderColor = "#10B981")}
               onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
             />
           </div>
@@ -208,7 +208,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
                 outline: "none", boxSizing: "border-box", resize: "vertical",
                 fontFamily: "inherit"
               }}
-              onFocus={e => (e.target.style.borderColor = "#1abc9c")}
+              onFocus={e => (e.target.style.borderColor = "#10B981")}
               onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
             />
           </div>
@@ -229,7 +229,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
                   border: "1.5px solid #e5e7eb", fontSize: "0.85rem",
                   outline: "none", boxSizing: "border-box", fontFamily: "inherit"
                 }}
-                onFocus={e => (e.target.style.borderColor = "#1abc9c")}
+                onFocus={e => (e.target.style.borderColor = "#10B981")}
                 onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
               />
             </div>
@@ -247,7 +247,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
                   outline: "none", boxSizing: "border-box", fontFamily: "inherit",
                   background: "white", cursor: "pointer"
                 }}
-                onFocus={e => (e.target.style.borderColor = "#1abc9c")}
+                onFocus={e => (e.target.style.borderColor = "#10B981")}
                 onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
               >
                 <option value="">Select...</option>
@@ -279,7 +279,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
               disabled={loading}
               style={{
                 flex: 2, padding: "10px", borderRadius: "8px",
-                border: "none", background: loading ? "#a7f3d0" : "#1abc9c",
+                border: "none", background: loading ? "#a7f3d0" : "#10B981",
                 fontSize: "0.88rem", fontWeight: 700, cursor: loading ? "not-allowed" : "pointer",
                 color: "white", fontFamily: "inherit", transition: "background 0.2s",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: "6px"

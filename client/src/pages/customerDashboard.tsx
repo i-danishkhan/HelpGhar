@@ -66,7 +66,7 @@ export default function HouseOwnerDashboard() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-52 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
+      <aside className="w-52 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
             <span className="text-white text-xl font-bold tracking-tight">
@@ -102,7 +102,7 @@ export default function HouseOwnerDashboard() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-white">Zohaib Ali</p>
@@ -159,7 +159,7 @@ export default function HouseOwnerDashboard() {
 
               {/* Notifications */}
               <div className="bg-gray-100 border border-gray-200 rounded-xl p-5">
-                <p className="text-sm font-bold text-gray-800 mb-4">
+                <p className="text-sm font-bold text-gray-900 mb-4">
                   Notifications
                 </p>
                 <div className="flex flex-col gap-3">
@@ -185,7 +185,7 @@ export default function HouseOwnerDashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Recommended Workers */}
                 <div className="bg-white border border-gray-200 rounded-xl p-5">
-                  <p className="text-sm font-bold text-gray-800 mb-4">
+                  <p className="text-sm font-bold text-gray-900 mb-4">
                     Recommended Workers
                   </p>
                   <div className="flex flex-col gap-3">
@@ -200,7 +200,7 @@ export default function HouseOwnerDashboard() {
                           >
                             {worker.initials}
                           </div>
-                          <span className="text-sm text-gray-800 font-medium">
+                          <span className="text-sm text-gray-900 font-medium">
                             {worker.name}
                           </span>
                         </div>
@@ -220,7 +220,7 @@ export default function HouseOwnerDashboard() {
 
                 {/* Recent Hires & Contracts */}
                 <div className="bg-white border border-gray-200 rounded-xl p-5">
-                  <p className="text-sm font-bold text-gray-800 mb-4">
+                  <p className="text-sm font-bold text-gray-900 mb-4">
                     Recent Hires & Contracts
                   </p>
                   <div className="flex flex-col gap-3">
@@ -236,7 +236,7 @@ export default function HouseOwnerDashboard() {
                             {hire.initials}
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-gray-800">
+                            <p className="text-sm font-semibold text-gray-900">
                               {hire.name}
                             </p>
                             <p className="text-xs text-gray-400">{hire.role}</p>
@@ -253,7 +253,7 @@ export default function HouseOwnerDashboard() {
 
               {/* Hire Workers By Month Chart */}
               <div className="bg-white border border-gray-200 rounded-xl p-5">
-                <p className="text-sm font-bold text-gray-800 mb-4">
+                <p className="text-sm font-bold text-gray-900 mb-4">
                   Hire Workers By Month
                 </p>
                 <ResponsiveContainer width="100%" height={220}>

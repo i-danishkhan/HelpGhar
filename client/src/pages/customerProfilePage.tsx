@@ -29,7 +29,7 @@ export default function CustomerProfilePage() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-52 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
+      <aside className="w-52 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
             <span className="text-white text-xl font-bold tracking-tight">
@@ -65,7 +65,7 @@ export default function CustomerProfilePage() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-white">Zohaib Ali</p>
@@ -128,7 +128,7 @@ export default function CustomerProfilePage() {
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between text-sm border-b border-gray-100 pb-2 last:border-0 last:pb-0">
                       <span className="text-gray-500">{label}</span>
-                      <span className="text-gray-800 font-medium text-right">{value}</span>
+                      <span className="text-gray-900 font-medium text-right">{value}</span>
                     </div>
                   ))}
                 </div>
@@ -146,7 +146,7 @@ export default function CustomerProfilePage() {
                   ].map(({ label, value, bold }) => (
                     <div key={label} className="flex items-center justify-between text-sm border-b border-gray-100 pb-2">
                       <span className="text-gray-500">{label}</span>
-                      <span className={`text-gray-800 ${bold ? "font-bold" : "font-medium"}`}>{value}</span>
+                      <span className={`text-gray-900 ${bold ? "font-bold" : "font-medium"}`}>{value}</span>
                     </div>
                   ))}
                   <div className="flex items-center justify-between text-sm">
@@ -179,7 +179,7 @@ export default function CustomerProfilePage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3 text-sm text-gray-700">
-                      <ShieldCheck size={17} className="text-gray-800 shrink-0" />
+                      <ShieldCheck size={17} className="text-gray-900 shrink-0" />
                       Enable Two - Factor Authentication
                     </div>
                     <button

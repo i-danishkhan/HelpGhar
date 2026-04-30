@@ -91,7 +91,7 @@ export default function CustomerStatus() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-48 bg-gray-800 flex flex-col justify-between py-6 px-3 shrink-0">
+      <aside className="w-48 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         <div>
           <div className="mb-8 px-2">
             <span className="text-white text-xl font-bold tracking-tight">
@@ -127,7 +127,7 @@ export default function CustomerStatus() {
       {/* Main */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Topbar */}
-        <header className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
+        <header className="bg-gray-900 border-b border-gray-700 px-6 py-3 flex items-center justify-between shrink-0">
           <div>
             <p className="text-xs text-gray-400">Good Morning</p>
             <p className="text-sm font-semibold text-white">Zohaib Ali</p>
@@ -163,16 +163,16 @@ export default function CustomerStatus() {
 
                   {/* Details */}
                   <div className="flex flex-col gap-2 text-sm">
-                    <p className="text-gray-800">
+                    <p className="text-gray-900">
                       <span className="font-bold">Worker:</span> {booking.worker}
                     </p>
-                    <p className="text-gray-800">
+                    <p className="text-gray-900">
                       <span className="font-bold">Service:</span> {booking.service}
                     </p>
-                    <p className="text-gray-800">
+                    <p className="text-gray-900">
                       <span className="font-bold">Started:</span> {booking.started}
                     </p>
-                    <p className="text-gray-800">
+                    <p className="text-gray-900">
                       <span className="font-bold">Status:</span> {booking.status}
                     </p>
                   </div>

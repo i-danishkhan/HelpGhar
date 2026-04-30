@@ -38,7 +38,7 @@ export default function WorkerComplain() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-gray-900 font-sans overflow-hidden">
       {/* Sidebar */}
       <aside className="w-52 bg-gray-900 flex flex-col justify-between py-6 px-3 shrink-0">
         {/* Logo */}
@@ -58,7 +58,7 @@ export default function WorkerComplain() {
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all w-full text-left ${
                   activeNav === label
                     ? "bg-green-500 text-[#E9FFF1]"
-                    : "text-gray-400 hover:bg-gray-800 hover:text-[#E9FFF1]"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-[#E9FFF1]"
                 }`}
               >
                 <Icon size={16} />
@@ -69,7 +69,7 @@ export default function WorkerComplain() {
         </div>
 
         {/* Logout */}
-        <button className="flex items-center gap-2 text-gray-400 hover:text-[#E9FFF1] text-sm px-3 py-2 rounded-lg hover:bg-gray-800 transition-all w-full">
+        <button className="flex items-center gap-2 text-gray-400 hover:text-[#E9FFF1] text-sm px-3 py-2 rounded-lg hover:bg-gray-900 transition-all w-full">
           <LogOut size={16} />
           Logout
         </button>
@@ -101,7 +101,7 @@ export default function WorkerComplain() {
         </header>
 
         {/* Content Area */}
-        <main className="flex-1 overflow-y-auto p-6 flex items-start justify-center">
+        <main className="flex-1 overflow-y-auto p-6 flex items-start justify-center bg-white">
           {/* #E9FFF1 Card */}
           <div className="bg-#E9FFF1 rounded-2xl shadow-xl w-full max-w-2xl p-8 mt-4">
             <h1 className="text-2xl font-bold text-gray-900 text-center mb-8">

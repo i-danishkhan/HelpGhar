@@ -26,7 +26,7 @@ import {
 
 const navItems = [
   { label: "Dashboard", icon: LayoutDashboard, path: "/customerDashboard" },
-  { label: "Hire Worker", icon: Users, path: "/hireWorker" },
+  { label: "Hire Worker", icon: Users, path: "/userScreen" },
   { label: "Profile", icon: User, path: "/customerProfilePage" },
   { label: "Complain", icon: MessageSquareWarning, path: "/customerComplain" },
   { label: "Status", icon: Activity, path: "/customerStatus" },

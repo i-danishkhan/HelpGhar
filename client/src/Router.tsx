@@ -12,7 +12,7 @@ import OwnerProfilePage from "./pages/customerProfilePage";
 import CustomerComplain from "./pages/customerComplain";
 import CustomerStatus from "./pages/customerStatus";
 
-import AdminDashboard from "./pages/adminDashboard";
+// import AdminDashboard from "./pages/adminDashboard";
 import AdminProfile from "./pages/adminProfile";
 import AdminUserManagementPage from "./pages/adminUserManagementPage";
 import AdminResolveDisputePage from "./pages/adminResolveDisputePage";
@@ -95,10 +95,10 @@ export const router = createBrowserRouter([
   },
 
 
-  {
-    path: "/adminDashboard",
-    element: <AdminDashboard />,
-  },
+  // {
+  //   path: "/adminDashboard",
+  //   element: <AdminDashboard />,
+  // },
   {
     path: "/adminProfile",
     element: <AdminProfile />,

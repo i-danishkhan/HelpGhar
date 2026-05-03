@@ -31,7 +31,6 @@
     .section-title { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 1.5rem; }
     .overview-block { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 2.2rem; margin-bottom: 2.5rem; }
     .overview-block p { color: #adb5cc; font-size: 0.97rem; }
-    .overview-block p + p { margin-top: 0.9rem; }
     .overview-block strong { color: var(--text); font-weight: 600; }
     .arch-wrap { display: flex; flex-direction: column; gap: 12px; margin-bottom: 2.5rem; }
     .arch-row { display: flex; align-items: center; gap: 1.2rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.4rem; }
@@ -41,10 +40,10 @@
     .arch-dot.amber { background: #fbbf24; }
     .arch-row-title { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); min-width: 100px; }
     .arch-row p { font-size: 0.9rem; color: #adb5cc; }
-    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 2.5rem; }
-    .tech-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+    .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 2.5rem; }
+    .tech-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; text-align: center; }
     .tech-card .comp { font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
-    .tech-card .val { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+    .tech-card .val { font-size: 0.9rem; font-weight: 600; color: var(--text); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 2.5rem; }
     .feat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.3rem 1.4rem; }
     .feat-num { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: rgba(74,222,128,0.2); margin-bottom: 0.4rem; }
@@ -70,22 +69,20 @@
 <body>
 
 <div class="hero">
-  <div class="hero-tag">University Project</div>
+
   <h1>Help<span>Ghar</span></h1>
-  <p>A web-based platform connecting customers with verified home service providers — maids, drivers, plumbers, electricians, and tutors.</p>
+  <p>A web-based platform connecting customers with verified home service providers: maids, drivers, plumbers, electricians, and tutors.</p>
   <div class="hero-badges">
     <span class="badge">Microservice Architecture</span>
-    <span class="badge">IEEE 1016-2009</span>
     <span class="badge">3-Tier Client-Server</span>
-    <span class="badge">IEEE 830</span>
+    <span class="badge">Web Platform</span>
   </div>
 </div>
 
 <main>
 
   <div class="overview-block">
-    <p><strong>HelpGhar</strong> is a web-based service platform designed to connect customers with verified home service providers. The system facilitates end-to-end discovery, booking, payment, and review of skilled workers across domestic and professional categories.</p>
-    <p>Built in adherence to <strong>IEEE Standard 1016-2009</strong> for Software Design Descriptions and <strong>IEEE 830</strong> for Software Requirements Specifications, using a <strong>Microservice Architecture</strong> within a <strong>3-Tier Client-Server</strong> structure for modularity, scalability, and fault isolation.</p>
+    <p><strong>HelpGhar</strong> is a web-based service platform designed to connect customers with verified home service providers. The system facilitates end-to-end discovery, booking, payment, and review of skilled workers across domestic and professional categories including maids, drivers, plumbers, electricians, and tutors.</p>
   </div>
 
   <div class="section-label">System Architecture</div>
@@ -111,13 +108,10 @@
   <div class="section-label">Technology</div>
   <div class="section-title">Tech Stack</div>
   <div class="tech-grid">
-    <div class="tech-card"><div class="comp">Frontend</div><div class="val">React.js + Bootstrap</div></div>
-    <div class="tech-card"><div class="comp">Backend</div><div class="val">Node.js + Express</div></div>
-    <div class="tech-card"><div class="comp">Database</div><div class="val">MySQL / MongoDB</div></div>
-    <div class="tech-card"><div class="comp">Container</div><div class="val">Docker + Kubernetes</div></div>
-    <div class="tech-card"><div class="comp">Security</div><div class="val">SSL/TLS + JWT</div></div>
-    <div class="tech-card"><div class="comp">Cloud</div><div class="val">AWS EC2 / Firebase</div></div>
-    <div class="tech-card"><div class="comp">Caching</div><div class="val">Redis</div></div>
+    <div class="tech-card"><div class="comp">Frontend</div><div class="val">React.js, JavaScript</div></div>
+    <div class="tech-card"><div class="comp">Backend</div><div class="val">Node.js, Express.js</div></div>
+    <div class="tech-card"><div class="comp">Database</div><div class="val">MySQL</div></div>
+    <div class="tech-card"><div class="comp">Security</div><div class="val">SSL/TLS, JWT, bcrypt</div></div>
   </div>
 
   <div class="section-label">What It Does</div>
@@ -209,7 +203,7 @@
 </main>
 
 <footer>
-  <span>HelpGhar</span> &mdash; Home Services at Your Doorstep &nbsp;&middot;&nbsp; University Project
+  <span>HelpGhar</span> &nbsp;&middot;&nbsp; Home Services at Your Doorstep
 </footer>
 
 </body>

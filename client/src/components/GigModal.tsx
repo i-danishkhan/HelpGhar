@@ -1,10 +1,21 @@
 import { useState, useRef } from "react";
-import { Upload, X, ImageIcon } from "lucide-react";
+import { Upload, X, ImageIcon, CheckCircle, AlertCircle } from "lucide-react";
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
 };
+
+type FieldErrors = {
+  title?: string;
+  description?: string;
+  price?: string;
+};
+
+type StatusMessage = {
+  type: "success" | "error";
+  text: string;
+} | null;
 
 export default function GigModal({ isOpen, onClose }: Props) {
   const [title, setTitle] = useState("");
@@ -14,6 +25,8 @@ export default function GigModal({ isOpen, onClose }: Props) {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [statusMessage, setStatusMessage] = useState<StatusMessage>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,18 +42,28 @@ export default function GigModal({ isOpen, onClose }: Props) {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const handleSubmitGig = async () => {
-    if (!title || !description || !price) {
-      alert("Please fill all required fields");
-      return;
+  const validate = (): boolean => {
+    const errors: FieldErrors = {};
+    if (!title.trim()) errors.title = "Title is required";
+    if (!description.trim()) errors.description = "Description is required";
+    if (!price) {
+      errors.price = "Price is required";
+    } else if (isNaN(Number(price)) || Number(price) <= 0) {
+      errors.price = "Enter a valid price";
     }
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmitGig = async () => {
+    setStatusMessage(null);
+    if (!validate()) return;
 
     setLoading(true);
 
     try {
-      // ✅ Use FormData so image file can be sent
       const formData = new FormData();
-      formData.append("workerId", "1"); // later dynamic
+      formData.append("workerId", "1");
       formData.append("title", title);
       formData.append("description", description);
       formData.append("price", price);
@@ -51,34 +74,44 @@ export default function GigModal({ isOpen, onClose }: Props) {
 
       const res = await fetch("http://localhost:8000/api/gigs/create", {
         method: "POST",
-        // ✅ Do NOT set Content-Type header — browser sets it with boundary automatically
         body: formData,
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.error || data.message || "Something went wrong");
+        setStatusMessage({ type: "error", text: data.error || data.message || "Something went wrong" });
         return;
       }
 
-      alert(data.message);
-      // Reset form
-      setTitle("");
-      setDescription("");
-      setPrice("");
-      setCategory("");
-      removeImage();
-      onClose();
+      setStatusMessage({ type: "success", text: data.message || "Gig created successfully!" });
+
+      // Reset form after short delay so user sees success
+      setTimeout(() => {
+        setTitle("");
+        setDescription("");
+        setPrice("");
+        setCategory("");
+        setFieldErrors({});
+        setStatusMessage(null);
+        removeImage();
+        onClose();
+      }, 1500);
     } catch (err) {
       console.error(err);
-      alert("Network error. Please try again.");
+      setStatusMessage({ type: "error", text: "Network error. Please try again." });
     } finally {
       setLoading(false);
     }
   };
 
   if (!isOpen) return null;
+
+  const inputStyle = (hasError?: boolean): React.CSSProperties => ({
+    width: "100%", padding: "9px 12px", borderRadius: "8px",
+    border: `1.5px solid ${hasError ? "#ef4444" : "#e5e7eb"}`, fontSize: "0.85rem",
+    outline: "none", boxSizing: "border-box", fontFamily: "inherit"
+  });
 
   return (
     <div style={{
@@ -114,7 +147,24 @@ export default function GigModal({ isOpen, onClose }: Props) {
         {/* Body */}
         <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
 
-          {/* ✅ Image Upload */}
+          {/* Status Message Banner */}
+          {statusMessage && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: "8px",
+              padding: "10px 12px", borderRadius: "8px",
+              background: statusMessage.type === "success" ? "#ecfdf5" : "#fef2f2",
+              border: `1px solid ${statusMessage.type === "success" ? "#6ee7b7" : "#fca5a5"}`,
+              fontSize: "0.82rem", fontWeight: 500,
+              color: statusMessage.type === "success" ? "#065f46" : "#991b1b"
+            }}>
+              {statusMessage.type === "success"
+                ? <CheckCircle size={15} />
+                : <AlertCircle size={15} />}
+              {statusMessage.text}
+            </div>
+          )}
+
+          {/* Image Upload */}
           <div>
             <label style={{ fontSize: "0.8rem", fontWeight: 600, color: "#444", display: "block", marginBottom: "6px" }}>
               Profile Photo
@@ -148,18 +198,14 @@ export default function GigModal({ isOpen, onClose }: Props) {
                   border: "2px dashed #d1d5db", display: "flex",
                   flexDirection: "column", alignItems: "center", justifyContent: "center",
                   gap: "8px", cursor: "pointer", background: "#f9fafb",
-                  transition: "border-color 0.2s"
+                  transition: "border-color 0.2s", boxSizing: "border-box"
                 }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = "#10B981")}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = "#d1d5db")}
               >
                 <ImageIcon size={28} color="#9ca3af" />
-                <span style={{ fontSize: "0.78rem", color: "#9ca3af" }}>
-                  Click to upload photo
-                </span>
-                <span style={{ fontSize: "0.68rem", color: "#c4c4c4" }}>
-                  JPG, PNG, WEBP — max 5MB
-                </span>
+                <span style={{ fontSize: "0.78rem", color: "#9ca3af" }}>Click to upload photo</span>
+                <span style={{ fontSize: "0.68rem", color: "#c4c4c4" }}>JPG, PNG, WEBP — max 5MB</span>
               </div>
             )}
 
@@ -181,15 +227,16 @@ export default function GigModal({ isOpen, onClose }: Props) {
               type="text"
               placeholder="e.g. Expert House Cleaning"
               value={title}
-              onChange={e => setTitle(e.target.value)}
-              style={{
-                width: "100%", padding: "9px 12px", borderRadius: "8px",
-                border: "1.5px solid #e5e7eb", fontSize: "0.85rem",
-                outline: "none", boxSizing: "border-box", fontFamily: "inherit"
-              }}
-              onFocus={e => (e.target.style.borderColor = "#10B981")}
-              onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
+              onChange={e => { setTitle(e.target.value); setFieldErrors(p => ({ ...p, title: undefined })); }}
+              style={inputStyle(!!fieldErrors.title)}
+              onFocus={e => (e.target.style.borderColor = fieldErrors.title ? "#ef4444" : "#10B981")}
+              onBlur={e => (e.target.style.borderColor = fieldErrors.title ? "#ef4444" : "#e5e7eb")}
             />
+            {fieldErrors.title && (
+              <span style={{ fontSize: "0.73rem", color: "#ef4444", marginTop: "3px", display: "flex", alignItems: "center", gap: "3px" }}>
+                <AlertCircle size={11} /> {fieldErrors.title}
+              </span>
+            )}
           </div>
 
           {/* Description */}
@@ -200,17 +247,20 @@ export default function GigModal({ isOpen, onClose }: Props) {
             <textarea
               placeholder="Describe your services..."
               value={description}
-              onChange={e => setDescription(e.target.value)}
+              onChange={e => { setDescription(e.target.value); setFieldErrors(p => ({ ...p, description: undefined })); }}
               rows={3}
               style={{
-                width: "100%", padding: "9px 12px", borderRadius: "8px",
-                border: "1.5px solid #e5e7eb", fontSize: "0.85rem",
-                outline: "none", boxSizing: "border-box", resize: "vertical",
-                fontFamily: "inherit"
+                ...inputStyle(!!fieldErrors.description),
+                resize: "vertical"
               }}
-              onFocus={e => (e.target.style.borderColor = "#10B981")}
-              onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
+              onFocus={e => (e.target.style.borderColor = fieldErrors.description ? "#ef4444" : "#10B981")}
+              onBlur={e => (e.target.style.borderColor = fieldErrors.description ? "#ef4444" : "#e5e7eb")}
             />
+            {fieldErrors.description && (
+              <span style={{ fontSize: "0.73rem", color: "#ef4444", marginTop: "3px", display: "flex", alignItems: "center", gap: "3px" }}>
+                <AlertCircle size={11} /> {fieldErrors.description}
+              </span>
+            )}
           </div>
 
           {/* Price + Category row */}
@@ -223,15 +273,16 @@ export default function GigModal({ isOpen, onClose }: Props) {
                 type="number"
                 placeholder="25000"
                 value={price}
-                onChange={e => setPrice(e.target.value)}
-                style={{
-                  width: "100%", padding: "9px 12px", borderRadius: "8px",
-                  border: "1.5px solid #e5e7eb", fontSize: "0.85rem",
-                  outline: "none", boxSizing: "border-box", fontFamily: "inherit"
-                }}
-                onFocus={e => (e.target.style.borderColor = "#10B981")}
-                onBlur={e => (e.target.style.borderColor = "#e5e7eb")}
+                onChange={e => { setPrice(e.target.value); setFieldErrors(p => ({ ...p, price: undefined })); }}
+                style={inputStyle(!!fieldErrors.price)}
+                onFocus={e => (e.target.style.borderColor = fieldErrors.price ? "#ef4444" : "#10B981")}
+                onBlur={e => (e.target.style.borderColor = fieldErrors.price ? "#ef4444" : "#e5e7eb")}
               />
+              {fieldErrors.price && (
+                <span style={{ fontSize: "0.73rem", color: "#ef4444", marginTop: "3px", display: "flex", alignItems: "center", gap: "3px" }}>
+                  <AlertCircle size={11} /> {fieldErrors.price}
+                </span>
+              )}
             </div>
 
             <div style={{ flex: 1 }}>

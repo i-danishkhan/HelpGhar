@@ -224,7 +224,7 @@ export default function UserScreen() {
                 <div style={{ height: "160px", overflow: "hidden", flexShrink: 0 }}>
                   {gig.IMAGE ? (
                     <img
-                      src={`http://localhost:8000/uploads/gigs/${gig.IMAGE}`}
+                      src={gig.IMAGE?.startsWith('http') ? gig.IMAGE : `http://localhost:8000/uploads/gigs/${gig.IMAGE}`}
                       alt={gig.TITLE}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />

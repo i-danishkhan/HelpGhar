@@ -121,11 +121,11 @@ export default function UserScreen() {
   useEffect(() => {
     const fetchGigs = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/gigs/create`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ category: activeCategory }),
-        });
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/gigs/all`)
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ category: activeCategory }),
+        // });
         const data = await res.json();
         if (res.ok) setGigs(data.gigs || []);
       } catch (err) {

@@ -121,7 +121,11 @@ export default function UserScreen() {
   useEffect(() => {
     const fetchGigs = async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/gigs/all");
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/gigs/all`)
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ category: activeCategory }),
+        // });
         const data = await res.json();
         if (res.ok) setGigs(data.gigs || []);
       } catch (err) {
@@ -224,7 +228,12 @@ export default function UserScreen() {
                 <div style={{ height: "160px", overflow: "hidden", flexShrink: 0 }}>
                   {gig.IMAGE ? (
                     <img
-                      src={gig.IMAGE?.startsWith('http') ? gig.IMAGE : `http://localhost:8000/uploads/gigs/${gig.IMAGE}`}
+
+                      src={
+                        gig.IMAGE?.startsWith("http")
+                          ? gig.IMAGE
+                          : `${import.meta.env.VITE_API_URL}/uploads/gigs/${gig.IMAGE}`
+                      }
                       alt={gig.TITLE}
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />

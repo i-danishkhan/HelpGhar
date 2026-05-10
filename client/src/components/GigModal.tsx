@@ -72,7 +72,7 @@ export default function GigModal({ isOpen, onClose }: Props) {
         formData.append("image", imageFile);
       }
 
-      const res = await fetch("http://localhost:8000/api/gigs/create", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/gigs/create`, {
         method: "POST",
         body: formData,
       });

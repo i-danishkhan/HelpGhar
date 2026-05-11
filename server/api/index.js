@@ -6,6 +6,7 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth.routes");
 const workerRoutes = require('./routes/Worker.route.js')
 const connectDB = require("./config/db");
+const customerRoutes = require("./routes/customer.routes");
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use("/uploads", express.static("uploads")); // 👈 for images
 
 // Routes
 app.use("/api/workers", workerRoutes);
-
+app.use("/customer", customerRoutes);
 // Test DB Route
 // ✅ THEN routes
 app.use("/api/auth", authRoutes);

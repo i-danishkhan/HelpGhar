@@ -77,7 +77,14 @@ const Footer = () => (
 );
 
 // ── Step 1: Registration Form ─────────────────────────────────────────────────
-const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
+const RegistrationForm = ({
+  onSubmit,
+}: {
+  onSubmit: (
+    form: any,
+    pictureFile: File | null
+  ) => void;
+}) => {
   const [form, setForm] = useState({
     fullName: "",
     workerPreference: "",
@@ -100,11 +107,10 @@ const RegistrationForm = ({ onSubmit }: { onSubmit: () => void }) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  onSubmit(form, pictureFile);
+};
   const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, "0"));
   const months = [
     { val: "01", label: "January" }, { val: "02", label: "February" },
@@ -316,10 +322,56 @@ const HouseOwnerRegistration: React.FC = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState<1 | 2 | 3>(1);
 
-  const handleFormSubmit = () => {
-    setStep(2);
-    setTimeout(() => setStep(3), 3000);
-  };
+ const handleFormSubmit = async (
+  form: any,
+  pictureFile: File | null
+) => {
+  try {
+    const formData = new FormData();
+
+    formData.append("fullName", form.fullName);
+    formData.append("workerPreference", form.workerPreference);
+    formData.append("phoneNo", form.phoneNo);
+    formData.append("emailId", form.emailId);
+    formData.append("cnic", form.cnic);
+    formData.append("dobDay", form.dobDay);
+    formData.append("dobMonth", form.dobMonth);
+    formData.append("dobYear", form.dobYear);
+    formData.append("city", form.city);
+    formData.append("address", form.address);
+
+    // image upload
+    if (pictureFile) {
+      formData.append("image", pictureFile);
+    }
+
+    const response = await fetch(
+      "http://localhost:8000/customer/register",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+
+    if (data.success) {
+      setStep(2);
+
+      setTimeout(() => {
+        setStep(3);
+      }, 3000);
+    } else {
+      alert("Registration failed");
+    }
+
+  } catch (error) {
+    console.error(error);
+    alert("Server Error");
+  }
+};
 
   const handleViewProfile = () => {
     navigate("/ownerProfile");

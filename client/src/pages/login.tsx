@@ -567,6 +567,7 @@ const LoginPage: React.FC = () => {
             </div>
 
             {/* Google */}
+
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "14px" }}>
               <button style={{
                 display: "flex", alignItems: "center", gap: "8px",
@@ -574,7 +575,7 @@ const LoginPage: React.FC = () => {
                 borderRadius: "6px", padding: "7px 20px", fontSize: "0.85rem",
                 fontWeight: 500, cursor: "pointer"
               }}>
-                <GoogleIcon /> Google
+                {/* <GoogleIcon /> Google */}
               </button>
             </div>
 

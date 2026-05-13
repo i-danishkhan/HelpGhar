@@ -25,6 +25,7 @@ import SignUp from "./pages/signup";
 import UserScreen from "./pages/userScreen";
 import WorkerRegistration from "./pages/workerRegistration";
 import HouseOwnerRegistration from "./pages/houseOwnerRegistration";
+import PaymentPage from "./pages/payment";
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
   {
     path: "/adminIncentivesPage",
     element: <AdminIncentivesPage />,
+  },
+  {
+    path: "/payment",
+    element: <PaymentPage />,
   },
 ], {
   basename: global.basename

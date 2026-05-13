@@ -1,57 +1,155 @@
+// const express = require("express");
+// const gigRoutes = require("./routes/gig.routes");
+// const cors = require("cors");
+// require("dotenv").config();
+
+// const authRoutes = require("./routes/auth.routes");
+// const workerRoutes = require('./routes/Worker.route.js')
+// const connectDB = require("./config/db");
+// const customerRoutes = require("./routes/customer.routes");
+
+// const app = express();
+
+// // ✅ FIRST: CORS
+// app.use(cors({
+//   origin: ["http://localhost:5173", "https://helpghar.vercel.app"], // your frontend port
+//   methods: ["GET", "POST"],
+//   credentials: true
+// }));
+// app.use(express.json());
+
+// app.use("/api/gigs", gigRoutes);
+
+// // ✅ SECOND: body parser
+
+// app.use("/uploads", express.static("uploads")); // 👈 for images
+
+// // Routes
+// app.use("/api/workers", workerRoutes);
+// app.use("/customer", customerRoutes);
+// // Test DB Route
+// // ✅ THEN routes
+// app.use("/api/auth", authRoutes);
+
+
+
+// // Test Route
+// app.get("/test-db", async (req, res) => {
+//   try {
+//     const connectDB = require("./config/db");
+//     const conn = await connectDB();
+//     const result = await conn.execute(`SELECT 'CONNECTED' FROM dual`);
+//     res.json(result.rows);
+//     await conn.close();
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
+
+// // Check tables
+// app.get("/check-tables", async (req, res) => {
+//   let conn;
+//   try {
+//     const connectDB = require("./config/db");
+//     conn = await connectDB();
+
+//     const result = await conn.execute(
+//       `SELECT table_name FROM user_tables ORDER BY table_name`
+//     );
+
+//     res.json({
+//       status: "✅ Connected",
+//       tables: result.rows
+//     });
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   } finally {
+//     if (conn) await conn.close();
+//   }
+// });
+
+// // Home route
+// app.get("/", (req, res) => {
+//   res.send("Server running 🚀");
+// });
+
+// // Start server
+// const PORT = process.env.PORT || 8000;
+
+// app.listen(PORT, () => {
+//   console.log(`🚀 Server running on port ${PORT}`);
+// });
+
+
+
 const express = require("express");
-const gigRoutes = require("./routes/gig.routes");
 const cors = require("cors");
 require("dotenv").config();
 
-const authRoutes = require("./routes/auth.routes");
-const workerRoutes = require('./routes/Worker.route.js')
 const connectDB = require("./config/db");
+
+// Import Routes
+const gigRoutes = require("./routes/gig.routes");
+const authRoutes = require("./routes/auth.routes");
+const workerRoutes = require("./routes/Worker.route.js");
 const customerRoutes = require("./routes/customer.routes");
 
 const app = express();
 
-// ✅ FIRST: CORS
-app.use(cors({
-  origin: "http://localhost:5173", // your frontend port
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+// Connect to Database
+connectDB();
 
+// Middleware
 app.use(express.json());
 
-app.use("/api/gigs", gigRoutes);
+// Enable CORS only for frontend origins
+const corsOptions = {
+  origin: [
+    "https://helpghar.vercel.app",
+    "http://localhost:5173",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
-// ✅ SECOND: body parser
+app.use(cors(corsOptions));
 
-app.use("/uploads", express.static("uploads")); // 👈 for images
+// Static folder for uploads
+app.use("/uploads", express.static("uploads"));
 
 // Routes
+app.use("/api/gigs", gigRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/workers", workerRoutes);
 app.use("/customer", customerRoutes);
+
 // Test DB Route
-// ✅ THEN routes
-app.use("/api/auth", authRoutes);
-
-
-
-// Test Route
 app.get("/test-db", async (req, res) => {
+  let conn;
+
   try {
-    const connectDB = require("./config/db");
-    const conn = await connectDB();
-    const result = await conn.execute(`SELECT 'CONNECTED' FROM dual`);
+    conn = await connectDB();
+
+    const result = await conn.execute(
+      `SELECT 'CONNECTED' AS STATUS FROM dual`
+    );
+
     res.json(result.rows);
-    await conn.close();
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).json({
+      error: err.message,
+    });
+  } finally {
+    if (conn) await conn.close();
   }
 });
 
-// Check tables
+// Check Tables Route
 app.get("/check-tables", async (req, res) => {
   let conn;
+
   try {
-    const connectDB = require("./config/db");
     conn = await connectDB();
 
     const result = await conn.execute(
@@ -60,23 +158,28 @@ app.get("/check-tables", async (req, res) => {
 
     res.json({
       status: "✅ Connected",
-      tables: result.rows
+      tables: result.rows,
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({
+      error: err.message,
+    });
   } finally {
     if (conn) await conn.close();
   }
 });
 
-// Home route
+// Home Route
 app.get("/", (req, res) => {
-  res.send("Server running 🚀");
+  res.send("Server is working 🚀");
 });
 
-// Start server
-const PORT = process.env.PORT || 8000;
+// Start Server
+// app.listen(process.env.PORT || 8000, () => {
+//   console.log(
+//     `🚀 Server running on http://localhost:${process.env.PORT || 8000}`
+//   );
+// });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+module.exports = app;
+
